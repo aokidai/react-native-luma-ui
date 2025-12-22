@@ -46,7 +46,7 @@ const Button: FC<ButtonProps> = (props) => {
       {label ? (
         <Text style={[labelStyle, { color: labelColor }]}>{label}</Text>
       ) : (
-        children
+        children && children
       )}
       {iconPosition === 'right' && icon && icon}
     </TouchableOpacity>
