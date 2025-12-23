@@ -10,3 +10,12 @@ export const radius = {
   lg: 22,
   ro: 54,
 };
+
+export const height = {
+  mi: 24,
+  no: 32,
+  sm: 40,
+  md: 48,
+  lg: 56,
+  xl: 64,
+};

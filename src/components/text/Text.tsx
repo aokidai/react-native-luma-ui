@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Text as RNText } from 'react-native';
-import { textStyles } from '../styles/text/text';
-import { colorSystem } from '../utils/colorSystem';
+import { textStyles } from '../../styles/text/text';
+import { colorSystem } from '../../utils/colorSystem';
 
 export type Theme =
   | 'displayLarge'

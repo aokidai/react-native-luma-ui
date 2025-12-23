@@ -1,8 +1,8 @@
 import React, { type FC, type ReactNode } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { buttonStyles, buttonTextStyles } from '../styles/button/button';
+import { buttonStyles, buttonTextStyles } from '../../styles/button/button';
 import Text from '../text/Text';
-import { colorSystem } from '../utils/colorSystem';
+import { colorSystem } from '../../utils/colorSystem';
 
 export type ButtonMode = 'elevated' | 'outlined' | 'text';
 export type ButtonIconPosition = 'left' | 'right';
@@ -33,6 +33,7 @@ const Button: FC<ButtonProps> = (props) => {
     iconPosition = 'left',
     disabled = false,
   } = props;
+
   return (
     <TouchableOpacity
       onPress={onPress}
