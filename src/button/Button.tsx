@@ -1,10 +1,10 @@
 import React, { type FC, type ReactNode } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Text } from 'react-native';
-import { buttonStyles } from '../styles/button/button';
+import { buttonStyles, buttonTextStyles } from '../styles/button/button';
+import Text from '../text/Text';
 import { colorSystem } from '../utils/colorSystem';
 
-export type ButtonMode = 'elevated' | 'filled' | 'outlined' | 'text' | 'icon';
+export type ButtonMode = 'elevated' | 'outlined' | 'text';
 export type ButtonIconPosition = 'left' | 'right';
 
 interface ButtonProps {
@@ -15,9 +15,9 @@ interface ButtonProps {
   style?: object;
   labelStyle?: object;
   mode?: ButtonMode;
-  color?: string;
   labelColor?: string;
   iconPosition?: ButtonIconPosition;
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -29,22 +29,33 @@ const Button: FC<ButtonProps> = (props) => {
     style,
     labelStyle,
     mode = 'elevated',
-    color = colorSystem.primary,
-    labelColor = colorSystem.onPrimary,
+    labelColor,
     iconPosition = 'left',
+    disabled = false,
   } = props;
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[
-        style,
         buttonStyles.button,
-        mode === 'elevated' ? { backgroundColor: color } : {},
+        buttonStyles[mode],
+        style,
+        disabled && { backgroundColor: colorSystem.gray[400] },
       ]}
+      disabled={disabled}
     >
       {iconPosition === 'left' && icon && icon}
       {label ? (
-        <Text style={[labelStyle, { color: labelColor }]}>{label}</Text>
+        <Text
+          theme="labelLarge"
+          style={[
+            buttonTextStyles[mode],
+            labelColor && { color: labelColor },
+            labelStyle,
+          ]}
+        >
+          {label}
+        </Text>
       ) : (
         children && children
       )}

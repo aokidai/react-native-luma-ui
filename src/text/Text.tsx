@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 import { Text as RNText } from 'react-native';
 import { textStyles } from '../styles/text/text';
+import { colorSystem } from '../utils/colorSystem';
 
 export type Theme =
   | 'displayLarge'
@@ -22,13 +23,18 @@ export type Theme =
 interface TextProps {
   children: string;
   style?: object;
-  theme: Theme;
+  theme?: Theme;
+  color?: string;
 }
 
 const Text: FC<TextProps> = (props) => {
-  const { children, style, theme } = props;
+  const { children, style, theme, color = colorSystem.gray[900] } = props;
 
-  return <RNText style={[style, textStyles[theme]]}>{children}</RNText>;
+  return (
+    <RNText style={[{ color: color }, style, theme && textStyles[theme]]}>
+      {children}
+    </RNText>
+  );
 };
 
 export default Text;
