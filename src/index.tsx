@@ -1,3 +1,5 @@
+export { colorSystem } from './utils/colorSystem';
+export { size } from './utils/size';
 export { default as Button } from './components/button/Button';
 export * from './components/button/Button';
 export { default as AppBar } from './components/appBar/AppBar';
@@ -12,3 +14,7 @@ export { default as IconButton } from './components/button/IconButton';
 export * from './components/button/IconButton';
 export { default as FAB } from './components/button/FAB';
 export * from './components/button/FAB';
+export { default as Badges } from './components/badges/Badges';
+export * from './components/badges/Badges';
+export { default as AppStatusBar } from './components/scaffold/AppStatusBar';
+export * from './components/scaffold/AppStatusBar';

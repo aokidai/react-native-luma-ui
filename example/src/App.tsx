@@ -2,12 +2,14 @@ import { View } from 'react-native';
 import {
   AppBar,
   Button,
+  Card,
   FAB,
   IconButton,
   Scaffold,
   Text,
 } from 'react-native-luma-ui';
 import { MaterialDesignIcons } from '@react-native-vector-icons/material-design-icons';
+import Badges from '../../src/components/badges/Badges';
 
 export default function App() {
   return (
@@ -44,6 +46,40 @@ export default function App() {
         />
       }
     >
+      <View>
+        <Badges visible>
+          <IconButton
+            icon={(size, color) => (
+              <MaterialDesignIcons name="menu" size={size} color={color} />
+            )}
+            mode="text"
+          />
+        </Badges>
+        <Badges visible count={0}>
+          <IconButton
+            icon={(size, color) => (
+              <MaterialDesignIcons name="menu" size={size} color={color} />
+            )}
+            mode="text"
+          />
+        </Badges>
+        <Badges visible count={1}>
+          <IconButton
+            icon={(size, color) => (
+              <MaterialDesignIcons name="menu" size={size} color={color} />
+            )}
+            mode="text"
+          />
+        </Badges>
+        <Badges visible count={1000}>
+          <IconButton
+            icon={(size, color) => (
+              <MaterialDesignIcons name="menu" size={size} color={color} />
+            )}
+            mode="text"
+          />
+        </Badges>
+      </View>
       <View>
         <Button
           label="Click me"
@@ -84,6 +120,11 @@ export default function App() {
           mode="elevated"
           disabled
         />
+      </View>
+      <View style={{ padding: 16 }}>
+        <Card>
+          <Text theme="headlineMedium">This is a card</Text>
+        </Card>
       </View>
     </Scaffold>
   );

@@ -21,7 +21,7 @@ export type Theme =
   | 'labelSmall';
 
 interface TextProps {
-  children: string;
+  children: string | number;
   style?: object;
   theme?: Theme;
   color?: string;
