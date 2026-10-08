@@ -3,6 +3,7 @@ import {
   AppBar,
   Button,
   Card,
+  Checkbox,
   FAB,
   IconButton,
   Scaffold,
@@ -124,6 +125,7 @@ export default function App() {
       <View style={{ padding: 16 }}>
         <Card>
           <Text theme="headlineMedium">This is a card</Text>
+          <Checkbox />
         </Card>
       </View>
     </Scaffold>

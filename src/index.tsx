@@ -18,3 +18,7 @@ export { default as Badges } from './components/badges/Badges';
 export * from './components/badges/Badges';
 export { default as AppStatusBar } from './components/scaffold/AppStatusBar';
 export * from './components/scaffold/AppStatusBar';
+// export { default as Icon } from './components/icon/Icon';
+// export * from './components/icon/Icon';
+export { default as Checkbox } from './components/checkbox/Checkbox';
+export * from './components/checkbox/Checkbox';
