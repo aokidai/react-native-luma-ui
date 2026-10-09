@@ -124,8 +124,26 @@ export default function App() {
       </View>
       <View style={{ padding: 16 }}>
         <Card>
-          <Text theme="headlineMedium">This is a card</Text>
-          <Checkbox />
+          <Text theme="headlineMedium">Checkbox Showcase</Text>
+          <View style={{ gap: 8, marginTop: 12 }}>
+            <Checkbox label="Default Checkbox" defaultChecked />
+            <Checkbox
+              label="Circle Checkbox"
+              shape="circle"
+              description="With helpful description text"
+            />
+            <Checkbox
+              label="Indeterminate State"
+              indeterminate
+              color="#03DAC6"
+            />
+            <Checkbox label="Disabled Checked" checked disabled />
+            <Checkbox.Item
+              label="Full-width Item"
+              description="Click anywhere on this row"
+              position="trailing"
+            />
+          </View>
         </Card>
       </View>
     </Scaffold>
