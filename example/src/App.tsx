@@ -50,7 +50,7 @@ interface ScreenConfig {
 
 const SCREENS: Record<string, ScreenConfig> = {
   home: { title: 'Luma UI - Trang chủ', component: HomeScreen },
-  color: { title: 'Bảng màu Material 3', component: ColorScreen },
+  color: { title: 'Bảng màu Luma UI', component: ColorScreen },
   button: { title: 'Button & FAB', component: ButtonScreen },
   textField: { title: 'Text Field (Input)', component: TextFieldScreen },
   checkbox: { title: 'Checkbox', component: CheckboxScreen },
@@ -60,7 +60,7 @@ const SCREENS: Record<string, ScreenConfig> = {
   card: { title: 'Card', component: CardScreen },
   appBar: { title: 'App Bar', component: AppBarScreen },
   badges: { title: 'Badges', component: BadgesScreen },
-  chip: { title: 'Chip (M3)', component: ChipScreen },
+  chip: { title: 'Chip (Luma)', component: ChipScreen },
   segmentedButtons: {
     title: 'Segmented Button',
     component: SegmentedButtonScreen,
@@ -84,7 +84,7 @@ const SCREENS: Record<string, ScreenConfig> = {
   watermark: { title: 'Watermark', component: WatermarkScreen },
   text: { title: 'Typography (Text)', component: TextScreen },
   layout: { title: 'Layout & Components', component: LayoutScreen },
-  bottomSheet: { title: 'Bottom Sheet (M3)', component: BottomSheetScreen },
+  bottomSheet: { title: 'Bottom Sheet (Luma)', component: BottomSheetScreen },
   dateTimePicker: {
     title: 'Date & Time Picker',
     component: DateTimePickerScreen,
@@ -167,7 +167,7 @@ export default function App() {
               Luma UI
             </Text>
             <Text style={{ fontSize: 13, color: '#757575' }}>
-              Material Design 3 Components
+              Luma UI Components
             </Text>
           </View>
         }
@@ -181,7 +181,7 @@ export default function App() {
             onPress={() => navigateTo('home')}
           />
           <Drawer.Item
-            label="Bảng màu (Color Scheme M3)"
+            label="Bảng màu (Color Scheme Luma)"
             icon={<MaterialDesignIcons name="palette-outline" size={20} />}
             active={currentScreen === 'color'}
             onPress={() => navigateTo('color')}
@@ -197,7 +197,7 @@ export default function App() {
             onPress={() => navigateTo('button')}
           />
           <Drawer.Item
-            label="Chip (M3)"
+            label="Chip (Luma)"
             icon={<MaterialDesignIcons name="label-outline" size={20} />}
             active={currentScreen === 'chip'}
             onPress={() => navigateTo('chip')}

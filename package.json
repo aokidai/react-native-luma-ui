@@ -40,7 +40,9 @@
     "release": "release-it --only-version",
     "test": "jest",
     "start": "cd example && yarn start",
-    "android": "cd example && yarn android"
+    "android": "cd example && yarn android",
+    "docs": "yarn workspace react-native-luma-ui-docs dev",
+    "docs:build": "yarn workspace react-native-luma-ui-docs build"
   },
   "keywords": [
     "react-native",
@@ -96,7 +98,8 @@
     "react-native-vector-icons": "*"
   },
   "workspaces": [
-    "example"
+    "example",
+    "docs"
   ],
   "packageManager": "yarn@4.11.0",
   "react-native-builder-bob": {

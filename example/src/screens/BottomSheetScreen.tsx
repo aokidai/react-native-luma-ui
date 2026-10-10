@@ -43,7 +43,7 @@ export const BottomSheetScreen = () => {
       >
         <View style={{ gap: 12, paddingVertical: 8 }}>
           <Text style={{ fontSize: 16, fontWeight: '600' }}>
-            Material Design 3 Bottom Sheet
+            Luma UI Bottom Sheet
           </Text>
           <Text style={{ color: '#555555', lineHeight: 22 }}>
             Bottom Sheet này được xây dựng thuần React Native với Animated và

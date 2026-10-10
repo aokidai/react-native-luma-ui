@@ -13,7 +13,7 @@ export const SwitchScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Material 3 Toggle Switch">
+      <Card title="Luma UI Toggle Switch">
         <View
           style={{
             flexDirection: 'row',

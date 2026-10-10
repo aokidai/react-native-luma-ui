@@ -21,7 +21,7 @@ export const DateTimePickerScreen = () => {
       {/* DatePicker */}
       <Card title="Date Picker (Chọn Ngày)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Lịch chọn ngày chuẩn Material 3 hiển thị qua Bottom Sheet:
+          Lịch chọn ngày chuẩn Luma UI hiển thị qua Bottom Sheet:
         </Text>
         <DatePicker
           label="Ngày sinh / Ngày hẹn"

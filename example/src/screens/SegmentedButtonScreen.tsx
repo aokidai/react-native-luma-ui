@@ -11,7 +11,7 @@ export const SegmentedButtonScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Segmented Buttons (Material 3)">
+      <Card title="Segmented Buttons (Luma UI)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
           Lựa chọn chế độ xem theo ngày, tuần hoặc tháng:
         </Text>

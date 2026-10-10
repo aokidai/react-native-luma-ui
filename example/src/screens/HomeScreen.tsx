@@ -25,10 +25,10 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
       <Card
         priority="Luma UI"
         priorityColor="#6200EE"
-        status="Material 3"
+        status="Luma UI"
         statusColor="#018786"
         title="Luma UI Component Showcase"
-        subContent="Bộ thư viện React Native UI tuân theo chuẩn Material Design 3"
+        subContent="Bộ thư viện React Native UI tuân theo chuẩn Luma UI"
         leftLine="#6200EE"
       >
         <Text style={{ marginTop: 8, color: '#757575', lineHeight: 20 }}>
@@ -53,7 +53,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
             onPress={onOpenDrawer}
           />
           <Button
-            label="🎨 Bảng màu M3"
+            label="🎨 Bảng màu Luma"
             mode="outlined"
             onPress={() => onNavigate('color')}
           />
@@ -64,7 +64,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
       <Section title="Thành phần điều hướng & Tương tác">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           <Chip
-            label="🎨 Bảng màu M3"
+            label="🎨 Bảng màu Luma"
             variant="filter"
             selected
             onPress={() => onNavigate('color')}

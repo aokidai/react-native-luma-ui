@@ -15,7 +15,7 @@ export const TextFieldScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Outlined Mode */}
-      <Card title="Outlined TextField (Material 3)">
+      <Card title="Outlined TextField (Luma UI)">
         <View style={{ gap: 12, marginTop: 8 }}>
           <TextField
             label="Họ và tên"
@@ -65,7 +65,7 @@ export const TextFieldScreen = () => {
       </Card>
 
       {/* Filled Mode */}
-      <Card title="Filled TextField (Material 3)">
+      <Card title="Filled TextField (Luma UI)">
         <View style={{ gap: 12, marginTop: 8 }}>
           <TextField
             mode="filled"

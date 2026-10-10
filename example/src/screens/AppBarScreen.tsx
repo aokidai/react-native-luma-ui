@@ -88,7 +88,7 @@ export const AppBarScreen = () => {
             title="Sắc thái Nổi bật"
             backgroundColor="#6200EE"
             titleStyle={{ color: '#ffffff' }}
-            subtitle="Giao diện Material UI"
+            subtitle="Giao diện Luma UI"
             subtitleStyle={{ color: '#E0E0E0' }}
             showBack
             onBack={() => {}}

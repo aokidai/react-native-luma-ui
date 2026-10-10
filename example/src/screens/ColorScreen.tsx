@@ -73,14 +73,14 @@ export const ColorScreen = () => {
     >
       {/* Theme Mode Selector */}
       <Card
-        title="Material Design 3 Color System"
+        title="Luma UI Color System"
         style={{ backgroundColor: currentColors.surfaceContainerLow }}
       >
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 14 }}
         >
-          Bộ màu chuẩn Material Design 3 bao gồm các vai trò màu (Key Roles),
-          Surface Elevation, và Tonal Palettes.
+          Bộ màu chuẩn Luma UI bao gồm các vai trò màu (Key Roles), Surface
+          Elevation, và Tonal Palettes.
         </Text>
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <SegmentedButton

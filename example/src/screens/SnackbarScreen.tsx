@@ -13,7 +13,7 @@ export const SnackbarScreen = () => {
         style={{ flex: 1 }}
         contentContainerStyle={{ padding: 16, gap: 16 }}
       >
-        <Card title="Material 3 Snackbar">
+        <Card title="Luma UI Snackbar">
           <Text style={{ color: '#757575', marginBottom: 12 }}>
             Snackbar cung cấp thông điệp ngắn ở đáy màn hình và tự động biến mất
             sau thời gian định sẵn.

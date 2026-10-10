@@ -12,7 +12,7 @@ export const DialogScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Dialog */}
-      <Card title="Material 3 Dialog Modal">
+      <Card title="Luma UI Dialog Modal">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
           Hộp thoại pop-up ở giữa màn hình thông báo hoặc xác nhận thao tác quan
           trọng.

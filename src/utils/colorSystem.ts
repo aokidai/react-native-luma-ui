@@ -1,6 +1,5 @@
 /**
- * Material Design 3 (M3) Color System for React Native Luma UI.
- * Specification: https://m3.material.io/styles/color/the-color-system/tokens
+ * Luma UI Color System for React Native Luma UI.
  */
 
 export interface MD3ColorScheme {
@@ -60,7 +59,7 @@ export interface MD3ColorScheme {
 }
 
 /**
- * Material Design 3 Light Color Scheme
+ * Luma UI Light Color Scheme
  */
 export const md3LightColors: MD3ColorScheme = {
   // Primary
@@ -119,7 +118,7 @@ export const md3LightColors: MD3ColorScheme = {
 };
 
 /**
- * Material Design 3 Dark Color Scheme
+ * Luma UI Dark Color Scheme
  */
 export const md3DarkColors: MD3ColorScheme = {
   // Primary
@@ -178,7 +177,7 @@ export const md3DarkColors: MD3ColorScheme = {
 };
 
 /**
- * Material Design 3 Tonal Palettes (0-100)
+ * Luma UI Tonal Palettes (0-100)
  */
 export const md3TonalPalettes = {
   primary: {
@@ -240,7 +239,7 @@ export const md3TonalPalettes = {
 };
 
 /**
- * Global color system combining Luma UI defaults with Material Design 3 tokens
+ * Global color system combining Luma UI defaults with Luma UI Design tokens
  */
 export const colorSystem = {
   // Luma Primary & Variants

@@ -9,7 +9,7 @@ export const TextScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Display Styles */}
-      <Card title="Display Styles (Material 3)">
+      <Card title="Display Styles (Luma UI)">
         <View style={{ gap: 6 }}>
           <Text theme="displayLarge">Display Large</Text>
           <Text theme="displayMedium">Display Medium</Text>

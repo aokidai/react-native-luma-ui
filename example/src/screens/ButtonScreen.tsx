@@ -12,7 +12,7 @@ export const ButtonScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Button Modes */}
-      <Card title="Button Modes (Material 3)">
+      <Card title="Button Modes (Luma UI)">
         <View style={{ gap: 10, marginTop: 8 }}>
           <Button label="Elevated Button" mode="elevated" onPress={() => {}} />
           <Button label="Outlined Button" mode="outlined" onPress={() => {}} />

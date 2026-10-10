@@ -91,7 +91,7 @@ export const LayoutScreen = () => {
 
       {/* HTMLReader Component */}
       <Card title="HTMLReader (Hiển thị Rich Text)">
-        <HTMLReader html="<p>Chào mừng đến với <b>Luma UI</b>! Thư viện cung cấp các thành phần <i>Material Design 3</i> hiện đại. <br/>Xem thêm tại <a href='https://github.com'>GitHub</a>.</p>" />
+        <HTMLReader html="<p>Chào mừng đến với <b>Luma UI</b>! Thư viện cung cấp các thành phần <i>Luma UI</i> hiện đại. <br/>Xem thêm tại <a href='https://github.com'>GitHub</a>.</p>" />
       </Card>
 
       {/* PermissionAlert Component */}

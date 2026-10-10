@@ -21,7 +21,7 @@ export const PickerScreen = () => {
     { label: 'React Native', value: 'react' },
     { label: 'TypeScript', value: 'ts' },
     { label: 'JavaScript', value: 'js' },
-    { label: 'Material Design', value: 'm3' },
+    { label: 'Luma UI Design', value: 'luma' },
     { label: 'Node.js', value: 'node' },
   ];
 

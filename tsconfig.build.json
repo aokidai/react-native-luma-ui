@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig",
-  "exclude": ["src/luma-containers", "example", "lib"]
+  "exclude": ["src/luma-containers", "example", "lib", "docs"]
 }

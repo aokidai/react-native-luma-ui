@@ -24,7 +24,15 @@ export default defineConfig([
     },
   },
   {
-    ignores: ['node_modules/', 'lib/', 'src/luma-containers/'],
+    ignores: [
+      'node_modules/',
+      'lib/',
+      'src/luma-containers/',
+      'docs/**',
+      '**/dist/**',
+      '.yarn/**',
+      '**/.yarn/**',
+    ],
   },
 ]);
 

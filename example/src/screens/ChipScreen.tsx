@@ -17,8 +17,8 @@ export const ChipScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      {/* 4 Biến thể Material 3 */}
-      <Card title="4 Biến thể Chip (Material 3)">
+      {/* 4 Biến thể Luma UI */}
+      <Card title="4 Biến thể Chip (Luma UI)">
         <View
           style={{
             flexDirection: 'row',

@@ -12,7 +12,7 @@ export const DrawerScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Navigation Drawer (Material 3)">
+      <Card title="Navigation Drawer (Luma UI)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
           Ngăn kéo điều hướng với hiệu ứng trượt Slide & Backdrop Animation. Bấm
           nút dưới để thử mở một Drawer demo độc lập:

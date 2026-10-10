@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient matching Luma Purple -->
+    <linearGradient id="lumaBgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9C82E8" />
+      <stop offset="100%" stop-color="#7654C8" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow for the squircle -->
+    <filter id="lumaShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#4F378B" flood-opacity="0.32" />
+    </filter>
+
+    <!-- Path for the Letter L -->
+    <path id="lumaLetterL" d="M 37 31 L 46 31 L 46 60 L 63 60 L 63 69 L 37 69 Z" />
+  </defs>
+
+  <!-- Squircle Base with Soft Shadow -->
+  <rect
+    x="10"
+    y="10"
+    width="80"
+    height="80"
+    rx="22"
+    ry="22"
+    fill="url(#lumaBgGrad)"
+    filter="url(#lumaShadow)"
+  />
+
+  <!-- Letter L with Chromatic Aberration Effect -->
+  <!-- Cyan Shift (Left) -->
+  <use href="#lumaLetterL" x="-1.8" y="0" fill="#00E5FF" opacity="0.9" />
+
+  <!-- Magenta/Red Shift (Right) -->
+  <use href="#lumaLetterL" x="1.8" y="0" fill="#FF3366" opacity="0.85" />
+
+  <!-- Center Pure White Body -->
+  <use href="#lumaLetterL" x="0" y="0" fill="#FFFFFF" />
+</svg>

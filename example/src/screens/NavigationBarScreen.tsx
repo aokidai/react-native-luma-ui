@@ -11,10 +11,10 @@ export const NavigationBarScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Material 3 Navigation Bar (Bottom Tabs)">
+      <Card title="Luma UI Navigation Bar (Bottom Tabs)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
           Thanh điều hướng dưới đáy màn hình với active pill indicator bo tròn
-          64x32px chuẩn Material UI:
+          64x32px chuẩn Luma UI:
         </Text>
         <Text style={{ marginBottom: 12 }}>
           Tab đang chọn:{' '}
