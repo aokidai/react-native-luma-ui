@@ -1,5 +1,5 @@
-import { type FC } from 'react';
-import { Text as RNText } from 'react-native';
+import { type FC, type ReactNode } from 'react';
+import { type StyleProp, Text as RNText, type TextStyle } from 'react-native';
 import { textStyles } from '../../styles/text/text';
 import { colorSystem } from '../../utils/colorSystem';
 
@@ -20,18 +20,28 @@ export type Theme =
   | 'labelMedium'
   | 'labelSmall';
 
-interface TextProps {
-  children: string | number;
-  style?: object;
+export interface TextProps {
+  children?: ReactNode;
+  style?: StyleProp<TextStyle>;
   theme?: Theme;
   color?: string;
+  numberOfLines?: number;
 }
 
 const Text: FC<TextProps> = (props) => {
-  const { children, style, theme, color = colorSystem.gray[900] } = props;
+  const {
+    children,
+    style,
+    theme,
+    color = colorSystem.gray[900],
+    numberOfLines,
+  } = props;
 
   return (
-    <RNText style={[{ color: color }, style, theme && textStyles[theme]]}>
+    <RNText
+      numberOfLines={numberOfLines}
+      style={[{ color: color }, theme ? textStyles[theme] : undefined, style]}
+    >
       {children}
     </RNText>
   );

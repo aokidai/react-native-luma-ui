@@ -27,6 +27,6 @@
     "target": "ESNext",
     "verbatimModuleSyntax": true
   },
-  "exclude": ["src/luma-containers", "example", "lib"]
+  "exclude": ["example", "lib"]
 }
 

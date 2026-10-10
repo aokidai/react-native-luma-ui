@@ -26,6 +26,7 @@ export interface TagProps {
   borderColor?: string;
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
+  marginRight?: number;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
@@ -41,6 +42,7 @@ const Tag: FC<TagProps> = (props) => {
     borderColor,
     icon,
     iconPosition = 'left',
+    marginRight,
     style,
     textStyle,
     onPress,
@@ -77,6 +79,7 @@ const Tag: FC<TagProps> = (props) => {
     containerVariantStyle,
     color ? { backgroundColor: color } : undefined,
     borderColor ? { borderWidth: 1, borderColor } : undefined,
+    marginRight !== undefined ? { marginRight } : undefined,
     style,
   ];
 

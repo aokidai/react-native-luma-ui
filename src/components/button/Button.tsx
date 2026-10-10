@@ -1,5 +1,11 @@
 import React, { type FC, type ReactNode } from 'react';
-import { TouchableOpacity } from 'react-native';
+import {
+  ActivityIndicator,
+  type StyleProp,
+  TouchableOpacity,
+  type ViewStyle,
+  type TextStyle,
+} from 'react-native';
 import { buttonStyles, buttonTextStyles } from '../../styles/button/button';
 import Text from '../text/Text';
 import { colorSystem } from '../../utils/colorSystem';
@@ -7,17 +13,18 @@ import { colorSystem } from '../../utils/colorSystem';
 export type ButtonMode = 'elevated' | 'outlined' | 'text';
 export type ButtonIconPosition = 'left' | 'right';
 
-interface ButtonProps {
+export interface ButtonProps {
   onPress?: () => void;
-  icon?: React.ReactNode;
+  icon?: ReactNode | ((size: number, color?: string) => ReactNode);
   children?: ReactNode;
   label?: string;
-  style?: object;
-  labelStyle?: object;
+  style?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
   mode?: ButtonMode;
   labelColor?: string;
   iconPosition?: ButtonIconPosition;
   disabled?: boolean;
+  loading?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -32,7 +39,20 @@ const Button: FC<ButtonProps> = (props) => {
     labelColor,
     iconPosition = 'left',
     disabled = false,
+    loading = false,
   } = props;
+
+  const defaultTextColor =
+    mode === 'elevated' ? colorSystem.onPrimary : colorSystem.primary;
+  const currentTextColor = labelColor ?? defaultTextColor;
+
+  const renderIcon = () => {
+    if (!icon) return null;
+    if (typeof icon === 'function') {
+      return icon(18, currentTextColor);
+    }
+    return icon;
+  };
 
   return (
     <TouchableOpacity
@@ -43,24 +63,31 @@ const Button: FC<ButtonProps> = (props) => {
         style,
         disabled && { backgroundColor: colorSystem.gray[400] },
       ]}
-      disabled={disabled}
+      disabled={disabled || loading}
+      activeOpacity={0.7}
     >
-      {iconPosition === 'left' && icon && icon}
-      {label ? (
-        <Text
-          theme="labelLarge"
-          style={[
-            buttonTextStyles[mode],
-            labelColor && { color: labelColor },
-            labelStyle,
-          ]}
-        >
-          {label}
-        </Text>
+      {loading ? (
+        <ActivityIndicator size="small" color={currentTextColor} />
       ) : (
-        children && children
+        <>
+          {iconPosition === 'left' && renderIcon()}
+          {label ? (
+            <Text
+              theme="labelLarge"
+              style={[
+                buttonTextStyles[mode],
+                labelColor ? { color: labelColor } : undefined,
+                labelStyle,
+              ]}
+            >
+              {label}
+            </Text>
+          ) : (
+            children
+          )}
+          {iconPosition === 'right' && renderIcon()}
+        </>
       )}
-      {iconPosition === 'right' && icon && icon}
     </TouchableOpacity>
   );
 };

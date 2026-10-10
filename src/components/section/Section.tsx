@@ -10,7 +10,9 @@ import { sectionStyles } from '../../styles/section/section';
 
 export interface SectionProps {
   title?: string;
-  customTitle?: ReactNode;
+  customTitle?:
+    | ReactNode
+    | (({ height, width }: { height?: number; width?: number }) => ReactNode);
   action?: ReactNode;
   children?: ReactNode;
   flex?: number;
@@ -33,6 +35,14 @@ const Section: FC<SectionProps> = (props) => {
     titleStyle,
   } = props;
 
+  const renderCustomTitle = () => {
+    if (!customTitle) return null;
+    if (typeof customTitle === 'function') {
+      return customTitle({ height: 12, width: 125 });
+    }
+    return customTitle;
+  };
+
   return (
     <View
       style={[
@@ -45,7 +55,7 @@ const Section: FC<SectionProps> = (props) => {
       {(title || customTitle || action) && (
         <View style={[sectionStyles.header, headerStyle]}>
           {customTitle ? (
-            customTitle
+            renderCustomTitle()
           ) : title ? (
             <Text style={[sectionStyles.title, titleStyle]}>{title}</Text>
           ) : null}

@@ -1,46 +1,71 @@
 import { type FC, type ReactNode } from 'react';
-import { View } from 'react-native';
+import { type StyleProp, View, type ViewStyle } from 'react-native';
 import { colorSystem } from '../../utils/colorSystem';
 import { badgesStyles } from '../../styles/badges/badges';
 import Text from '../text/Text';
 
-interface Props {
+export interface BadgesProps {
+  children?: ReactNode;
   visible?: boolean;
   count?: number;
+  maxCount?: number;
+  dot?: boolean;
   color?: string;
   countColor?: string;
-  children: ReactNode;
+  style?: StyleProp<ViewStyle>;
+  badgeStyle?: StyleProp<ViewStyle>;
 }
 
-const Badges: FC<Props> = (props) => {
+const Badges: FC<BadgesProps> = (props) => {
   const {
+    children,
     visible = true,
     count,
+    maxCount = 99,
+    dot = false,
     color = colorSystem.error,
-    countColor = colorSystem.onPrimary,
-    children,
+    countColor = colorSystem.onError,
+    style,
+    badgeStyle,
   } = props;
-  const showCount = typeof count === 'number';
+
+  const showCount = !dot && typeof count === 'number';
+  const isCountVisible = typeof count === 'number' ? count > 0 : true;
+
+  if (!visible || !isCountVisible) {
+    return <View style={style}>{children}</View>;
+  }
+
+  const displayCount =
+    count !== undefined ? (count > maxCount ? `${maxCount}+` : `${count}`) : '';
 
   return (
-    <View style={badgesStyles.container}>
+    <View style={[badgesStyles.container, style]}>
       {children}
 
-      {visible && (
-        <View
-          style={[
-            badgesStyles.badge,
-            { backgroundColor: color },
-            showCount && badgesStyles.badgeWithCount,
-          ]}
-        >
-          {showCount && (
-            <Text color={countColor} theme="bodySmall">
-              {count > 99 ? '99+' : count.toString()}
-            </Text>
-          )}
-        </View>
-      )}
+      <View
+        style={[
+          badgesStyles.badge,
+          { backgroundColor: color },
+          dot && {
+            width: 8,
+            height: 8,
+            minWidth: 8,
+            borderRadius: 4,
+            paddingHorizontal: 0,
+            top: -3,
+            right: -3,
+          },
+          showCount && badgesStyles.badgeWithCount,
+          badgeStyle,
+        ]}
+      >
+        {showCount && displayCount ? (
+          <Text color={countColor} theme="bodySmall">
+            {displayCount}
+          </Text>
+        ) : null}
+      </View>
     </View>
   );
 };

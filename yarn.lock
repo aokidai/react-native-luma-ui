@@ -10355,12 +10355,15 @@ __metadata:
     react: "npm:19.1.0"
     react-native: "npm:0.81.1"
     react-native-builder-bob: "npm:^0.40.16"
+    react-native-luma-ui: "workspace:*"
     react-native-monorepo-config: "npm:^0.1.9"
     react-native-safe-area-context: "npm:^5.6.2"
+    react-native-vector-icons: "npm:^10.3.0"
+    typescript: "npm:^5.9.2"
   languageName: unknown
   linkType: soft
 
-"react-native-luma-ui@workspace:.":
+"react-native-luma-ui@workspace:*, react-native-luma-ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "react-native-luma-ui@workspace:."
   dependencies:
@@ -10392,8 +10395,10 @@ __metadata:
     turbo: "npm:^2.5.6"
     typescript: "npm:^5.9.2"
   peerDependencies:
-    "@types/react-native-vector-icons": ^6.4.18
-    react-native-vector-icons: ^12.4.0
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: "*"
+    react-native-vector-icons: "*"
   languageName: unknown
   linkType: soft
 

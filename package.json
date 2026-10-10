@@ -83,13 +83,17 @@
     "react": "19.1.0",
     "react-native": "0.81.1",
     "react-native-builder-bob": "^0.40.16",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-vector-icons": "^10.3.0",
     "release-it": "^19.0.4",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "@types/react-native-vector-icons": "^6.4.18",
-    "react-native-vector-icons": "^12.4.0"
+    "react": "*",
+    "react-native": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-vector-icons": "*"
   },
   "workspaces": [
     "example"
@@ -131,7 +135,8 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "useTabs": false
+    "useTabs": false,
+    "endOfLine": "auto"
   },
   "commitlint": {
     "extends": [
@@ -174,9 +179,5 @@
       "jest"
     ],
     "version": "0.55.1"
-  },
-  "dependencies": {
-    "react-native-safe-area-context": "^5.6.2",
-    "react-native-vector-icons": "^10.3.0"
   }
 }

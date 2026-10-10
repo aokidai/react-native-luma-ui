@@ -7,7 +7,6 @@ import {
   View,
   type ViewStyle,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { checkboxStyles } from '../../styles/checkbox/checkbox';
 import { colorSystem } from '../../utils/colorSystem';
 
@@ -133,15 +132,59 @@ export interface CheckboxItemProps extends CheckboxBaseProps {
   position?: CheckboxItemPosition;
 }
 
-const getIconName = (status: CheckboxStatus, shape: CheckboxShape): string => {
-  if (shape === 'circle') {
-    if (status === 'checked') return 'checkbox-marked-circle';
-    if (status === 'indeterminate') return 'minus-circle';
-    return 'checkbox-blank-circle-outline';
-  }
-  if (status === 'checked') return 'checkbox-marked';
-  if (status === 'indeterminate') return 'minus-box';
-  return 'checkbox-blank-outline';
+const DefaultCheckboxIcon: FC<{
+  status: CheckboxStatus;
+  shape: CheckboxShape;
+  color: string;
+  size: number;
+  disabled: boolean;
+}> = ({ status, shape, color, size }) => {
+  const boxSize = Math.max(18, Math.round(size * 0.85));
+  const isCircle = shape === 'circle';
+  const isChecked = status === 'checked';
+  const isIndeterminate = status === 'indeterminate';
+  const isActive = isChecked || isIndeterminate;
+
+  return (
+    <View
+      style={{
+        width: boxSize,
+        height: boxSize,
+        borderRadius: isCircle ? boxSize / 2 : 4,
+        borderWidth: 2,
+        borderColor: color,
+        backgroundColor: isActive ? color : 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {isChecked && (
+        <View
+          style={{
+            width: Math.round(boxSize * 0.35),
+            height: Math.round(boxSize * 0.6),
+            borderBottomWidth: 2.2,
+            borderRightWidth: 2.2,
+            borderColor: '#ffffff',
+            transform: [
+              { rotate: '45deg' },
+              { translateY: -Math.round(boxSize * 0.08) },
+            ],
+          }}
+        />
+      )}
+      {isIndeterminate && (
+        <View
+          style={{
+            width: Math.round(boxSize * 0.55),
+            height: 2.5,
+            backgroundColor: '#ffffff',
+            borderRadius: 1,
+          }}
+        />
+      )}
+    </View>
+  );
 };
 
 const useCheckboxState = ({
@@ -229,10 +272,12 @@ const renderIconElement = ({
       disabled,
     })
   ) : (
-    <MaterialCommunityIcons
-      name={getIconName(status, shape)}
-      size={size}
+    <DefaultCheckboxIcon
+      status={status}
+      shape={shape}
       color={iconColor}
+      size={size}
+      disabled={disabled}
     />
   );
 

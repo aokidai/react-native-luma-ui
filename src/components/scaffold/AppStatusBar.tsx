@@ -4,24 +4,27 @@ import { colorSystem } from '../../utils/colorSystem';
 
 export type AppStatusBarType = 'light-content' | 'dark-content';
 
-interface Props {
+export interface AppStatusBarProps {
   backgroundColor?: string;
   barStyle: AppStatusBarType;
   animated?: boolean;
+  translucent?: boolean;
 }
 
-const AppStatusBar: FC<Props> = (props) => {
+const AppStatusBar: FC<AppStatusBarProps> = (props) => {
   const {
     backgroundColor = colorSystem.background,
     barStyle,
     animated = false,
+    translucent = false,
   } = props;
 
   return (
     <StatusBar
-      backgroundColor={backgroundColor}
+      backgroundColor={translucent ? 'transparent' : backgroundColor}
       barStyle={barStyle}
       animated={animated}
+      translucent={translucent}
     />
   );
 };
