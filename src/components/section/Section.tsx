@@ -7,6 +7,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { sectionStyles } from '../../styles/section/section';
+import { useTheme } from '../../utils/theme';
 
 export interface SectionProps {
   title?: string;
@@ -23,6 +24,7 @@ export interface SectionProps {
 }
 
 const Section: FC<SectionProps> = (props) => {
+  const { colors } = useTheme();
   const {
     title,
     customTitle,
@@ -57,7 +59,15 @@ const Section: FC<SectionProps> = (props) => {
           {customTitle ? (
             renderCustomTitle()
           ) : title ? (
-            <Text style={[sectionStyles.title, titleStyle]}>{title}</Text>
+            <Text
+              style={[
+                sectionStyles.title,
+                { color: colors.onSurface },
+                titleStyle,
+              ]}
+            >
+              {title}
+            </Text>
           ) : null}
           {action ? <View>{action}</View> : null}
         </View>

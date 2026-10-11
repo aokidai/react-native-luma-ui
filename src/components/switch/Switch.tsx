@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import { switchStyles } from '../../styles/switch/switch';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface SwitchProps {
   value?: boolean;
@@ -40,12 +41,13 @@ export interface SwitchItemProps extends SwitchProps {
 }
 
 const SwitchBase: FC<SwitchProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     value,
     defaultValue = false,
     onValueChange,
     disabled = false,
-    color = colorSystem.primary,
+    color,
     trackColor,
     thumbColor,
     thumbIcon,
@@ -88,10 +90,16 @@ const SwitchBase: FC<SwitchProps> = (props) => {
     outputRange: [16, 24],
   });
 
-  const activeTrackColor = trackColor?.true ?? color;
-  const inactiveTrackColor = trackColor?.false ?? colorSystem.gray[200];
-  const activeThumbColor = thumbColor?.true ?? colorSystem.onPrimary;
-  const inactiveThumbColor = thumbColor?.false ?? colorSystem.gray[600];
+  const resolvedColor =
+    color ?? (isDark ? colors.primary : colorSystem.primary);
+  const activeTrackColor = trackColor?.true ?? resolvedColor;
+  const inactiveTrackColor =
+    trackColor?.false ??
+    (isDark ? colors.surfaceContainerHighest : colorSystem.gray[200]);
+  const activeThumbColor =
+    thumbColor?.true ?? (isDark ? colors.onPrimary : colorSystem.onPrimary);
+  const inactiveThumbColor =
+    thumbColor?.false ?? (isDark ? colors.outline : colorSystem.gray[600]);
 
   const currentTrackBg = animValue.interpolate({
     inputRange: [0, 1],
@@ -100,7 +108,10 @@ const SwitchBase: FC<SwitchProps> = (props) => {
 
   const currentTrackBorder = animValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [colorSystem.gray[500], activeTrackColor],
+    outputRange: [
+      isDark ? colors.outline : colorSystem.gray[500],
+      activeTrackColor,
+    ],
   });
 
   const currentThumbBg = animValue.interpolate({
@@ -146,6 +157,7 @@ const SwitchBase: FC<SwitchProps> = (props) => {
 };
 
 export const SwitchItem: FC<SwitchItemProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     label,
     description,
@@ -197,13 +209,27 @@ export const SwitchItem: FC<SwitchItemProps> = (props) => {
 
       <View style={switchStyles.itemContent}>
         {typeof label === 'string' ? (
-          <Text style={[switchStyles.label, labelStyle]}>{label}</Text>
+          <Text
+            style={[
+              switchStyles.label,
+              isDark && { color: colors.onSurface },
+              labelStyle,
+            ]}
+          >
+            {label}
+          </Text>
         ) : (
           label
         )}
         {description ? (
           typeof description === 'string' ? (
-            <Text style={[switchStyles.description, descriptionStyle]}>
+            <Text
+              style={[
+                switchStyles.description,
+                isDark && { color: colors.onSurfaceVariant },
+                descriptionStyle,
+              ]}
+            >
               {description}
             </Text>
           ) : (

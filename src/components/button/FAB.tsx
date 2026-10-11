@@ -1,6 +1,6 @@
-import { type FC, type ReactNode } from 'react';
+import React, { type FC, type ReactNode } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 import Text from '../text/Text';
 import { buttonFABStyles } from '../../styles/button/button';
 
@@ -15,13 +15,14 @@ interface ButtonProps {
 }
 
 const FAB: FC<ButtonProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     onPress,
     icon,
     label,
     style,
     labelStyle,
-    labelColor = colorSystem.onPrimary,
+    labelColor = colors.onPrimaryContainer,
     disabled = false,
   } = props;
 
@@ -30,9 +31,12 @@ const FAB: FC<ButtonProps> = (props) => {
       onPress={onPress}
       style={[
         buttonFABStyles.button,
+        { backgroundColor: colors.primaryContainer },
         label && buttonFABStyles.buttonWithLabel,
         style,
-        disabled && { backgroundColor: colorSystem.gray[400] },
+        disabled && {
+          backgroundColor: isDark ? colors.surfaceContainerHighest : '#E0E0E0',
+        },
       ]}
       disabled={disabled}
     >

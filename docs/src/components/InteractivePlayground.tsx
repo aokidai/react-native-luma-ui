@@ -155,11 +155,32 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
   const [picker24Hour, setPicker24Hour] = useState(true);
   const [pickerExpanded, setPickerExpanded] = useState(true);
 
+  // Preview local theme override: 'auto' | 'light' | 'dark'
+  const [previewTheme, setPreviewTheme] = useState<'auto' | 'light' | 'dark'>('auto');
+
   return (
-    <div className="playground-card">
+    <div
+      className="playground-card"
+      data-theme={previewTheme === 'auto' ? undefined : previewTheme}
+    >
       <div className="playground-preview-header">
         <span className="playground-title">Trình diễn tương tác (Interactive Preview)</span>
-        <span style={{ fontSize: 12, opacity: 0.7 }}>Luma UI</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <button
+            type="button"
+            className="m3-icon-button"
+            style={{ width: 28, height: 28, fontSize: 13 }}
+            title={`Chế độ xem: ${previewTheme === 'auto' ? 'Theo hệ thống' : previewTheme === 'dark' ? 'Chế độ Tối' : 'Chế độ Sáng'}`}
+            onClick={() => {
+              setPreviewTheme((t) => (t === 'auto' ? 'light' : t === 'light' ? 'dark' : 'auto'));
+            }}
+          >
+            {previewTheme === 'light' ? '☀️' : previewTheme === 'dark' ? '🌙' : '🌓'}
+          </button>
+          <span style={{ fontSize: 12, opacity: 0.7 }}>
+            {previewTheme === 'auto' ? 'Theo tài liệu' : previewTheme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+          </span>
+        </div>
       </div>
 
       <div className="playground-body" style={{ position: 'relative', overflow: 'hidden' }}>

@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import { searchBarStyles } from '../../styles/searchBar/searchBar';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface SearchBarProps {
   value?: string;
@@ -39,11 +40,12 @@ export interface SearchBarProps {
 }
 
 const SearchBar: FC<SearchBarProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     value: controlledValue,
     onChangeText,
     placeholder = 'Search',
-    placeholderTextColor = colorSystem.gray[500],
+    placeholderTextColor,
     backgroundColor,
     borderColor,
     allowClear = true,
@@ -97,12 +99,20 @@ const SearchBar: FC<SearchBarProps> = (props) => {
 
   const containerStyle: StyleProp<ViewStyle> = [
     searchBarStyles.container,
+    isDark && {
+      backgroundColor: colors.surfaceContainerHigh,
+      borderColor: colors.outlineVariant,
+    },
     flex !== undefined ? { flex } : undefined,
     backgroundColor ? { backgroundColor } : undefined,
     borderColor ? { borderColor } : undefined,
     height !== undefined ? { height } : undefined,
     style,
   ];
+
+  const resolvedPlaceholderTextColor =
+    placeholderTextColor ??
+    (isDark ? colors.onSurfaceVariant : colorSystem.gray[500]);
 
   if (onPress) {
     return (
@@ -112,7 +122,13 @@ const SearchBar: FC<SearchBarProps> = (props) => {
         style={containerStyle}
       >
         {renderLeftIcon && renderLeftIcon()}
-        <Text style={searchBarStyles.placeholderText} numberOfLines={1}>
+        <Text
+          style={[
+            searchBarStyles.placeholderText,
+            isDark && { color: colors.onSurfaceVariant },
+          ]}
+          numberOfLines={1}
+        >
           {text || placeholder}
         </Text>
         {renderRightIcon && renderRightIcon()}
@@ -126,12 +142,16 @@ const SearchBar: FC<SearchBarProps> = (props) => {
       <TextInput
         value={text}
         placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor={resolvedPlaceholderTextColor}
         onChangeText={handleChangeText}
         clearButtonMode={allowClear ? 'while-editing' : 'never'}
         autoFocus={autoFocus}
         editable={editable}
-        style={[searchBarStyles.textInput, inputStyle]}
+        style={[
+          searchBarStyles.textInput,
+          isDark && { color: colors.onSurface },
+          inputStyle,
+        ]}
       />
       {renderRightIcon && renderRightIcon()}
     </View>

@@ -1,6 +1,7 @@
-import { type FC, type ReactNode } from 'react';
+import React, { type FC, type ReactNode } from 'react';
 import { type StyleProp, View, type ViewStyle } from 'react-native';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 import { badgesStyles } from '../../styles/badges/badges';
 import Text from '../text/Text';
 
@@ -17,14 +18,15 @@ export interface BadgesProps {
 }
 
 const Badges: FC<BadgesProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     children,
     visible = true,
     count,
     maxCount = 99,
     dot = false,
-    color = colorSystem.error,
-    countColor = colorSystem.onError,
+    color = isDark ? colors.error : colorSystem.error,
+    countColor = isDark ? colors.onError : colorSystem.onError,
     style,
     badgeStyle,
   } = props;

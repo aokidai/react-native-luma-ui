@@ -31,7 +31,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
         subContent="Bộ thư viện React Native UI tuân theo chuẩn Luma UI"
         leftLine="#6200EE"
       >
-        <Text style={{ marginTop: 8, color: '#757575', lineHeight: 20 }}>
+        <Text theme="bodyMedium" style={{ marginTop: 8, lineHeight: 20 }}>
           Khám phá toàn bộ hệ thống components chuẩn chỉnh của Luma UI. Chạm vào
           nút bên dưới hoặc biểu tượng Menu ở góc trên bên trái để mở ngăn kéo
           điều hướng đến từng component.

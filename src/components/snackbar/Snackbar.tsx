@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { snackbarStyles } from '../../styles/snackbar/snackbar';
+import { useTheme } from '../../utils/theme';
 
 export interface SnackbarAction {
   label: string;
@@ -38,6 +39,7 @@ export const DURATION_MEDIUM = 4000;
 export const DURATION_LONG = 7000;
 
 const Snackbar: FC<SnackbarProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     visible,
     onDismiss,
@@ -117,11 +119,23 @@ const Snackbar: FC<SnackbarProps> = (props) => {
         style,
       ]}
     >
-      <View style={snackbarStyles.content}>
+      <View
+        style={[
+          snackbarStyles.content,
+          isDark && { backgroundColor: colors.inverseSurface },
+        ]}
+      >
         <View style={snackbarStyles.messageRow}>
           {icon ? <View>{icon}</View> : null}
           {typeof children === 'string' ? (
-            <Text style={snackbarStyles.message}>{children}</Text>
+            <Text
+              style={[
+                snackbarStyles.message,
+                isDark && { color: colors.inverseOnSurface },
+              ]}
+            >
+              {children}
+            </Text>
           ) : (
             children
           )}
@@ -139,6 +153,7 @@ const Snackbar: FC<SnackbarProps> = (props) => {
             <Text
               style={[
                 snackbarStyles.actionLabel,
+                isDark && { color: colors.inversePrimary },
                 action.color ? { color: action.color } : undefined,
               ]}
             >

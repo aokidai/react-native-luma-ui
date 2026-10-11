@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import { textFieldStyles } from '../../styles/textField/textField';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export type TextFieldMode = 'outlined' | 'filled';
 
@@ -35,6 +36,7 @@ export interface TextFieldProps extends Omit<TextInputProps, 'style'> {
 }
 
 const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
+  const { isDark, colors } = useTheme();
   const {
     label,
     mode = 'outlined',
@@ -44,16 +46,20 @@ const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
     disabled = false,
     leadingIcon,
     trailingIcon,
-    activeColor = colorSystem.primary,
+    activeColor,
     value,
     defaultValue,
     placeholder,
+    placeholderTextColor,
     onFocus,
     onBlur,
     style,
     inputStyle,
     ...rest
   } = props;
+
+  const resolvedActiveColor =
+    activeColor ?? (isDark ? colors.primary : colorSystem.primary);
 
   const [isFocused, setIsFocused] = useState(false);
   const [text, setText] = useState(value ?? defaultValue ?? '');
@@ -101,11 +107,17 @@ const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
   const labelLeft = leadingIcon ? 44 : 16;
 
   const activeBorderColor = error
-    ? colorSystem.error
+    ? isDark
+      ? colors.error
+      : colorSystem.error
     : isFocused
-    ? activeColor
+    ? resolvedActiveColor
     : mode === 'outlined'
-    ? colorSystem.gray[400]
+    ? isDark
+      ? colors.outline
+      : colorSystem.gray[400]
+    : isDark
+    ? colors.outlineVariant
     : colorSystem.gray[500];
 
   return (
@@ -122,6 +134,10 @@ const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
           mode === 'outlined'
             ? textFieldStyles.outlined
             : textFieldStyles.filled,
+          isDark &&
+            (mode === 'outlined'
+              ? { backgroundColor: colors.surface }
+              : { backgroundColor: colors.surfaceContainerHighest }),
           isFocused &&
             (mode === 'outlined'
               ? textFieldStyles.outlinedFocused
@@ -148,12 +164,19 @@ const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
                 fontSize: labelFontSize,
                 backgroundColor:
                   mode === 'outlined' && isFloating
-                    ? colorSystem.background
+                    ? isDark
+                      ? colors.surface
+                      : colorSystem.background
                     : 'transparent',
                 paddingHorizontal: mode === 'outlined' && isFloating ? 4 : 0,
               },
-              isFocused && { color: activeColor },
-              error && textFieldStyles.labelError,
+              isFocused
+                ? { color: resolvedActiveColor }
+                : isDark
+                ? { color: colors.onSurfaceVariant }
+                : undefined,
+              error &&
+                (isDark ? { color: colors.error } : textFieldStyles.labelError),
             ]}
           >
             {label}
@@ -168,12 +191,16 @@ const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
             props.onChangeText?.(newText);
           }}
           placeholder={isFocused || !label ? placeholder : undefined}
-          placeholderTextColor={colorSystem.gray[500]}
+          placeholderTextColor={
+            placeholderTextColor ??
+            (isDark ? colors.onSurfaceVariant : colorSystem.gray[500])
+          }
           editable={!disabled}
           onFocus={handleFocus}
           onBlur={handleBlur}
           style={[
             textFieldStyles.input,
+            isDark && { color: colors.onSurface },
             label ? textFieldStyles.inputWithFloatingLabel : undefined,
             inputStyle,
           ]}
@@ -189,7 +216,9 @@ const TextField = forwardRef<any, TextFieldProps>((props, ref) => {
         <Text
           style={[
             textFieldStyles.helperText,
-            error && textFieldStyles.errorText,
+            isDark && { color: colors.onSurfaceVariant },
+            error &&
+              (isDark ? { color: colors.error } : textFieldStyles.errorText),
           ]}
         >
           {errorText ?? helperText}

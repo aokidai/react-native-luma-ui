@@ -5,6 +5,15 @@ export {
   md3TonalPalettes,
   type MD3ColorScheme,
 } from './utils/colorSystem';
+export {
+  ThemeProvider,
+  useTheme,
+  ThemeContext,
+  setColorScheme,
+  type ThemeMode,
+  type ThemeContextValue,
+  type ThemeProviderProps,
+} from './utils/theme';
 export { size, radius, height } from './utils/size';
 export { default as Button } from './components/button/Button';
 export * from './components/button/Button';

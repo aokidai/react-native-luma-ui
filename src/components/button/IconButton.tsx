@@ -6,6 +6,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 import { buttonIconStyles } from '../../styles/button/button';
 import type { ButtonMode } from './Button';
 
@@ -26,6 +27,7 @@ export interface IconButtonProps {
 }
 
 const IconButton: FC<IconButtonProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     onPress,
     icon,
@@ -43,8 +45,25 @@ const IconButton: FC<IconButtonProps> = (props) => {
   } = props;
 
   const defaultIconColor =
-    mode === 'elevated' ? colorSystem.onPrimary : colorSystem.primary;
+    mode === 'elevated'
+      ? colors.onPrimary
+      : mode === 'text'
+      ? colors.onSurface
+      : colors.primary;
   const currentIconColor = color ?? defaultIconColor;
+
+  const dynamicModeStyle =
+    mode === 'elevated'
+      ? { backgroundColor: colors.primary }
+      : mode === 'outlined'
+      ? {
+          borderColor: colors.outline,
+          borderWidth: 1,
+          backgroundColor: isDark
+            ? colors.surfaceContainerLow
+            : colors.surfaceContainerLowest,
+        }
+      : undefined;
 
   const renderIcon = () => {
     if (!icon) return null;
@@ -60,6 +79,7 @@ const IconButton: FC<IconButtonProps> = (props) => {
       style={[
         buttonIconStyles.iconButton,
         buttonIconStyles[mode],
+        dynamicModeStyle,
         size ? { width: label ? undefined : size, height: size } : undefined,
         backgroundColor ? { backgroundColor } : undefined,
         borderColor ? { borderColor, borderWidth: 1 } : undefined,
@@ -73,7 +93,11 @@ const IconButton: FC<IconButtonProps> = (props) => {
             }
           : undefined,
         style,
-        disabled && { backgroundColor: colorSystem.gray[400] },
+        disabled && {
+          backgroundColor: isDark
+            ? colors.surfaceContainerHighest
+            : colorSystem.gray[400],
+        },
       ]}
       disabled={disabled}
       activeOpacity={0.7}

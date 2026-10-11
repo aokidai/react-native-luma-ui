@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { cardStyles } from '../../styles/card/card';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface CardProps {
   children?: ReactNode;
@@ -32,6 +33,7 @@ export interface CardProps {
 }
 
 const Card: FC<CardProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     children,
     title,
@@ -39,9 +41,9 @@ const Card: FC<CardProps> = (props) => {
     subContent,
     customContent,
     priority,
-    priorityColor = colorSystem.primary,
+    priorityColor = colors.primary,
     status,
-    statusColor = colorSystem.primary,
+    statusColor = colors.primary,
     time,
     footer,
     leftLine,
@@ -53,10 +55,18 @@ const Card: FC<CardProps> = (props) => {
     onLongPress,
   } = props;
 
+  const defaultCardBg = isDark
+    ? colors.surfaceContainerLow
+    : colors.surfaceContainerLowest;
+  const defaultBorderColor = colors.outlineVariant;
+
   const cardStyle: StyleProp<ViewStyle> = [
     cardStyles.container,
-    backgroundColor ? { backgroundColor } : undefined,
-    borderColor ? { borderColor, borderWidth: 1 } : undefined,
+    { backgroundColor: backgroundColor ?? defaultCardBg },
+    {
+      borderColor: borderColor ?? defaultBorderColor,
+      borderWidth: 1,
+    },
     borderRadius !== undefined ? { borderRadius } : undefined,
     leftLine
       ? {
@@ -91,17 +101,35 @@ const Card: FC<CardProps> = (props) => {
         </View>
       )}
 
-      {title ? <Text style={styles.title}>{title}</Text> : null}
-      {content ? <Text style={styles.content}>{content}</Text> : null}
-      {subContent ? <Text style={styles.subContent}>{subContent}</Text> : null}
+      {title ? (
+        <Text style={[styles.title, { color: colors.onSurface }]}>{title}</Text>
+      ) : null}
+      {content ? (
+        <Text style={[styles.content, { color: colors.onSurfaceVariant }]}>
+          {content}
+        </Text>
+      ) : null}
+      {subContent ? (
+        <Text style={[styles.subContent, { color: colors.onSurfaceVariant }]}>
+          {subContent}
+        </Text>
+      ) : null}
 
       {customContent}
 
       {children}
 
       {(time || footer) && (
-        <View style={styles.footerRow}>
-          {time ? <Text style={styles.timeText}>{time}</Text> : <View />}
+        <View
+          style={[styles.footerRow, { borderTopColor: colors.outlineVariant }]}
+        >
+          {time ? (
+            <Text style={[styles.timeText, { color: colors.onSurfaceVariant }]}>
+              {time}
+            </Text>
+          ) : (
+            <View />
+          )}
           {footer}
         </View>
       )}

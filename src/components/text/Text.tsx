@@ -1,7 +1,7 @@
 import { type FC, type ReactNode } from 'react';
 import { type StyleProp, Text as RNText, type TextStyle } from 'react-native';
 import { textStyles } from '../../styles/text/text';
-import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export type Theme =
   | 'displayLarge'
@@ -29,11 +29,13 @@ export interface TextProps {
 }
 
 const Text: FC<TextProps> = (props) => {
+  const { colors } = useTheme();
+  const defaultTextColor = colors.onSurface;
   const {
     children,
     style,
     theme,
-    color = colorSystem.gray[900],
+    color = defaultTextColor,
     numberOfLines,
   } = props;
 

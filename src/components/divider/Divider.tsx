@@ -1,6 +1,7 @@
 import React, { type FC } from 'react';
 import { type StyleProp, View, type ViewStyle } from 'react-native';
 import { dividerStyles } from '../../styles/divider/divider';
+import { useTheme } from '../../utils/theme';
 
 export interface DividerProps {
   bold?: boolean;
@@ -13,6 +14,7 @@ export interface DividerProps {
 }
 
 const Divider: FC<DividerProps> = (props) => {
+  const { colors } = useTheme();
   const {
     bold = false,
     color,
@@ -23,12 +25,14 @@ const Divider: FC<DividerProps> = (props) => {
     style,
   } = props;
 
+  const resolvedColor = color ?? colors.outlineVariant;
+
   return (
     <View
       style={[
         vertical ? dividerStyles.vertical : dividerStyles.horizontal,
         bold && (vertical ? dividerStyles.boldVertical : dividerStyles.bold),
-        color ? { backgroundColor: color } : undefined,
+        resolvedColor ? { backgroundColor: resolvedColor } : undefined,
         thickness !== undefined
           ? vertical
             ? { width: thickness }

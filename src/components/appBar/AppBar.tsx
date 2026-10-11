@@ -12,6 +12,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { appBarStyles } from '../../styles/appBar/appBar';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 import { height } from '../../utils/size';
 import Text from '../text/Text';
 
@@ -72,6 +73,8 @@ const ArrowBackIcon: FC<{ size?: number; color?: string }> = ({
 );
 
 const AppBar: FC<AppBarProps> = (props) => {
+  const { colors } = useTheme();
+  const defaultBg = colors.surfaceContainer;
   const {
     title,
     subtitle,
@@ -80,7 +83,7 @@ const AppBar: FC<AppBarProps> = (props) => {
     showBack,
     onBack,
     actions,
-    backgroundColor = colorSystem.background,
+    backgroundColor = defaultBg,
     titleStyle,
     subtitleStyle,
     style,
@@ -100,7 +103,7 @@ const AppBar: FC<AppBarProps> = (props) => {
           style={styles.backButton}
           activeOpacity={0.7}
         >
-          <ArrowBackIcon size={24} color={colorSystem.onSurface} />
+          <ArrowBackIcon size={24} color={colors.onSurface} />
         </TouchableOpacity>
       );
     }
@@ -134,13 +137,20 @@ const AppBar: FC<AppBarProps> = (props) => {
             ]}
           >
             {title && (
-              <Text theme="titleLarge" style={titleStyle}>
+              <Text
+                theme="titleLarge"
+                style={[{ color: colors.onSurface }, titleStyle]}
+              >
                 {title}
               </Text>
             )}
             {subtitle && (
               <RNText
-                style={[styles.subtitle, subtitleStyle]}
+                style={[
+                  styles.subtitle,
+                  { color: colors.onSurfaceVariant },
+                  subtitleStyle,
+                ]}
                 numberOfLines={1}
               >
                 {subtitle}

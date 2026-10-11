@@ -12,6 +12,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { dialogStyles } from '../../styles/dialog/dialog';
+import { useTheme } from '../../utils/theme';
 
 export interface DialogProps {
   visible: boolean;
@@ -27,6 +28,7 @@ export interface DialogProps {
 }
 
 const Dialog: FC<DialogProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     visible,
     onClose,
@@ -58,12 +60,21 @@ const Dialog: FC<DialogProps> = (props) => {
               <View
                 style={[
                   dialogStyles.dialog,
+                  isDark && { backgroundColor: colors.surfaceContainerHigh },
                   width !== undefined ? { width, maxWidth: width } : undefined,
                   style,
                 ]}
               >
                 {title ? (
-                  <Text style={[dialogStyles.title, titleStyle]}>{title}</Text>
+                  <Text
+                    style={[
+                      dialogStyles.title,
+                      isDark && { color: colors.onSurface },
+                      titleStyle,
+                    ]}
+                  >
+                    {title}
+                  </Text>
                 ) : null}
 
                 <View style={[dialogStyles.content, contentStyle]}>

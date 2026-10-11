@@ -103,7 +103,7 @@ export const ButtonScreen = () => {
 
       {/* Floating Action Button */}
       <Card title="Floating Action Button (FAB)">
-        <Text style={{ color: '#757575', marginBottom: 12 }}>
+        <Text style={{ marginBottom: 12 }}>
           FAB thường được cố định ở góc dưới cùng màn hình:
         </Text>
         <View style={{ height: 80, position: 'relative' }}>

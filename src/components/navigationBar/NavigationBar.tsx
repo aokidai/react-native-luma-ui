@@ -15,6 +15,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { navigationBarStyles } from '../../styles/navigationBar/navigationBar';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 interface NavigationBarContextType {
   selectedIndex?: number;
@@ -41,6 +42,7 @@ export interface NavigationItemProps {
 }
 
 export const NavigationItem: FC<NavigationItemProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     label,
     icon,
@@ -61,8 +63,11 @@ export const NavigationItem: FC<NavigationItemProps> = (props) => {
       ? explicitSelected
       : index !== undefined && context.selectedIndex === index;
 
-  const activeColor = context.activeColor ?? colorSystem.primary;
-  const inactiveColor = context.inactiveColor ?? colorSystem.gray[600];
+  const activeColor =
+    context.activeColor ?? (isDark ? colors.primary : colorSystem.primary);
+  const inactiveColor =
+    context.inactiveColor ??
+    (isDark ? colors.onSurfaceVariant : colorSystem.gray[600]);
   const borderRadius =
     explicitBorderRadius ?? context.indicatorBorderRadius ?? 16;
 
@@ -90,9 +95,7 @@ export const NavigationItem: FC<NavigationItemProps> = (props) => {
           { borderRadius },
           isSelected && navigationBarStyles.indicatorActive,
           isSelected && { borderRadius, overflow: 'hidden' },
-          isSelected && activeColor !== colorSystem.primary
-            ? { backgroundColor: `${activeColor}25` }
-            : undefined,
+          isSelected && { backgroundColor: `${activeColor}28` },
           indicatorStyle,
         ]}
       >
@@ -135,6 +138,7 @@ interface NavigationBarComponent extends FC<NavigationBarProps> {
 }
 
 const NavigationBarBase: FC<NavigationBarProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     selectedIndex,
     onSelect,
@@ -161,6 +165,10 @@ const NavigationBarBase: FC<NavigationBarProps> = (props) => {
       <View
         style={[
           navigationBarStyles.container,
+          isDark && {
+            backgroundColor: colors.surfaceContainer,
+            borderTopColor: colors.outlineVariant,
+          },
           {
             paddingTop: 12,
             paddingBottom: 12 + (insets.bottom > 0 ? insets.bottom : 0),

@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { radioButtonStyles } from '../../styles/radioButton/radioButton';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 // Group Context
 interface RadioGroupContextType {
@@ -57,15 +58,21 @@ export interface RadioButtonProps {
 }
 
 const RadioButtonBase: FC<RadioButtonProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     value,
     selected: explicitSelected,
     onPress,
-    color = colorSystem.primary,
-    uncheckedColor = colorSystem.gray[600],
+    color,
+    uncheckedColor,
     disabled: explicitDisabled,
     style,
   } = props;
+
+  const resolvedColor =
+    color ?? (isDark ? colors.primary : colorSystem.primary);
+  const resolvedUncheckedColor =
+    uncheckedColor ?? (isDark ? colors.outline : colorSystem.gray[600]);
 
   const group = useContext(RadioGroupContext);
   const isSelected =
@@ -102,12 +109,15 @@ const RadioButtonBase: FC<RadioButtonProps> = (props) => {
       <View
         style={[
           radioButtonStyles.outerCircle,
-          { borderColor: isSelected ? color : uncheckedColor },
+          { borderColor: isSelected ? resolvedColor : resolvedUncheckedColor },
         ]}
       >
         {isSelected ? (
           <View
-            style={[radioButtonStyles.innerDot, { backgroundColor: color }]}
+            style={[
+              radioButtonStyles.innerDot,
+              { backgroundColor: resolvedColor },
+            ]}
           />
         ) : null}
       </View>
@@ -124,6 +134,7 @@ export interface RadioButtonItemProps extends RadioButtonProps {
 }
 
 export const RadioButtonItem: FC<RadioButtonItemProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     label,
     description,
@@ -185,13 +196,27 @@ export const RadioButtonItem: FC<RadioButtonItemProps> = (props) => {
 
       <View style={radioButtonStyles.itemContent}>
         {typeof label === 'string' ? (
-          <Text style={[radioButtonStyles.label, labelStyle]}>{label}</Text>
+          <Text
+            style={[
+              radioButtonStyles.label,
+              isDark && { color: colors.onSurface },
+              labelStyle,
+            ]}
+          >
+            {label}
+          </Text>
         ) : (
           label
         )}
         {description ? (
           typeof description === 'string' ? (
-            <Text style={[radioButtonStyles.description, descriptionStyle]}>
+            <Text
+              style={[
+                radioButtonStyles.description,
+                isDark && { color: colors.onSurfaceVariant },
+                descriptionStyle,
+              ]}
+            >
               {description}
             </Text>
           ) : (

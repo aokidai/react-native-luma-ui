@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme='light'] {
   /* MD3 Light Theme Tokens */
   --md-sys-color-primary: #6750A4;
   --md-sys-color-on-primary: #FFFFFF;

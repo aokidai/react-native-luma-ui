@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { checkboxStyles } from '../../styles/checkbox/checkbox';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export type CheckboxStatus = 'checked' | 'unchecked' | 'indeterminate';
 export type CheckboxShape = 'square' | 'circle';
@@ -289,6 +290,7 @@ const renderIconElement = ({
 };
 
 export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     status,
     checked,
@@ -300,9 +302,9 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
     description,
     position = 'trailing',
     shape = 'square',
-    color = colorSystem.primary,
-    uncheckedColor = colorSystem.gray[600],
-    disabledColor = colorSystem.gray[400],
+    color,
+    uncheckedColor,
+    disabledColor,
     size = 24,
     disabled = false,
     style,
@@ -315,6 +317,14 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
     accessibilityLabel,
     testID,
   } = props;
+
+  const resolvedColor =
+    color ?? (isDark ? colors.primary : colorSystem.primary);
+  const resolvedUncheckedColor =
+    uncheckedColor ?? (isDark ? colors.outline : colorSystem.gray[600]);
+  const resolvedDisabledColor =
+    disabledColor ??
+    (isDark ? colors.surfaceContainerHighest : colorSystem.gray[400]);
 
   const {
     status: currentStatus,
@@ -333,9 +343,9 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
   const iconElement = renderIconElement({
     status: currentStatus,
     shape,
-    color,
-    uncheckedColor,
-    disabledColor,
+    color: resolvedColor,
+    uncheckedColor: resolvedUncheckedColor,
+    disabledColor: resolvedDisabledColor,
     size,
     disabled,
     checkboxStyle,
@@ -379,6 +389,7 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
             <Text
               style={[
                 checkboxStyles.label,
+                isDark && { color: colors.onSurface },
                 disabled && checkboxStyles.labelDisabled,
                 labelStyle,
               ]}
@@ -392,6 +403,7 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
             <Text
               style={[
                 checkboxStyles.description,
+                isDark && { color: colors.onSurfaceVariant },
                 disabled && checkboxStyles.descriptionDisabled,
                 descriptionStyle,
               ]}
@@ -414,6 +426,7 @@ export interface CheckboxComponent extends FC<CheckboxProps> {
 }
 
 const CheckboxBase: FC<CheckboxProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     status,
     checked,
@@ -425,9 +438,9 @@ const CheckboxBase: FC<CheckboxProps> = (props) => {
     description,
     labelPosition = 'right',
     shape = 'square',
-    color = colorSystem.primary,
-    uncheckedColor = colorSystem.gray[600],
-    disabledColor = colorSystem.gray[400],
+    color,
+    uncheckedColor,
+    disabledColor,
     size = 24,
     disabled = false,
     style,
@@ -440,6 +453,14 @@ const CheckboxBase: FC<CheckboxProps> = (props) => {
     accessibilityLabel,
     testID,
   } = props;
+
+  const resolvedColor =
+    color ?? (isDark ? colors.primary : colorSystem.primary);
+  const resolvedUncheckedColor =
+    uncheckedColor ?? (isDark ? colors.outline : colorSystem.gray[600]);
+  const resolvedDisabledColor =
+    disabledColor ??
+    (isDark ? colors.surfaceContainerHighest : colorSystem.gray[400]);
 
   const {
     status: currentStatus,
@@ -458,9 +479,9 @@ const CheckboxBase: FC<CheckboxProps> = (props) => {
   const iconElement = renderIconElement({
     status: currentStatus,
     shape,
-    color,
-    uncheckedColor,
-    disabledColor,
+    color: resolvedColor,
+    uncheckedColor: resolvedUncheckedColor,
+    disabledColor: resolvedDisabledColor,
     size,
     disabled,
     checkboxStyle,
@@ -482,6 +503,7 @@ const CheckboxBase: FC<CheckboxProps> = (props) => {
         <Text
           style={[
             checkboxStyles.label,
+            isDark && { color: colors.onSurface },
             disabled && checkboxStyles.labelDisabled,
             labelStyle,
           ]}
@@ -495,6 +517,7 @@ const CheckboxBase: FC<CheckboxProps> = (props) => {
         <Text
           style={[
             checkboxStyles.description,
+            isDark && { color: colors.onSurfaceVariant },
             disabled && checkboxStyles.descriptionDisabled,
             descriptionStyle,
           ]}

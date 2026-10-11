@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { buttonStyles, buttonTextStyles } from '../../styles/button/button';
 import Text from '../text/Text';
-import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export type ButtonMode = 'elevated' | 'outlined' | 'text';
 export type ButtonIconPosition = 'left' | 'right';
@@ -28,6 +28,7 @@ export interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     onPress,
     icon,
@@ -43,8 +44,21 @@ const Button: FC<ButtonProps> = (props) => {
   } = props;
 
   const defaultTextColor =
-    mode === 'elevated' ? colorSystem.onPrimary : colorSystem.primary;
+    mode === 'elevated' ? colors.onPrimary : colors.primary;
   const currentTextColor = labelColor ?? defaultTextColor;
+
+  const dynamicModeStyle =
+    mode === 'elevated'
+      ? { backgroundColor: colors.primary }
+      : mode === 'outlined'
+      ? {
+          borderColor: colors.outline,
+          borderWidth: 1,
+          backgroundColor: isDark
+            ? colors.surfaceContainerLow
+            : colors.surfaceContainerLowest,
+        }
+      : undefined;
 
   const renderIcon = () => {
     if (!icon) return null;
@@ -60,8 +74,11 @@ const Button: FC<ButtonProps> = (props) => {
       style={[
         buttonStyles.button,
         buttonStyles[mode],
+        dynamicModeStyle,
         style,
-        disabled && { backgroundColor: colorSystem.gray[400] },
+        disabled && {
+          backgroundColor: isDark ? colors.surfaceContainerHighest : '#E0E0E0',
+        },
       ]}
       disabled={disabled || loading}
       activeOpacity={0.7}
@@ -76,7 +93,7 @@ const Button: FC<ButtonProps> = (props) => {
               theme="labelLarge"
               style={[
                 buttonTextStyles[mode],
-                labelColor ? { color: labelColor } : undefined,
+                { color: currentTextColor },
                 labelStyle,
               ]}
             >

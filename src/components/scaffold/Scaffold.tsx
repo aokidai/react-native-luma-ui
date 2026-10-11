@@ -3,7 +3,7 @@ import { type StyleProp, View, type ViewStyle } from 'react-native';
 import { type Edge, SafeAreaView } from 'react-native-safe-area-context';
 import { scaffoldStyles } from '../../styles/scaffold/scaffold';
 import AppStatusBar, { type AppStatusBarType } from './AppStatusBar';
-import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface ScaffoldProps {
   children?: ReactNode;
@@ -25,14 +25,17 @@ export interface ScaffoldProps {
 }
 
 const Scaffold: FC<ScaffoldProps> = (props) => {
+  const { isDark, colors } = useTheme();
+  const defaultBg = colors.background;
+  const defaultBarStyle = isDark ? 'light-content' : 'dark-content';
   const {
     children,
     appBar,
     bottomNavigationBar,
     floatingActionButton,
-    backgroundColor = colorSystem.surface,
+    backgroundColor = defaultBg,
     statusBarColor,
-    barStyle = 'dark-content',
+    barStyle = defaultBarStyle,
     edgeToEdge = false,
     translucentStatusBar,
     style,
@@ -54,13 +57,7 @@ const Scaffold: FC<ScaffoldProps> = (props) => {
   if (edgeToEdge) {
     // Option 1: Edge-to-edge mode
     return (
-      <View
-        style={[
-          scaffoldStyles.scaffold,
-          backgroundColor ? { backgroundColor } : undefined,
-          style,
-        ]}
-      >
+      <View style={[scaffoldStyles.scaffold, { backgroundColor }, style]}>
         <AppStatusBar
           barStyle={barStyle}
           translucent={true}
@@ -84,11 +81,7 @@ const Scaffold: FC<ScaffoldProps> = (props) => {
   return (
     <SafeAreaView
       edges={effectiveEdges}
-      style={[
-        scaffoldStyles.scaffold,
-        backgroundColor ? { backgroundColor } : undefined,
-        style,
-      ]}
+      style={[scaffoldStyles.scaffold, { backgroundColor }, style]}
     >
       <AppStatusBar
         barStyle={barStyle}

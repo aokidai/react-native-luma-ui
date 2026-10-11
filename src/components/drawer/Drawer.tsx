@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { drawerStyles } from '../../styles/drawer/drawer';
+import { useTheme } from '../../utils/theme';
 import DrawerItem from './DrawerItem';
 import DrawerSection from './DrawerSection';
 
@@ -42,6 +43,7 @@ interface DrawerComponent extends FC<DrawerProps> {
 }
 
 const Drawer: DrawerComponent = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     open,
     onClose,
@@ -54,6 +56,10 @@ const Drawer: DrawerComponent = (props) => {
     backgroundColor,
     style,
   } = props;
+
+  const defaultBg =
+    backgroundColor ??
+    (isDark ? colors.surfaceContainerLow : colors.surfaceContainerLowest);
 
   const insets = useSafeAreaInsets();
   const [modalVisible, setModalVisible] = useState(open);
@@ -145,11 +151,20 @@ const Drawer: DrawerComponent = (props) => {
               transform: [{ translateX: slideAnim }],
             },
             position === 'left' ? { left: 0 } : { right: 0 },
-            backgroundColor ? { backgroundColor } : undefined,
+            { backgroundColor: defaultBg },
             style,
           ]}
         >
-          {header ? <View style={drawerStyles.header}>{header}</View> : null}
+          {header ? (
+            <View
+              style={[
+                drawerStyles.header,
+                isDark && { borderBottomColor: colors.outlineVariant },
+              ]}
+            >
+              {header}
+            </View>
+          ) : null}
 
           <ScrollView
             style={drawerStyles.content}
@@ -158,7 +173,16 @@ const Drawer: DrawerComponent = (props) => {
             {children}
           </ScrollView>
 
-          {footer ? <View style={drawerStyles.footer}>{footer}</View> : null}
+          {footer ? (
+            <View
+              style={[
+                drawerStyles.footer,
+                isDark && { borderTopColor: colors.outlineVariant },
+              ]}
+            >
+              {footer}
+            </View>
+          ) : null}
         </Animated.View>
       </View>
     </Modal>

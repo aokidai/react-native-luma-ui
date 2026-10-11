@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { loadingStyles } from '../../styles/loading/loading';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface LoadingProps {
   size?: number | 'small' | 'large';
@@ -21,15 +22,19 @@ export interface LoadingProps {
 }
 
 const Loading: FC<LoadingProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     size = 'small',
-    color = colorSystem.primary,
+    color,
     label,
     fullScreen = false,
     overlay = false,
     style,
     labelStyle,
   } = props;
+
+  const resolvedColor =
+    color ?? (isDark ? colors.primary : colorSystem.primary);
 
   return (
     <View
@@ -40,9 +45,17 @@ const Loading: FC<LoadingProps> = (props) => {
         style,
       ]}
     >
-      <ActivityIndicator size={size} color={color} />
+      <ActivityIndicator size={size} color={resolvedColor} />
       {label ? (
-        <Text style={[loadingStyles.label, labelStyle]}>{label}</Text>
+        <Text
+          style={[
+            loadingStyles.label,
+            isDark && { color: colors.onSurface },
+            labelStyle,
+          ]}
+        >
+          {label}
+        </Text>
       ) : null}
     </View>
   );

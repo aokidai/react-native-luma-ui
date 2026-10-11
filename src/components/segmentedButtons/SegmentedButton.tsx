@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { segmentedButtonStyles } from '../../styles/segmentedButtons/segmentedButtons';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface SegmentedButtonProps {
   selected: boolean;
@@ -26,24 +27,40 @@ export interface SegmentedButtonProps {
 }
 
 const SegmentedButton: FC<SegmentedButtonProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     selected,
     onPress,
     label,
     icon,
     children,
-    selectedColor = colorSystem.primary,
-    unselectedColor = colorSystem.gray[100],
-    selectedTextColor = colorSystem.onPrimary,
-    unselectedTextColor = colorSystem.primary,
+    selectedColor,
+    unselectedColor,
+    selectedTextColor,
+    unselectedTextColor,
     borderColor,
     disabled = false,
     style,
     labelStyle,
   } = props;
 
+  const resolvedSelectedColor =
+    selectedColor ?? (isDark ? colors.primary : colorSystem.primary);
+  const resolvedUnselectedColor =
+    unselectedColor ??
+    (isDark ? colors.surfaceContainerHighest : colorSystem.gray[100]);
+  const resolvedSelectedTextColor =
+    selectedTextColor ?? (isDark ? colors.onPrimary : colorSystem.onPrimary);
+  const resolvedUnselectedTextColor =
+    unselectedTextColor ?? (isDark ? colors.onSurface : colorSystem.primary);
+
   const activeBorderColor =
-    borderColor ?? (selected ? selectedColor : colorSystem.gray[300]);
+    borderColor ??
+    (selected
+      ? resolvedSelectedColor
+      : isDark
+      ? colors.outlineVariant
+      : colorSystem.gray[300]);
 
   return (
     <TouchableOpacity
@@ -53,7 +70,9 @@ const SegmentedButton: FC<SegmentedButtonProps> = (props) => {
       style={[
         segmentedButtonStyles.button,
         {
-          backgroundColor: selected ? selectedColor : unselectedColor,
+          backgroundColor: selected
+            ? resolvedSelectedColor
+            : resolvedUnselectedColor,
           borderColor: activeBorderColor,
         },
         disabled ? segmentedButtonStyles.disabled : undefined,
@@ -65,7 +84,11 @@ const SegmentedButton: FC<SegmentedButtonProps> = (props) => {
         <Text
           style={[
             segmentedButtonStyles.label,
-            { color: selected ? selectedTextColor : unselectedTextColor },
+            {
+              color: selected
+                ? resolvedSelectedTextColor
+                : resolvedUnselectedTextColor,
+            },
             labelStyle,
           ]}
         >

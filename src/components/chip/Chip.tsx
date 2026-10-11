@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { chipStyles } from '../../styles/chip/chip';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export type ChipVariant = 'assist' | 'filter' | 'input' | 'suggestion';
 
@@ -94,6 +95,7 @@ const ChipCancelIcon: FC<{ size?: number; color?: string }> = ({
 };
 
 const Chip: FC<ChipProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     label,
     variant = 'assist',
@@ -103,10 +105,12 @@ const Chip: FC<ChipProps> = (props) => {
     icon,
     onPress,
     onClose,
-    selectedColor = colorSystem.primary,
+    selectedColor,
     style,
     labelStyle,
   } = props;
+
+  const resolvedSelectedColor = selectedColor ?? colors.primary;
 
   const isFilter = variant === 'filter';
   const showCheck = isFilter && selected;
@@ -115,15 +119,23 @@ const Chip: FC<ChipProps> = (props) => {
     <TouchableOpacity
       style={[
         chipStyles.container,
+        {
+          backgroundColor: isDark
+            ? elevated
+              ? colors.surfaceContainer
+              : colors.surfaceContainerLow
+            : elevated
+            ? colors.surfaceContainerLowest
+            : colors.surfaceContainerLowest,
+          borderColor: colors.outlineVariant,
+        },
         elevated && chipStyles.elevated,
         selected &&
           (elevated ? chipStyles.selectedElevated : chipStyles.selected),
-        selected && selectedColor !== colorSystem.primary
-          ? {
-              borderColor: selectedColor,
-              backgroundColor: `${selectedColor}20`,
-            }
-          : undefined,
+        selected && {
+          borderColor: resolvedSelectedColor,
+          backgroundColor: `${resolvedSelectedColor}25`,
+        },
         disabled && chipStyles.disabled,
         style,
       ]}
@@ -134,7 +146,7 @@ const Chip: FC<ChipProps> = (props) => {
       accessibilityState={{ selected, disabled }}
     >
       {showCheck ? (
-        <ChipCheckIcon size={18} color={selectedColor} />
+        <ChipCheckIcon size={18} color={resolvedSelectedColor} />
       ) : (
         icon && <View>{icon}</View>
       )}
@@ -142,10 +154,9 @@ const Chip: FC<ChipProps> = (props) => {
       <Text
         style={[
           chipStyles.label,
+          { color: colors.onSurface },
           selected && chipStyles.labelSelected,
-          selected && selectedColor !== colorSystem.primary
-            ? { color: selectedColor }
-            : undefined,
+          selected && { color: resolvedSelectedColor },
           labelStyle,
         ]}
         numberOfLines={1}
@@ -161,7 +172,7 @@ const Chip: FC<ChipProps> = (props) => {
         >
           <ChipCancelIcon
             size={18}
-            color={selected ? selectedColor : colorSystem.gray[600]}
+            color={selected ? resolvedSelectedColor : colors.onSurfaceVariant}
           />
         </TouchableOpacity>
       ) : null}

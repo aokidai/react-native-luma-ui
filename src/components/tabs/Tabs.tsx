@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import { tabsStyles } from '../../styles/tabs/tabs';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 interface TabsContextType {
   selectedIndex?: number;
@@ -42,6 +43,7 @@ export interface TabProps {
 }
 
 export const Tab: FC<TabProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     label,
     icon,
@@ -59,8 +61,11 @@ export const Tab: FC<TabProps> = (props) => {
       ? explicitSelected
       : index !== undefined && context.selectedIndex === index;
 
-  const activeColor = context.activeColor ?? colorSystem.primary;
-  const inactiveColor = context.inactiveColor ?? colorSystem.gray[600];
+  const activeColor =
+    context.activeColor ?? (isDark ? colors.primary : colorSystem.primary);
+  const inactiveColor =
+    context.inactiveColor ??
+    (isDark ? colors.onSurfaceVariant : colorSystem.gray[600]);
 
   const handlePress = () => {
     if (onPress) {
@@ -114,15 +119,21 @@ interface TabsComponent extends FC<TabsProps> {
 }
 
 const TabsBase: FC<TabsProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     selectedIndex,
     onSelect,
-    activeColor = colorSystem.primary,
+    activeColor,
     inactiveColor,
     scrollable = false,
     children,
     style,
   } = props;
+
+  const resolvedActiveColor =
+    activeColor ?? (isDark ? colors.primary : colorSystem.primary);
+  const resolvedInactiveColor =
+    inactiveColor ?? (isDark ? colors.onSurfaceVariant : colorSystem.gray[600]);
 
   const [containerWidth, setContainerWidth] = useState(0);
   const totalTabs = React.Children.count(children);
@@ -149,13 +160,20 @@ const TabsBase: FC<TabsProps> = (props) => {
       value={{
         selectedIndex,
         onSelect,
-        activeColor,
-        inactiveColor,
+        activeColor: resolvedActiveColor,
+        inactiveColor: resolvedInactiveColor,
         scrollable,
       }}
     >
       <View
-        style={[tabsStyles.container, style]}
+        style={[
+          tabsStyles.container,
+          isDark && {
+            backgroundColor: colors.surface,
+            borderBottomColor: colors.outlineVariant,
+          },
+          style,
+        ]}
         onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}
       >
         {React.Children.map(children, (child, idx) => {
@@ -178,7 +196,10 @@ const TabsBase: FC<TabsProps> = (props) => {
             ]}
           >
             <View
-              style={[tabsStyles.indicator, { backgroundColor: activeColor }]}
+              style={[
+                tabsStyles.indicator,
+                { backgroundColor: resolvedActiveColor },
+              ]}
             />
           </Animated.View>
         )}

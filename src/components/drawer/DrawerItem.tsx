@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { drawerStyles } from '../../styles/drawer/drawer';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 export interface DrawerItemProps {
   label: string;
@@ -23,14 +24,15 @@ export interface DrawerItemProps {
 }
 
 const DrawerItem: FC<DrawerItemProps> = (props) => {
+  const { colors } = useTheme();
   const {
     label,
     icon,
     active = false,
     onPress,
     badge,
-    activeColor = colorSystem.primary,
-    inactiveColor = colorSystem.onSurface,
+    activeColor = colors.primary,
+    inactiveColor = colors.onSurface,
     style,
     labelStyle,
   } = props;

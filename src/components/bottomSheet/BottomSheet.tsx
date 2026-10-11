@@ -21,6 +21,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { bottomSheetStyles } from '../../styles/bottomSheet/bottomSheet';
 import { colorSystem } from '../../utils/colorSystem';
+import { useTheme } from '../../utils/theme';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -85,6 +86,7 @@ export interface BottomSheetProps {
 }
 
 const BottomSheet: FC<BottomSheetProps> = (props) => {
+  const { isDark, colors } = useTheme();
   const {
     visible,
     onClose,
@@ -239,6 +241,7 @@ const BottomSheet: FC<BottomSheetProps> = (props) => {
         <Animated.View
           style={[
             bottomSheetStyles.sheetContainer,
+            isDark && { backgroundColor: colors.surfaceContainerLow },
             {
               transform: [{ translateY }],
               paddingBottom: Math.max(insets.bottom, 16),
@@ -259,7 +262,12 @@ const BottomSheet: FC<BottomSheetProps> = (props) => {
               {...panResponder.panHandlers}
               style={bottomSheetStyles.handleArea}
             >
-              <View style={bottomSheetStyles.handleBar} />
+              <View
+                style={[
+                  bottomSheetStyles.handleBar,
+                  isDark && { backgroundColor: colors.outlineVariant },
+                ]}
+              />
             </View>
           )}
 
@@ -271,7 +279,13 @@ const BottomSheet: FC<BottomSheetProps> = (props) => {
               ) : (
                 <>
                   {title ? (
-                    <Text style={bottomSheetStyles.title} numberOfLines={1}>
+                    <Text
+                      style={[
+                        bottomSheetStyles.title,
+                        isDark && { color: colors.onSurface },
+                      ]}
+                      numberOfLines={1}
+                    >
                       {title}
                     </Text>
                   ) : (
@@ -289,7 +303,11 @@ const BottomSheet: FC<BottomSheetProps> = (props) => {
                       ) : (
                         <SheetCloseIcon
                           size={20}
-                          color={colorSystem.gray[600]}
+                          color={
+                            isDark
+                              ? colors.onSurfaceVariant
+                              : colorSystem.gray[600]
+                          }
                         />
                       )}
                     </TouchableOpacity>
