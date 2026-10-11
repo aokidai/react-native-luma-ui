@@ -8,14 +8,24 @@ import { ComponentDocPage } from './pages/ComponentDocPage';
 import { COMPONENTS_DATA } from './data/componentsData';
 
 export function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    try {
+      const saved = localStorage.getItem('luma-docs-theme');
+      return (saved === 'light' || saved === 'dark') ? saved : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
   const [activeId, setActiveId] = useState<string>('getting-started');
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
-  // Sync theme with html data-theme
+  // Sync theme with html data-theme & localStorage
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('luma-docs-theme', theme);
+    } catch {}
   }, [theme]);
 
   // Handle hash navigation

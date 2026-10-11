@@ -42,6 +42,7 @@
     "start": "cd example && yarn start",
     "android": "cd example && yarn android",
     "docs": "yarn workspace react-native-luma-ui-docs dev",
+    "doc": "yarn workspace react-native-luma-ui-docs dev",
     "docs:build": "yarn workspace react-native-luma-ui-docs build"
   },
   "keywords": [
