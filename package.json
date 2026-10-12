@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Luma UI",
   "main": "./lib/module/index.js",
+  "module": "./lib/module/index.js",
+  "react-native": "./lib/module/index.js",
+  "source": "./src/index.tsx",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
@@ -61,7 +64,8 @@
   },
   "homepage": "https://github.com/aokidai/react-native-luma-ui#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.8.1",
@@ -97,6 +101,11 @@
     "react-native": "*",
     "react-native-safe-area-context": "*",
     "react-native-vector-icons": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native-vector-icons": {
+      "optional": true
+    }
   },
   "workspaces": [
     "example",
