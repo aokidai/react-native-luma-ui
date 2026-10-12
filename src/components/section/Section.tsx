@@ -1,0 +1,80 @@
+import React, { type FC, type ReactNode } from 'react';
+import {
+  type StyleProp,
+  Text,
+  type TextStyle,
+  View,
+  type ViewStyle,
+} from 'react-native';
+import { sectionStyles } from '../../styles/section/section';
+import { useTheme } from '../../utils/theme';
+
+export interface SectionProps {
+  title?: string;
+  customTitle?:
+    | ReactNode
+    | (({ height, width }: { height?: number; width?: number }) => ReactNode);
+  action?: ReactNode;
+  children?: ReactNode;
+  flex?: number;
+  gap?: number;
+  style?: StyleProp<ViewStyle>;
+  headerStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
+}
+
+const Section: FC<SectionProps> = (props) => {
+  const { colors } = useTheme();
+  const {
+    title,
+    customTitle,
+    action,
+    children,
+    flex,
+    gap,
+    style,
+    headerStyle,
+    titleStyle,
+  } = props;
+
+  const renderCustomTitle = () => {
+    if (!customTitle) return null;
+    if (typeof customTitle === 'function') {
+      return customTitle({ height: 12, width: 125 });
+    }
+    return customTitle;
+  };
+
+  return (
+    <View
+      style={[
+        sectionStyles.container,
+        flex !== undefined ? { flex } : undefined,
+        gap !== undefined ? { gap } : undefined,
+        style,
+      ]}
+    >
+      {(title || customTitle || action) && (
+        <View style={[sectionStyles.header, headerStyle]}>
+          {customTitle ? (
+            renderCustomTitle()
+          ) : title ? (
+            <Text
+              style={[
+                sectionStyles.title,
+                { color: colors.onSurface },
+                titleStyle,
+              ]}
+            >
+              {title}
+            </Text>
+          ) : null}
+          {action ? <View>{action}</View> : null}
+        </View>
+      )}
+      {children}
+    </View>
+  );
+};
+
+export default Section;

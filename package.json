@@ -38,7 +38,12 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "release": "release-it --only-version",
-    "test": "jest"
+    "test": "jest",
+    "start": "cd example && yarn start",
+    "android": "cd example && yarn android",
+    "docs": "yarn workspace react-native-luma-ui-docs dev",
+    "doc": "yarn workspace react-native-luma-ui-docs dev",
+    "docs:build": "yarn workspace react-native-luma-ui-docs build"
   },
   "keywords": [
     "react-native",
@@ -69,6 +74,7 @@
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/jest": "^29.5.14",
     "@types/react": "^19.1.0",
+    "@types/react-native-vector-icons": "^6.4.18",
     "commitlint": "^19.8.1",
     "del-cli": "^6.0.0",
     "eslint": "^9.35.0",
@@ -80,16 +86,21 @@
     "react": "19.1.0",
     "react-native": "0.81.1",
     "react-native-builder-bob": "^0.40.16",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-vector-icons": "^10.3.0",
     "release-it": "^19.0.4",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-vector-icons": "*"
   },
   "workspaces": [
-    "example"
+    "example",
+    "docs"
   ],
   "packageManager": "yarn@4.11.0",
   "react-native-builder-bob": {
@@ -128,7 +139,8 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "useTabs": false
+    "useTabs": false,
+    "endOfLine": "auto"
   },
   "commitlint": {
     "extends": [

@@ -1,0 +1,7 @@
+node_modules
+lib
+docs/dist
+.yarn
+.turbo
+android
+ios
