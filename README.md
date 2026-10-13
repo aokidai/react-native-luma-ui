@@ -7,11 +7,16 @@
 <h3 align="center">Thư viện UI chuẩn Luma UI hiện đại, tinh gọn và tối ưu cho React Native</h3>
 
 <p align="center">
+  <a href="https://aokidai.github.io/react-native-luma-ui/"><img src="https://img.shields.io/badge/Documentation-Visit%20Docs-6750A4.svg?style=flat-square" alt="Documentation" /></a>
   <a href="https://www.npmjs.com/package/react-native-luma-ui"><img src="https://img.shields.io/npm/v/react-native-luma-ui.svg?style=flat-square&color=6750A4" alt="npm version" /></a>
   <a href="https://www.npmjs.com/package/react-native-luma-ui"><img src="https://img.shields.io/npm/dm/react-native-luma-ui.svg?style=flat-square" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License" /></a>
   <a href="https://reactnative.dev"><img src="https://img.shields.io/badge/React%20Native-0.74%2B-61DAFB.svg?style=flat-square" alt="React Native" /></a>
   <img src="https://img.shields.io/badge/Design-Luma%20UI-6750A4.svg?style=flat-square" alt="Luma UI" />
+</p>
+
+<p align="center">
+  📖 <b>Documentation:</b> <a href="https://aokidai.github.io/react-native-luma-ui/">https://aokidai.github.io/react-native-luma-ui/</a>
 </p>
 
 ---
@@ -21,9 +26,9 @@
 - 🎨 **Luma UI Design System**: Tuân thủ triết lý thiết kế Luma UI với hệ thống màu Tonal Palettes, Surface Containers, Shape Radius và Elevations.
 - 📱 **35+ Components hoàn chỉnh**: Cung cấp đầy đủ các thành phần giao diện từ cơ bản đến nâng cao: Buttons, BottomSheet, Date/Time Pickers, NavigationBar, Tabs, Drawers, Dialogs, Tooltips, Sliders...
 - 🛡️ **Edge-to-Edge & Safe Area**: Tích hợp sẵn với `react-native-safe-area-context`, hỗ trợ AppBar tràn lên status bar và BottomSheet/Dialog tràn viền.
-- 🚀 **Vector Icons độc lập**: Sử dụng các icon vector thuần SVG/RN, hoạt động mượt mà không lo bị lỗi font icon ô vuông chữ X.
+- 🚀 **Vector Icons độc lập**: Sử dụng các icon vector thuần SVG/RN, hoạt động mượt mà không lo bị lỗi font icon.
 - ⚡ **Hiệu năng cao**: Tối ưu hóa animation với `Animated` native driver, PanResponder mượt mà, không giật lag.
-- 💎 **100% TypeScript**: Định nghĩa kiểu dữ liệu chặt chẽ, gợi ý code (autocomplete) thông minh.
+- 💎 **100% TypeScript**: Định nghĩa kiểu dữ liệu chặt chẽ, gợi ý code thông minh.
 
 ---
 
@@ -102,22 +107,23 @@ export default function App() {
 
 ## 🧩 Danh mục Components (Components Catalog)
 
-| Nhóm | Components | Mô tả |
-| :--- | :--- | :--- |
-| **Bố cục & Khung** | `Scaffold`, `AppStatusBar`, `AppBar`, `Section`, `Wrapper`, `Divider` | Khung ứng dụng, tràn status bar, thanh điều hướng trên cùng, phân đoạn |
-| **Hành động & Tương tác**| `Button`, `IconButton`, `FAB`, `SegmentedButton`, `ActionGroup` | Nút bấm 5 chế độ Luma UI (filled, elevated, outlined, text, tonal), nút nổi FAB |
-| **Nhập liệu & Chọn lựa** | `TextField`, `Checkbox`, `Switch`, `RadioButton`, `Slider`, `Picker` | Nhập văn bản nổi/viền, thanh kéo slider, chọn một/nhiều mục |
-| **Thời gian & Lịch** | `DatePicker`, `TimePicker`, `DateTimePicker` | Chọn ngày tháng, giờ 12h/24h, lịch cuộn và bottom sheet modal |
-| **Modal & Lớp phủ** | `BottomSheet`, `BottomAlert`, `Dialog`, `Snackbar`, `Tooltip` | Kéo vuốt cử chỉ cử động mượt, thông báo đáy màn hình, bong bóng hướng dẫn |
-| **Điều hướng** | `NavigationBar`, `Tabs`, `Drawer`, `DrawerItem`, `DrawerSection` | Thanh điều hướng dưới cùng dạng viên thuốc (pill), tabs trượt, ngăn kéo bên |
-| **Hiển thị & Trạng thái** | `Card`, `Badges`, `Tag`, `Chip`, `Avatar`, `AvatarGroup`, `Text` | Thẻ nội dung, nhãn thông báo, bộ lọc chip, nhóm avatar xếp chồng |
-| **Phản hồi & Đa phương tiện**| `Loading`, `ProgressBar`, `Skeleton`, `NoContent`, `ImageView`, `Watermark`, `HTMLReader` | Vạch tiến trình, skeleton loading, màn hình rỗng, xem phóng to ảnh, đóng dấu ảnh |
+| Nhóm                          | Components                                                                                | Mô tả                                                                            |
+| :---------------------------- | :---------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- |
+| **Bố cục & Khung**            | `Scaffold`, `AppStatusBar`, `AppBar`, `Section`, `Wrapper`, `Divider`                     | Khung ứng dụng, tràn status bar, thanh điều hướng trên cùng, phân đoạn           |
+| **Hành động & Tương tác**     | `Button`, `IconButton`, `FAB`, `SegmentedButton`, `ActionGroup`                           | Nút bấm 5 chế độ Luma UI (filled, elevated, outlined, text, tonal), nút nổi FAB  |
+| **Nhập liệu & Chọn lựa**      | `TextField`, `Checkbox`, `Switch`, `RadioButton`, `Slider`, `Picker`                      | Nhập văn bản nổi/viền, thanh kéo slider, chọn một/nhiều mục                      |
+| **Thời gian & Lịch**          | `DatePicker`, `TimePicker`, `DateTimePicker`                                              | Chọn ngày tháng, giờ 12h/24h, lịch cuộn và bottom sheet modal                    |
+| **Modal & Lớp phủ**           | `BottomSheet`, `BottomAlert`, `Dialog`, `Snackbar`, `Tooltip`                             | Kéo vuốt cử chỉ cử động mượt, thông báo đáy màn hình, bong bóng hướng dẫn        |
+| **Điều hướng**                | `NavigationBar`, `Tabs`, `Drawer`, `DrawerItem`, `DrawerSection`                          | Thanh điều hướng dưới cùng dạng viên thuốc (pill), tabs trượt, ngăn kéo bên      |
+| **Hiển thị & Trạng thái**     | `Card`, `Badges`, `Tag`, `Chip`, `Avatar`, `AvatarGroup`, `Text`                          | Thẻ nội dung, nhãn thông báo, bộ lọc chip, nhóm avatar xếp chồng                 |
+| **Phản hồi & Đa phương tiện** | `Loading`, `ProgressBar`, `Skeleton`, `NoContent`, `ImageView`, `Watermark`, `HTMLReader` | Vạch tiến trình, skeleton loading, màn hình rỗng, xem phóng to ảnh, đóng dấu ảnh |
 
 ---
 
 ## 💡 Ví dụ sử dụng các Component chính
 
 ### 1. Button (5 chế độ chuẩn Luma UI)
+
 ```tsx
 import { Button } from 'react-native-luma-ui';
 
@@ -129,6 +135,7 @@ import { Button } from 'react-native-luma-ui';
 ```
 
 ### 2. Bottom Sheet (Cử chỉ kéo vuốt & Snap Points)
+
 ```tsx
 import React, { useState } from 'react';
 import { BottomSheet, Button, Text } from 'react-native-luma-ui';
@@ -149,6 +156,7 @@ const [sheetOpen, setSheetOpen] = useState(false);
 ```
 
 ### 3. Date & Time Picker
+
 ```tsx
 import React, { useState } from 'react';
 import { DatePicker, TimePicker, DateTimePicker } from 'react-native-luma-ui';
@@ -166,6 +174,7 @@ const [date, setDate] = useState(new Date());
 ```
 
 ### 4. Slider (Kéo chọn mượt mà)
+
 ```tsx
 import React, { useState } from 'react';
 import { Slider } from 'react-native-luma-ui';
@@ -179,10 +188,11 @@ const [value, setValue] = useState(50);
   maximumValue={100}
   step={1}
   showValueBubble
-/>
+/>;
 ```
 
 ### 5. Snackbar (Ghim đáy màn hình)
+
 ```tsx
 import React, { useState } from 'react';
 import { Snackbar, Button } from 'react-native-luma-ui';
@@ -212,9 +222,9 @@ Luma UI tích hợp sẵn toàn bộ hệ thống màu sắc chuẩn Luma UI:
 
 ```tsx
 import {
-  colorSystem,      // Màu mặc định của Luma UI
-  md3LightColors,   // Bảng màu sáng (Light Theme)
-  md3DarkColors,    // Bảng màu tối (Dark Theme)
+  colorSystem, // Màu mặc định của Luma UI
+  md3LightColors, // Bảng màu sáng (Light Theme)
+  md3DarkColors, // Bảng màu tối (Dark Theme)
   md3TonalPalettes, // Dải sắc độ từ 0 đến 100
 } from 'react-native-luma-ui';
 
@@ -232,17 +242,10 @@ const styles = {
 
 ---
 
-## 🌐 Trang web tài liệu tương tác (Luma UI Documentation)
+## 📖 Tài liệu (Documentation)
 
-Thư viện đi kèm trang web tài liệu trực quan chuẩn phong cách **Luma UI** với tính năng xem trước tương tác (Interactive Live Sandbox), hệ thống màu Tonal Palettes, Surface Containers, dark/light theme và thông số API Props chi tiết:
-
-```sh
-# Khởi chạy trang web tài liệu ở môi trường phát triển (Port 5173)
-yarn docs
-
-# Build bản tĩnh tài liệu cho production
-yarn docs:build
-```
+Xem đầy đủ tài liệu chi tiết, các thông số API Props và tính năng xem trước:  
+👉 **[https://aokidai.github.io/react-native-luma-ui/](https://aokidai.github.io/react-native-luma-ui/)**
 
 ---
 
@@ -260,7 +263,6 @@ yarn android
 # 3. Khởi chạy Metro Bundler
 yarn start
 ```
-
 
 ---
 
