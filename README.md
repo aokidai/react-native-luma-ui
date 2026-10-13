@@ -244,7 +244,7 @@ const styles = {
 
 ## 📖 Tài liệu (Documentation)
 
-Xem đầy đủ tài liệu chi tiết, các thông số API Props và tính năng xem trước tương tác (Interactive Live Sandbox) tại:  
+Xem đầy đủ tài liệu chi tiết, các thông số API Props và tính năng xem trước:  
 👉 **[https://aokidai.github.io/react-native-luma-ui/](https://aokidai.github.io/react-native-luma-ui/)**
 
 ---
