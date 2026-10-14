@@ -4,13 +4,13 @@ import { Avatar, AvatarGroup, Card, Text } from 'react-native-luma-ui';
 
 export const AvatarScreen = () => {
   const users = [
-    { name: 'Nguyễn Văn An' },
-    { name: 'Trần Thị Bình' },
-    { name: 'Lê Hoàng Cường' },
-    { name: 'Phạm Minh Đức' },
-    { name: 'Hoàng Thị Mai' },
-    { name: 'Vũ Quốc Nam' },
-    { name: 'Đặng Thu Trang' },
+    { name: 'Alex Morgan' },
+    { name: 'Bella Thorne' },
+    { name: 'Charlie Brown' },
+    { name: 'David Miller' },
+    { name: 'Emma Watson' },
+    { name: 'Frank Ocean' },
+    { name: 'Grace Hopper' },
   ];
 
   return (
@@ -19,7 +19,7 @@ export const AvatarScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Avatar Variants */}
-      <Card title="Avatar Cá nhân (Tự trích xuất Initials)">
+      <Card title="Individual Avatar (Auto-extracted Initials)">
         <View
           style={{
             flexDirection: 'row',
@@ -28,17 +28,17 @@ export const AvatarScreen = () => {
             marginTop: 12,
           }}
         >
-          <Avatar name="Nguyễn Văn An" size={48} />
-          <Avatar name="Trần Bình" size={40} backgroundColor="#018786" />
-          <Avatar name="Cường" size={32} backgroundColor="#C16C07" />
+          <Avatar name="Alex Morgan" size={48} />
+          <Avatar name="Bella T" size={40} backgroundColor="#018786" />
+          <Avatar name="Charlie" size={32} backgroundColor="#C16C07" />
           <Avatar name="Mai" size={24} backgroundColor="#B00020" />
         </View>
       </Card>
 
       {/* Avatar Group */}
-      <Card title="Avatar Group (Xếp chồng với huy hiệu +N)">
+      <Card title="Avatar Group (Stacked with +N Badge)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Tối đa hiển thị 4 avatar, các thành viên còn lại gom vào huy hiệu
+          Displays up to 4 avatars, remaining members grouped in a badge
           `+N`:
         </Text>
         <AvatarGroup users={users} maxDisplay={4} size={38} />

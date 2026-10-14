@@ -39,23 +39,23 @@ export const SwitchScreen = () => {
         </View>
       </Card>
 
-      <Card title="Switch.Item (Row với Label)">
+      <Card title="Switch.Item (Row with Label)">
         <View style={{ gap: 4, marginTop: 8 }}>
           <Switch.Item
-            label="Thông báo đẩy"
-            description="Nhận thông báo khi có tin nhắn mới"
+            label="Push Notifications"
+            description="Receive alerts when new messages arrive"
             value={switch1}
             onValueChange={setSwitch1}
           />
           <Switch.Item
-            label="Chế độ tối"
-            description="Sử dụng giao diện ban đêm"
+            label="Dark Mode"
+            description="Use dark theme"
             value={switch2}
             onValueChange={setSwitch2}
           />
           <Switch.Item
-            label="Định vị GPS"
-            description="Tự động cập nhật vị trí hiện tại"
+            label="Location Services"
+            description="Automatically update current location"
             value={false}
             disabled
           />

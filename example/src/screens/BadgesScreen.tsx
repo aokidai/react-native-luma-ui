@@ -9,7 +9,7 @@ export const BadgesScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Badges Số lượng (Count Badges)">
+      <Card title="Count Badges">
         <View
           style={{
             flexDirection: 'row',
@@ -47,7 +47,7 @@ export const BadgesScreen = () => {
         </View>
       </Card>
 
-      <Card title="Badges Chấm đỏ (Small Dot Badge)">
+      <Card title="Dot Badges (Small Dot Badge)">
         <View
           style={{
             flexDirection: 'row',

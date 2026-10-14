@@ -27,17 +27,17 @@ export const ButtonScreen = () => {
       </Card>
 
       {/* Button with Icons & Loading */}
-      <Card title="Buttons với Icon & Loading">
+      <Card title="Buttons with Icon & Loading">
         <View style={{ gap: 10, marginTop: 8 }}>
           <Button
-            label="Icon bên trái"
+            label="Left Icon"
             icon={(size, color) => (
               <MaterialDesignIcons name="heart" size={size} color={color} />
             )}
             onPress={() => {}}
           />
           <Button
-            label="Icon bên phải"
+            label="Right Icon"
             iconPosition="right"
             icon={(size, color) => (
               <MaterialDesignIcons
@@ -49,7 +49,7 @@ export const ButtonScreen = () => {
             onPress={() => {}}
           />
           <Button
-            label={loading ? 'Đang xử lý...' : 'Bấm để thử Loading'}
+            label={loading ? 'Processing...' : 'Tap to test Loading'}
             loading={loading}
             onPress={() => {
               setLoading(true);
@@ -91,7 +91,7 @@ export const ButtonScreen = () => {
             onPress={() => {}}
           />
           <IconButton
-            label="Tải về"
+            label="Download"
             mode="outlined"
             icon={(size, color) => (
               <MaterialDesignIcons name="download" size={size} color={color} />
@@ -104,7 +104,7 @@ export const ButtonScreen = () => {
       {/* Floating Action Button */}
       <Card title="Floating Action Button (FAB)">
         <Text style={{ marginBottom: 12 }}>
-          FAB thường được cố định ở góc dưới cùng màn hình:
+          FAB is typically fixed at the bottom screen corner:
         </Text>
         <View style={{ height: 80, position: 'relative' }}>
           <FAB

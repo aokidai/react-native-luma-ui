@@ -9,7 +9,7 @@ export const SkeletonScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Article placeholder */}
-      <Card title="Khung chờ bài viết (Article Placeholder)">
+      <Card title="Article Placeholder Skeleton">
         <View style={{ gap: 12, marginTop: 8 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <Skeleton circle height={48} width={48} />
@@ -24,7 +24,7 @@ export const SkeletonScreen = () => {
       </Card>
 
       {/* Multiple lines */}
-      <Card title="Khung chờ văn bản nhiều dòng (Lines)">
+      <Card title="Multi-line Text Skeleton">
         <View style={{ marginTop: 8 }}>
           <Skeleton lines={4} height={16} />
         </View>

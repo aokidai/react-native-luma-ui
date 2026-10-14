@@ -9,7 +9,7 @@ export const AppBarScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Top App Bar với Tiêu đề & Nút hành động">
+      <Card title="Top App Bar with Title & Actions">
         <View
           style={{
             borderRadius: 12,
@@ -20,8 +20,8 @@ export const AppBarScreen = () => {
           }}
         >
           <AppBar
-            title="Trang tổng quan"
-            subtitle="Cập nhật 5 phút trước"
+            title="Dashboard"
+            subtitle="Updated 5 minutes ago"
             leader={
               <IconButton
                 mode="text"
@@ -63,7 +63,7 @@ export const AppBarScreen = () => {
         </View>
       </Card>
 
-      <Card title="Top App Bar Căn giữa (Center Title)">
+      <Card title="Centered Top App Bar (Center Title)">
         <View
           style={{
             borderRadius: 12,
@@ -74,7 +74,7 @@ export const AppBarScreen = () => {
           }}
         >
           <AppBar
-            title="Cài đặt hệ thống"
+            title="System Settings"
             centerTitle
             showBack
             onBack={() => {}}
@@ -82,13 +82,13 @@ export const AppBarScreen = () => {
         </View>
       </Card>
 
-      <Card title="Top App Bar Màu nền tùy biến">
+      <Card title="Top App Bar with Custom Background">
         <View style={{ borderRadius: 12, overflow: 'hidden', marginTop: 12 }}>
           <AppBar
-            title="Sắc thái Nổi bật"
+            title="Vibrant Accent"
             backgroundColor="#6200EE"
             titleStyle={{ color: '#ffffff' }}
-            subtitle="Giao diện Luma UI"
+            subtitle="Luma UI Theme"
             subtitleStyle={{ color: '#E0E0E0' }}
             showBack
             onBack={() => {}}

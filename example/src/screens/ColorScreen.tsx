@@ -79,17 +79,16 @@ export const ColorScreen = () => {
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 14 }}
         >
-          Bộ màu chuẩn Luma UI bao gồm các vai trò màu (Key Roles), Surface
-          Elevation, và Tonal Palettes.
+          The Luma UI color system includes Key Roles, Surface Elevation, and Tonal Palettes.
         </Text>
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <SegmentedButton
-            label="☀️ Sáng (Light)"
+            label="☀️ Light"
             selected={themeMode === 'light'}
             onPress={() => setThemeMode('light')}
           />
           <SegmentedButton
-            label="🌙 Tối (Dark)"
+            label="🌙 Dark"
             selected={themeMode === 'dark'}
             onPress={() => setThemeMode('dark')}
           />
@@ -104,33 +103,32 @@ export const ColorScreen = () => {
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 12 }}
         >
-          Màu chính đại diện cho nhận diện thương hiệu và các hành động quan
-          trọng nhất.
+          Primary color represents brand identity and key user actions.
         </Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           <ColorSwatch
             label="Primary"
             color={currentColors.primary}
             onColor={currentColors.onPrimary}
-            description="Màu chính"
+            description="Primary Color"
           />
           <ColorSwatch
             label="On Primary"
             color={currentColors.onPrimary}
             onColor={currentColors.primary}
-            description="Chữ trên Primary"
+            description="On Primary"
           />
           <ColorSwatch
             label="Primary Container"
             color={currentColors.primaryContainer}
             onColor={currentColors.onPrimaryContainer}
-            description="Container màu chính"
+            description="Primary Container"
           />
           <ColorSwatch
             label="On Primary Container"
             color={currentColors.onPrimaryContainer}
             onColor={currentColors.primaryContainer}
-            description="Chữ trên Container"
+            description="On Container"
           />
         </View>
       </Card>
@@ -143,32 +141,32 @@ export const ColorScreen = () => {
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 12 }}
         >
-          Màu phụ dùng cho các thành phần thứ cấp như chip, filter, nút phụ.
+          Secondary color is used for secondary components like chips, filters, and auxiliary buttons.
         </Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           <ColorSwatch
             label="Secondary"
             color={currentColors.secondary}
             onColor={currentColors.onSecondary}
-            description="Màu phụ"
+            description="Secondary Color"
           />
           <ColorSwatch
             label="On Secondary"
             color={currentColors.onSecondary}
             onColor={currentColors.secondary}
-            description="Chữ trên Secondary"
+            description="On Secondary"
           />
           <ColorSwatch
             label="Secondary Container"
             color={currentColors.secondaryContainer}
             onColor={currentColors.onSecondaryContainer}
-            description="Container màu phụ"
+            description="Secondary Container"
           />
           <ColorSwatch
             label="On Secondary Container"
             color={currentColors.onSecondaryContainer}
             onColor={currentColors.secondaryContainer}
-            description="Chữ trên Container"
+            description="On Container"
           />
         </View>
       </Card>
@@ -181,39 +179,39 @@ export const ColorScreen = () => {
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 12 }}
         >
-          Màu cấp ba tạo điểm nhấn bổ trợ cân bằng giữa primary và secondary.
+          Tertiary color adds balanced accent highlights between primary and secondary.
         </Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           <ColorSwatch
             label="Tertiary"
             color={currentColors.tertiary}
             onColor={currentColors.onTertiary}
-            description="Điểm nhấn cấp 3"
+            description="Tertiary Accent"
           />
           <ColorSwatch
             label="On Tertiary"
             color={currentColors.onTertiary}
             onColor={currentColors.tertiary}
-            description="Chữ trên Tertiary"
+            description="On Tertiary"
           />
           <ColorSwatch
             label="Tertiary Container"
             color={currentColors.tertiaryContainer}
             onColor={currentColors.onTertiaryContainer}
-            description="Container điểm nhấn"
+            description="Tertiary Container"
           />
           <ColorSwatch
             label="On Tertiary Container"
             color={currentColors.onTertiaryContainer}
             onColor={currentColors.tertiaryContainer}
-            description="Chữ trên Container"
+            description="On Container"
           />
         </View>
       </Card>
 
       {/* Error Role */}
       <Card
-        title="4. Error Role (Trạng thái lỗi)"
+        title="4. Error Role"
         style={{ backgroundColor: currentColors.surfaceContainerLow }}
       >
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
@@ -221,13 +219,13 @@ export const ColorScreen = () => {
             label="Error"
             color={currentColors.error}
             onColor={currentColors.onError}
-            description="Cảnh báo / Lỗi"
+            description="Error / Warning"
           />
           <ColorSwatch
             label="Error Container"
             color={currentColors.errorContainer}
             onColor={currentColors.onErrorContainer}
-            description="Khung thông báo lỗi"
+            description="Error Container"
           />
         </View>
       </Card>
@@ -240,8 +238,7 @@ export const ColorScreen = () => {
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 12 }}
         >
-          Hệ thống Surface nhiều tầng độ cao thay thế hoàn toàn shadow cứng
-          truyền thống:
+          Surface elevation hierarchy replaces rigid traditional drop shadows:
         </Text>
         <View style={{ gap: 8 }}>
           {[
@@ -254,7 +251,7 @@ export const ColorScreen = () => {
               val: currentColors.surfaceContainerLow,
             },
             {
-              label: 'Surface Container (Mặc định)',
+              label: 'Surface Container (Default)',
               val: currentColors.surfaceContainer,
             },
             {
@@ -307,8 +304,7 @@ export const ColorScreen = () => {
         <Text
           style={{ color: currentColors.onSurfaceVariant, marginBottom: 12 }}
         >
-          Dải sắc độ Tonal Palettes được thuật toán tạo ra để đảm bảo độ tương
-          phản chuẩn WCAG:
+          Tonal Palettes algorithmically generated to ensure WCAG contrast ratios:
         </Text>
         <View
           style={{

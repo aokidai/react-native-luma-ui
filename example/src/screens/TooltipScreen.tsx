@@ -10,16 +10,16 @@ export const TooltipScreen = () => {
     >
       <Card title="Luma UI Tooltip">
         <Text style={{ color: '#757575', marginBottom: 16 }}>
-          Chạm hoặc giữ vào các nút bên dưới để hiển thị tooltip hướng dẫn:
+          Tap or hold the buttons below to display helper tooltips:
         </Text>
 
         <View style={{ gap: 24, alignItems: 'flex-start' }}>
-          <Tooltip title="Tooltip hiển thị phía trên" position="top">
-            <Button label="Chạm xem Tooltip Top" mode="outlined" />
+          <Tooltip title="Tooltip displayed above" position="top">
+            <Button label="Tap for Top Tooltip" mode="outlined" />
           </Tooltip>
 
-          <Tooltip title="Tooltip hiển thị phía dưới" position="bottom">
-            <Button label="Chạm xem Tooltip Bottom" mode="outlined" />
+          <Tooltip title="Tooltip displayed below" position="bottom">
+            <Button label="Tap for Bottom Tooltip" mode="outlined" />
           </Tooltip>
         </View>
       </Card>

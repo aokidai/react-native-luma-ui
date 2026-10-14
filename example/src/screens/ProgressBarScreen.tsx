@@ -11,9 +11,9 @@ export const ProgressBarScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Determinate Linear Progress */}
-      <Card title="Linear Progress Bar (Xác định tiến độ)">
+      <Card title="Linear Progress Bar (Determinate)">
         <Text style={{ marginTop: 4, color: '#757575', marginBottom: 12 }}>
-          Tiến trình:{' '}
+          Progress:{' '}
           <Text style={{ fontWeight: '700' }}>
             {Math.round(progress * 100)}%
           </Text>
@@ -34,9 +34,9 @@ export const ProgressBarScreen = () => {
       </Card>
 
       {/* Indeterminate Linear Progress */}
-      <Card title="Indeterminate Progress Bar (Vòng lặp tải liên tục)">
+      <Card title="Indeterminate Progress Bar (Continuous Loop)">
         <Text style={{ marginTop: 4, color: '#757575', marginBottom: 12 }}>
-          Chạy liên tục không xác định thời gian hoàn thành:
+          Runs continuously with indeterminate completion time:
         </Text>
         <ProgressBar indeterminate height={4} color="#03DAC6" />
       </Card>
@@ -51,8 +51,8 @@ export const ProgressBarScreen = () => {
             marginTop: 12,
           }}
         >
-          <Loading size="small" label="Đang tải..." />
-          <Loading size="large" color="#03DAC6" label="Xử lý..." />
+          <Loading size="small" label="Loading..." />
+          <Loading size="large" color="#03DAC6" label="Processing..." />
         </View>
       </Card>
     </ScrollView>

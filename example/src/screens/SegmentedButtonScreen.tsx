@@ -13,11 +13,11 @@ export const SegmentedButtonScreen = () => {
     >
       <Card title="Segmented Buttons (Luma UI)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Lựa chọn chế độ xem theo ngày, tuần hoặc tháng:
+          Select view by Day, Week, or Month:
         </Text>
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <SegmentedButton
-            label="Ngày"
+            label="Day"
             selected={viewMode === 'day'}
             onPress={() => setViewMode('day')}
             icon={
@@ -29,7 +29,7 @@ export const SegmentedButtonScreen = () => {
             }
           />
           <SegmentedButton
-            label="Tuần"
+            label="Week"
             selected={viewMode === 'week'}
             onPress={() => setViewMode('week')}
             icon={
@@ -41,7 +41,7 @@ export const SegmentedButtonScreen = () => {
             }
           />
           <SegmentedButton
-            label="Tháng"
+            label="Month"
             selected={viewMode === 'month'}
             onPress={() => setViewMode('month')}
             icon={
@@ -55,17 +55,17 @@ export const SegmentedButtonScreen = () => {
         </View>
       </Card>
 
-      <Card title="Segmented Buttons Tùy chỉnh màu sắc & Disabled">
+      <Card title="Custom Color & Disabled Segmented Buttons">
         <View style={{ flexDirection: 'row', gap: 8, marginTop: 8 }}>
           <SegmentedButton
-            label="Active Màu Teal"
+            label="Active Teal"
             selected={true}
             selectedColor="#03DAC6"
             selectedTextColor="#000000"
             onPress={() => {}}
           />
           <SegmentedButton
-            label="Vô hiệu hóa"
+            label="Disabled"
             selected={false}
             disabled
             onPress={() => {}}

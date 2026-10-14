@@ -11,25 +11,23 @@ export const BottomSheetScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Bottom Sheet cơ bản (Kéo vuốt đóng)">
+      <Card title="Basic Bottom Sheet (Swipe down to dismiss)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Hiển thị sheet từ cạnh dưới màn hình, có thanh kéo (drag handle), cử
-          chỉ vuốt xuống để đóng và hiệu ứng backdrop mượt mà.
+          Displays sheet from the bottom screen edge with drag handle, swipe down to dismiss, and smooth backdrop animation.
         </Text>
         <Button
-          label="Mở Bottom Sheet"
+          label="Open Bottom Sheet"
           mode="elevated"
           onPress={() => setBasicOpen(true)}
         />
       </Card>
 
-      <Card title="Bottom Sheet có Footer hành động">
+      <Card title="Bottom Sheet with Action Footer">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Bottom Sheet hỗ trợ tiêu đề, nút đóng, vùng nội dung cuộn và footer
-          ghim dưới đáy.
+          Bottom Sheet supports title, close button, scrollable content area, and pinned footer.
         </Text>
         <Button
-          label="Mở Sheet với Footer"
+          label="Open Sheet with Footer"
           mode="outlined"
           onPress={() => setFooterOpen(true)}
         />
@@ -39,19 +37,17 @@ export const BottomSheetScreen = () => {
       <BottomSheet
         visible={basicOpen}
         onClose={() => setBasicOpen(false)}
-        title="Thông tin chi tiết"
+        title="Detailed Information"
       >
         <View style={{ gap: 12, paddingVertical: 8 }}>
           <Text style={{ fontSize: 16, fontWeight: '600' }}>
             Luma UI Bottom Sheet
           </Text>
           <Text style={{ color: '#555555', lineHeight: 22 }}>
-            Bottom Sheet này được xây dựng thuần React Native với Animated và
-            PanResponder. Bạn có thể kéo thanh nắm ở trên xuống để đóng, chạm
-            vào nền mờ backdrop, hoặc bấm nút X.
+            This Bottom Sheet is built with pure React Native Animated and PanResponder. You can drag down on the handle, tap the backdrop, or click the close button.
           </Text>
           <Button
-            label="Đóng Sheet"
+            label="Close Sheet"
             mode="outlined"
             onPress={() => setBasicOpen(false)}
             style={{ marginTop: 8 }}
@@ -63,7 +59,7 @@ export const BottomSheetScreen = () => {
       <BottomSheet
         visible={footerOpen}
         onClose={() => setFooterOpen(false)}
-        title="Tùy chọn cấu hình"
+        title="Configuration Options"
         renderFooter={() => (
           <View
             style={{
@@ -74,12 +70,12 @@ export const BottomSheetScreen = () => {
             }}
           >
             <Button
-              label="Hủy bỏ"
+              label="Cancel"
               mode="text"
               onPress={() => setFooterOpen(false)}
             />
             <Button
-              label="Lưu thay đổi"
+              label="Save Changes"
               mode="elevated"
               onPress={() => setFooterOpen(false)}
             />
@@ -88,8 +84,7 @@ export const BottomSheetScreen = () => {
       >
         <View style={{ gap: 14, paddingVertical: 8 }}>
           <Text style={{ color: '#666666' }}>
-            Vùng nội dung bên trong Bottom Sheet có thể chứa bất kỳ component
-            nào như form nhập liệu, danh sách lựa chọn hoặc thông báo xác nhận.
+            The content area inside Bottom Sheet can contain any component such as forms, choice lists, or confirmations.
           </Text>
           <View
             style={{
@@ -101,7 +96,7 @@ export const BottomSheetScreen = () => {
             }}
           >
             <Text style={{ color: '#6750A4', fontWeight: '600' }}>
-              ✓ Đã tích hợp chuẩn Safe Area Insets cho cả Android và iOS
+              ✓ Integrated Safe Area Insets for both Android and iOS
             </Text>
           </View>
         </View>

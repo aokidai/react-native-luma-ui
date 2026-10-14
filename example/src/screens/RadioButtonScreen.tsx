@@ -10,7 +10,7 @@ export const RadioButtonScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="RadioButton đơn lẻ">
+      <Card title="Single RadioButton">
         <View
           style={{
             flexDirection: 'row',
@@ -26,31 +26,31 @@ export const RadioButtonScreen = () => {
         </View>
       </Card>
 
-      <Card title="RadioGroup với RadioButton.Item">
+      <Card title="RadioGroup with RadioButton.Item">
         <Text style={{ color: '#757575', marginBottom: 8 }}>
-          Gói đang chọn:{' '}
+          Selected plan:{' '}
           <Text style={{ fontWeight: '700' }}>{selectedPlan}</Text>
         </Text>
         <RadioButton.Group value={selectedPlan} onValueChange={setSelectedPlan}>
           <RadioButton.Item
             value="free"
-            label="Gói Miễn phí"
-            description="Tính năng cơ bản cho cá nhân"
+            label="Free Plan"
+            description="Basic features for individuals"
           />
           <RadioButton.Item
             value="standard"
-            label="Gói Tiêu chuẩn"
-            description="Đầy đủ tính năng, 100GB lưu trữ"
+            label="Standard Plan"
+            description="Full features, 100GB storage"
           />
           <RadioButton.Item
             value="pro"
-            label="Gói Chuyên nghiệp"
-            description="Hỗ trợ 24/7, không giới hạn lưu lượng"
+            label="Professional Plan"
+            description="24/7 support, unlimited bandwidth"
           />
           <RadioButton.Item
             value="enterprise"
-            label="Gói Doanh nghiệp"
-            description="Tùy biến cao cấp theo yêu cầu"
+            label="Enterprise Plan"
+            description="Custom enterprise-grade solutions"
             disabled
           />
         </RadioButton.Group>

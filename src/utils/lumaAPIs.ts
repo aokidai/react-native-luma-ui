@@ -15,7 +15,7 @@ export class LumaAPIs {
             }
       );
     } catch (error: any) {
-      Alert.alert('Chia sẻ thất bại', error?.message);
+      Alert.alert('Share Failed', error?.message);
     }
   }
 }

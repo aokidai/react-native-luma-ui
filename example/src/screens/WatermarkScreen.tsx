@@ -8,17 +8,16 @@ export const WatermarkScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      {/* Watermark với ảnh */}
-      <Card title="Gắn Watermark thông tin lên ảnh">
+      {/* Watermark with image */}
+      <Card title="Add Information Watermark on Image">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Watermark hiển thị thông tin người dùng, thời gian, ngày tháng và địa
-          chỉ:
+          Watermark displaying user, timestamp, date, and location:
         </Text>
         <View style={{ height: 260, borderRadius: 16, overflow: 'hidden' }}>
           <Watermark
             imageUri="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800"
-            userName="Nguyễn Văn An"
-            address="Tòa nhà Luma, Quận 1, TP. Hồ Chí Minh"
+            userName="Alex Morgan"
+            address="Luma Tower, Financial District"
             locationText="10.7769° N, 106.7009° E"
             time="14:30:25"
             date="10/10/2026"
@@ -27,14 +26,14 @@ export const WatermarkScreen = () => {
         </View>
       </Card>
 
-      {/* Watermark góc trên (Top-Right) */}
-      <Card title="Watermark vị trí góc trên (Top-Right)">
+      {/* Watermark top-right corner */}
+      <Card title="Top-Right Watermark">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Được căn chỉnh linh hoạt ở 4 góc màn hình/ảnh chụp:
+          Positioned flexibly across screen or photo corners:
         </Text>
         <View style={{ height: 200, borderRadius: 16, overflow: 'hidden' }}>
           <Watermark
-            userName="Dự án Alpha - Luma UI"
+            userName="Project Alpha - Luma UI"
             time="19:45"
             date="10/10/2026"
             position="top-right"
@@ -50,7 +49,7 @@ export const WatermarkScreen = () => {
               <Text
                 style={{ color: '#9FA8DA', fontSize: 16, fontWeight: '600' }}
               >
-                Khu vực nội dung / Tài liệu mật
+                Content Area / Confidential Document
               </Text>
             </View>
           </Watermark>

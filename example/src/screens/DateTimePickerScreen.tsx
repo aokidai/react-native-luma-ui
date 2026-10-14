@@ -19,49 +19,49 @@ export const DateTimePickerScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* DatePicker */}
-      <Card title="Date Picker (Chọn Ngày)">
+      <Card title="Date Picker (Select Date)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Lịch chọn ngày chuẩn Luma UI hiển thị qua Bottom Sheet:
+          Luma UI standard calendar picker presented via Bottom Sheet:
         </Text>
         <DatePicker
-          label="Ngày sinh / Ngày hẹn"
+          label="Date of Birth / Appointment"
           value={selectedDate}
           onConfirm={setSelectedDate}
-          modalTitle="Chọn ngày"
+          modalTitle="Select date"
         />
       </Card>
 
       {/* TimePicker */}
-      <Card title="Time Picker (Chọn Giờ)">
+      <Card title="Time Picker (Select Time)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Chọn giờ phút định dạng 24h hoặc 12h với các mốc gợi ý:
+          Select time in 24h or 12h format with quick presets:
         </Text>
         <TimePicker
-          label="Thời gian bắt đầu"
+          label="Start Time"
           value={selectedTime}
           onConfirm={setSelectedTime}
           is24Hour={true}
-          modalTitle="Chọn thời gian"
+          modalTitle="Select time"
         />
       </Card>
 
       {/* DateTimePicker */}
-      <Card title="Date & Time Picker (Kết hợp)">
+      <Card title="Date & Time Picker (Combined)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Chuyển đổi linh hoạt giữa chọn Ngày và chọn Giờ trong cùng một Bottom
+          Flexibly switch between Day and Time selection in a single Bottom
           Sheet:
         </Text>
         <DateTimePicker
-          label="Thời hạn hoàn thành"
+          label="Completion Deadline"
           value={selectedDateTime}
           onConfirm={setSelectedDateTime}
           mode="datetime"
-          modalTitle="Chọn Ngày & Giờ"
+          modalTitle="Select Date & Time"
         />
       </Card>
 
       {/* Inline DatePicker */}
-      <Card title="Lịch hiển thị trực tiếp (Inline Calendar)">
+      <Card title="Inline Calendar (Embedded)">
         <DatePicker inline value={selectedDate} onChange={setSelectedDate} />
       </Card>
     </ScrollView>

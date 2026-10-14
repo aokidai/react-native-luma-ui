@@ -10,11 +10,11 @@ export const PickerScreen = () => {
   ]);
 
   const cityItems = [
-    { label: 'Hà Nội', value: 'hn' },
-    { label: 'TP. Hồ Chí Minh', value: 'hcm' },
-    { label: 'Đà Nẵng', value: 'dn' },
-    { label: 'Hải Phòng', value: 'hp' },
-    { label: 'Cần Thơ', value: 'ct' },
+    { label: 'New York', value: 'hn' },
+    { label: 'San Francisco', value: 'hcm' },
+    { label: 'London', value: 'dn' },
+    { label: 'Tokyo', value: 'hp' },
+    { label: 'Paris', value: 'ct' },
   ];
 
   const skillItems = [
@@ -31,26 +31,26 @@ export const PickerScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Single Select Picker */}
-      <Card title="Chọn một mục (Single Select)">
+      <Card title="Single Select Picker">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Có thanh tìm kiếm và hiển thị modal lựa chọn:
+          Includes search bar and selection modal:
         </Text>
         <Picker
-          label="Thành phố"
+          label="City"
           items={cityItems}
           value={selectedCity}
           onSelect={(item) => setSelectedCity(item.value)}
-          modalTitle="Chọn Thành phố"
+          modalTitle="Select City"
         />
       </Card>
 
       {/* Multi Select Picker */}
-      <Card title="Chọn nhiều mục (Multi Select)">
+      <Card title="Multi-Select Picker">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Hỗ trợ chọn nhiều kỹ năng cùng lúc:
+          Supports selecting multiple skills simultaneously:
         </Text>
         <Picker
-          label="Kỹ năng chuyên môn"
+          label="Technical Skills"
           items={skillItems}
           value={selectedSkills}
           multi
@@ -61,7 +61,7 @@ export const PickerScreen = () => {
               setSelectedSkills([...selectedSkills, item.value]);
             }
           }}
-          modalTitle="Chọn Kỹ năng"
+          modalTitle="Select Skills"
         />
       </Card>
     </ScrollView>

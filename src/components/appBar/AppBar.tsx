@@ -30,8 +30,8 @@ export interface AppBarProps {
   style?: StyleProp<ViewStyle>;
   centerTitle?: boolean;
   /**
-   * Tự động thêm padding top bằng chiều cao status bar để nền AppBar tràn lên status bar.
-   * Mặc định là `true` khi sử dụng bên trong Scaffold.
+   * Automatically adds top padding equal to status bar height so AppBar background extends over the status bar.
+   * Defaults to `true` when used inside Scaffold.
    */
   safeAreaTop?: boolean;
 }

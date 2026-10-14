@@ -15,17 +15,17 @@ export const SnackbarScreen = () => {
       >
         <Card title="Luma UI Snackbar">
           <Text style={{ color: '#757575', marginBottom: 12 }}>
-            Snackbar cung cấp thông điệp ngắn ở đáy màn hình và tự động biến mất
-            sau thời gian định sẵn.
+            Snackbar provides brief messages at the bottom of the screen and
+            auto-dismisses after a timeout.
           </Text>
           <View style={{ gap: 10 }}>
             <Button
-              label="Hiển thị Snackbar cơ bản"
+              label="Show Basic Snackbar"
               mode="elevated"
               onPress={() => setVisible1(true)}
             />
             <Button
-              label="Snackbar kèm nút Hoàn tác (Action)"
+              label="Snackbar with Action Button"
               mode="outlined"
               onPress={() => setVisible2(true)}
             />
@@ -42,7 +42,7 @@ export const SnackbarScreen = () => {
           <MaterialDesignIcons name="check-circle" size={20} color="#03DAC6" />
         }
       >
-        Dữ liệu đã được lưu thành công!
+        Data saved successfully!
       </Snackbar>
 
       {/* Snackbar 2 */}
@@ -51,12 +51,12 @@ export const SnackbarScreen = () => {
         onDismiss={() => setVisible2(false)}
         duration={4000}
         action={{
-          label: 'HOÀN TÁC',
-          onPress: () => Alert.alert('Thông báo', 'Đã hoàn tác thao tác!'),
+          label: 'UNDO',
+          onPress: () => Alert.alert('Notification', 'Action undone!'),
           color: '#03DAC6',
         }}
       >
-        Đã chuyển mục vào thùng rác.
+        Item moved to trash.
       </Snackbar>
     </View>
   );

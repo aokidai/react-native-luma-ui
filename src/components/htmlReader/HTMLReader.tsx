@@ -77,7 +77,7 @@ const HTMLReader: FC<HTMLReaderProps> = (props) => {
           <Text
             style={[htmlReaderStyles.collapseToggleText, { color: aTagColor }]}
           >
-            {expanded ? 'Thu gọn' : 'Xem thêm'}
+            {expanded ? 'Show less' : 'Read more'}
           </Text>
         </TouchableOpacity>
       )}

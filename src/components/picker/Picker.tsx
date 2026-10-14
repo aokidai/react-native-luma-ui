@@ -98,8 +98,8 @@ const Picker: FC<PickerProps> = (props) => {
     value,
     onSelect,
     label,
-    placeholder = 'Chọn một mục',
-    modalTitle = 'Chọn danh mục',
+    placeholder = 'Select an item',
+    modalTitle = 'Select Category',
     isSearch = true,
     multi = false,
     disabled = false,
@@ -186,7 +186,7 @@ const Picker: FC<PickerProps> = (props) => {
         {isSearch && (
           <View style={pickerStyles.searchBox}>
             <SearchBar
-              placeholder="Tìm kiếm..."
+              placeholder="Search..."
               onChangeText={setSearchQuery}
               height={40}
               allowClear

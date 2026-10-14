@@ -17,8 +17,8 @@ export const ChipScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      {/* 4 Biến thể Luma UI */}
-      <Card title="4 Biến thể Chip (Luma UI)">
+      {/* 4 Luma UI Variants */}
+      <Card title="4 Chip Variants (Luma UI)">
         <View
           style={{
             flexDirection: 'row',
@@ -33,7 +33,7 @@ export const ChipScreen = () => {
             icon={
               <MaterialDesignIcons name="calendar" size={16} color="#6200EE" />
             }
-            onPress={() => Alert.alert('Thông báo', 'Assist pressed')}
+            onPress={() => Alert.alert('Notification', 'Assist pressed')}
           />
           <Chip
             label="Filter Chip"
@@ -50,13 +50,13 @@ export const ChipScreen = () => {
           <Chip
             label="Suggestion Chip"
             variant="suggestion"
-            onPress={() => Alert.alert('Thông báo', 'Suggestion pressed')}
+            onPress={() => Alert.alert('Notification', 'Suggestion pressed')}
           />
         </View>
       </Card>
 
       {/* Input Chips with Delete */}
-      <Card title="Input Chips (Có nút xóa Close)">
+      <Card title="Input Chips (With Close button)">
         <View
           style={{
             flexDirection: 'row',
@@ -86,7 +86,7 @@ export const ChipScreen = () => {
             marginTop: 12,
           }}
         >
-          <Chip label="Đổ bóng nhẹ" elevated />
+          <Chip label="Elevated shadow" elevated />
           <Chip label="Elevated Selected" elevated selected />
         </View>
       </Card>

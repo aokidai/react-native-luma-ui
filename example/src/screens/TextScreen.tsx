@@ -39,16 +39,16 @@ export const TextScreen = () => {
       <Card title="Body & Label Styles">
         <View style={{ gap: 6 }}>
           <Text theme="bodyLarge">
-            Body Large: Đoạn văn bản nội dung thông thường
+            Body Large: Standard body paragraph content
           </Text>
           <Text theme="bodyMedium">
-            Body Medium: Đoạn văn bản kích cỡ trung bình
+            Body Medium: Medium-sized body paragraph
           </Text>
           <Text theme="bodySmall">
-            Body Small: Đoạn văn bản phụ kích cỡ nhỏ
+            Body Small: Small secondary text
           </Text>
           <Text theme="labelLarge" color="#6200EE">
-            Label Large: Nhãn nút hoặc tag
+            Label Large: Button label or tag
           </Text>
           <Text theme="labelMedium" color="#018786">
             Label Medium

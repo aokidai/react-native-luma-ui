@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ComponentData } from '../types';
 import { InteractivePlayground } from '../components/InteractivePlayground';
 import { CodeBlock } from '../components/CodeBlock';
@@ -9,6 +10,7 @@ interface ComponentDocPageProps {
 }
 
 export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component }) => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'overview' | 'specs' | 'api'>('overview');
 
   // Reset tab to 'overview' whenever component changes
@@ -31,19 +33,19 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component })
           className={`m3-tab-button ${activeTab === 'overview' ? 'active' : ''}`}
           onClick={() => setActiveTab('overview')}
         >
-          Tổng quan (Overview)
+          {t('componentDoc.tabOverview')}
         </button>
         <button
           className={`m3-tab-button ${activeTab === 'specs' ? 'active' : ''}`}
           onClick={() => setActiveTab('specs')}
         >
-          Thông số kỹ thuật (Specs)
+          {t('componentDoc.tabSpecs')}
         </button>
         <button
           className={`m3-tab-button ${activeTab === 'api' ? 'active' : ''}`}
           onClick={() => setActiveTab('api')}
         >
-          Thuộc tính (API Props)
+          {t('componentDoc.tabApi')}
         </button>
       </div>
 
@@ -64,7 +66,7 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component })
             }}
           >
             <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: 'var(--md-sys-color-primary)' }}>
-              Nguyên tắc thiết kế (Luma UI Guidelines)
+              {t('componentDoc.guidelines')}
             </h3>
             <p style={{ fontSize: 14, color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.6 }}>
               {component.guidelines}
@@ -72,7 +74,7 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component })
           </div>
 
           {/* Code Example */}
-          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12 }}>Ví dụ sử dụng</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12 }}>{t('componentDoc.codeExample')}</h3>
           <CodeBlock code={component.codeExample} language="tsx" />
         </div>
       )}
@@ -80,7 +82,7 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component })
       {/* TAB 2: SPECS */}
       {activeTab === 'specs' && (
         <div>
-          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>Cấu trúc Anatomy</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>{t('componentDoc.anatomy')}</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12, marginBottom: 32 }}>
             {component.anatomy.map((item, idx) => (
               <div
@@ -99,37 +101,37 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component })
             ))}
           </div>
 
-          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>Quy chuẩn kích thước & Bo góc (Tokens)</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>{t('componentDoc.specsTable')}</h3>
           <div className="props-table-wrapper">
             <table className="props-table">
               <thead>
                 <tr>
-                  <th style={{ width: '35%' }}>Hạng mục Token</th>
-                  <th style={{ width: '65%' }}>Giá trị chuẩn Luma UI</th>
+                  <th style={{ width: '35%' }}>Token</th>
+                  <th style={{ width: '65%' }}>Value</th>
                 </tr>
               </thead>
               <tbody>
                 {component.specs.height && (
                   <tr>
-                    <td><strong>Chiều cao (Height)</strong></td>
+                    <td><strong>Height</strong></td>
                     <td><code>{component.specs.height}</code></td>
                   </tr>
                 )}
                 {component.specs.corner && (
                   <tr>
-                    <td><strong>Bo góc (Corner Radius)</strong></td>
+                    <td><strong>Corner Radius</strong></td>
                     <td><code>{component.specs.corner}</code></td>
                   </tr>
                 )}
                 {component.specs.elevation && (
                   <tr>
-                    <td><strong>Độ nổi (Elevation)</strong></td>
+                    <td><strong>Elevation</strong></td>
                     <td><code>{component.specs.elevation}</code></td>
                   </tr>
                 )}
                 {component.specs.containerColor && (
                   <tr>
-                    <td><strong>Màu Container</strong></td>
+                    <td><strong>Container Color</strong></td>
                     <td><code>{component.specs.containerColor}</code></td>
                   </tr>
                 )}
@@ -142,7 +144,7 @@ export const ComponentDocPage: React.FC<ComponentDocPageProps> = ({ component })
       {/* TAB 3: API PROPS */}
       {activeTab === 'api' && (
         <div>
-          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>Danh sách thuộc tính (Props)</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>{t('componentDoc.tabApi')}</h3>
           <PropsTable props={component.props} />
         </div>
       )}

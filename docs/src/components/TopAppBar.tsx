@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { LumaLogo } from './LumaLogo';
 
 interface TopAppBarProps {
@@ -16,6 +17,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
   onSearchChange,
   onToggleMobileDrawer,
 }) => {
+  const { t, i18n } = useTranslation();
   const [isMac, setIsMac] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -32,6 +34,14 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const handleToggleLanguage = () => {
+    const nextLang = i18n.language === 'en' ? 'vi' : 'en';
+    i18n.changeLanguage(nextLang);
+    try {
+      localStorage.setItem('luma_docs_lang', nextLang);
+    } catch {}
+  };
+
   return (
     <header className="top-app-bar">
       <div className="top-bar-left">
@@ -40,8 +50,8 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
           type="button"
           className="icon-button mobile-menu-btn"
           onClick={onToggleMobileDrawer}
-          aria-label="Toggle navigation drawer"
-          title="Mở menu"
+          aria-label={t('nav.openMenu')}
+          title={t('nav.openMenu')}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -82,13 +92,13 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
             ref={searchInputRef}
             type="text"
             className="search-input"
-            placeholder="Tìm kiếm..."
+            placeholder={t('nav.search')}
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
           />
           <kbd
             className="search-shortcut"
-            title={isMac ? 'Phím tắt ⌘ K' : 'Phím tắt Ctrl + K'}
+            title={isMac ? `${t('topBar.shortcutMac')}` : `${t('topBar.shortcutWin')}`}
           >
             {isMac ? '⌘ K' : 'Ctrl + K'}
           </kbd>
@@ -96,11 +106,29 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
       </div>
 
       <div className="top-bar-actions">
+        {/* Language Switcher */}
+        <button
+          type="button"
+          className="lang-toggle-btn"
+          onClick={handleToggleLanguage}
+          title={i18n.language === 'en' ? 'Chuyển sang Tiếng Việt' : 'Switch to English'}
+          aria-label="Toggle language"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span style={{ fontWeight: 700, letterSpacing: '0.5px' }}>
+            {i18n.language === 'en' ? 'EN' : 'VI'}
+          </span>
+        </button>
+
         {/* Theme Toggle Button */}
         <button
           className="icon-button"
           onClick={onToggleTheme}
-          title={theme === 'light' ? 'Chuyển sang Giao diện Tối' : 'Chuyển sang Giao diện Sáng'}
+          title={theme === 'light' ? t('topBar.themeDark') : t('topBar.themeLight')}
           aria-label="Toggle theme"
         >
           {theme === 'light' ? (
@@ -138,3 +166,4 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
     </header>
   );
 };
+

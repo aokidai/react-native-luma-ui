@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { PropDefinition } from '../types';
 
 interface PropsTableProps {
@@ -6,15 +7,17 @@ interface PropsTableProps {
 }
 
 export const PropsTable: React.FC<PropsTableProps> = ({ props }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="props-table-wrapper">
       <table className="props-table">
         <thead>
           <tr>
-            <th style={{ width: '22%' }}>Thuộc tính (Prop)</th>
-            <th style={{ width: '32%' }}>Kiểu (Type)</th>
-            <th style={{ width: '18%' }}>Mặc định (Default)</th>
-            <th style={{ width: '28%' }}>Mô tả</th>
+            <th style={{ width: '22%' }}>{t('componentDoc.propColName')}</th>
+            <th style={{ width: '32%' }}>{t('componentDoc.propColType')}</th>
+            <th style={{ width: '18%' }}>{t('componentDoc.propColDefault')}</th>
+            <th style={{ width: '28%' }}>{t('componentDoc.propColDesc')}</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +38,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({ props }) => {
                       borderRadius: 4,
                     }}
                   >
-                    Bắt buộc
+                    {t('componentDoc.required')}
                   </span>
                 )}
               </td>
@@ -53,3 +56,4 @@ export const PropsTable: React.FC<PropsTableProps> = ({ props }) => {
     </div>
   );
 };
+
