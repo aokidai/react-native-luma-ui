@@ -22,20 +22,19 @@ export const LayoutScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Section Component */}
-      <Card title="Section (Phân đoạn nội dung)">
+      <Card title="Section (Content Segment)">
         <Section
-          title="Nhóm công việc dự án"
-          action={<Button label="Xem thêm" mode="text" onPress={() => {}} />}
+          title="Project Workgroup"
+          action={<Button label="View more" mode="text" onPress={() => {}} />}
         >
           <Text style={{ color: '#757575' }}>
-            Nội dung bên trong Section được bố cục linh hoạt và có header tiêu
-            đề rõ ràng.
+            Content inside Section provides flexible layout with clear header titles.
           </Text>
         </Section>
       </Card>
 
       {/* ActionGroup Component */}
-      <Card title="ActionGroup (Nhóm nút bo tròn pill)">
+      <Card title="ActionGroup (Pill Button Group)">
         <View style={{ flexDirection: 'row', marginTop: 8 }}>
           <ActionGroup>
             <IconButton
@@ -73,10 +72,10 @@ export const LayoutScreen = () => {
       </Card>
 
       {/* NoContent Component */}
-      <Card title="NoContent (Trạng thái rỗng)">
+      <Card title="NoContent (Empty State)">
         <NoContent
-          title="Chưa có dữ liệu nào"
-          description="Hãy tạo mới một mục đầu tiên để bắt đầu."
+          title="No Data Available"
+          description="Create your first item to get started."
           icon={
             <MaterialDesignIcons
               name="folder-open-outline"
@@ -84,20 +83,20 @@ export const LayoutScreen = () => {
               color="#6200EE"
             />
           }
-          buttonText="Tạo mục mới"
-          onPressButton={() => Alert.alert('Thông báo', 'Bấm tạo mục mới!')}
+          buttonText="Create New Item"
+          onPressButton={() => Alert.alert('Notification', 'Create item tapped!')}
         />
       </Card>
 
       {/* HTMLReader Component */}
-      <Card title="HTMLReader (Hiển thị Rich Text)">
-        <HTMLReader html="<p>Chào mừng đến với <b>Luma UI</b>! Thư viện cung cấp các thành phần <i>Luma UI</i> hiện đại. <br/>Xem thêm tại <a href='https://github.com'>GitHub</a>.</p>" />
+      <Card title="HTMLReader (Rich Text Viewer)">
+        <HTMLReader html="<p>Welcome to <b>Luma UI</b>! The library provides modern <i>Luma UI</i> components. <br/>See more at <a href='https://github.com'>GitHub</a>.</p>" />
       </Card>
 
       {/* PermissionAlert Component */}
-      <Card title="PermissionAlert (Hộp thoại xin quyền)">
+      <Card title="PermissionAlert (Permission Dialog)">
         <Button
-          label="Mở Alert xin quyền Camera"
+          label="Open Camera Permission Alert"
           mode="outlined"
           onPress={() => setPermissionVisible(true)}
         />
@@ -106,8 +105,8 @@ export const LayoutScreen = () => {
       <PermissionAlert
         visible={permissionVisible}
         onClose={() => setPermissionVisible(false)}
-        permissionName="Camera & Bộ nhớ"
-        description="Cho phép Luma UI truy cập máy ảnh để chụp ảnh hồ sơ và quét mã QR."
+        permissionName="Camera & Storage"
+        description="Allow Luma UI to access camera for profile photo and QR scanning."
       />
     </ScrollView>
   );

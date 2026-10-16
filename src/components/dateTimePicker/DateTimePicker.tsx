@@ -173,11 +173,11 @@ const DateTimePicker: FC<DateTimePickerProps> = (props) => {
     is24Hour = true,
     format,
     label,
-    placeholder = 'Chọn ngày giờ',
+    placeholder = 'Select date & time',
     disabled = false,
-    modalTitle = 'Chọn Ngày & Giờ',
-    confirmText = 'Xác nhận',
-    cancelText = 'Hủy',
+    modalTitle = 'Select Date & Time',
+    confirmText = 'Confirm',
+    cancelText = 'Cancel',
     inline = false,
     visible: controlledVisible,
     onClose,
@@ -208,7 +208,7 @@ const DateTimePicker: FC<DateTimePickerProps> = (props) => {
         maxDate={maxDate}
         format={format}
         label={label}
-        placeholder={placeholder || 'Chọn ngày'}
+        placeholder={placeholder || 'Select date'}
         disabled={disabled}
         modalTitle={modalTitle}
         confirmText={confirmText}
@@ -230,7 +230,7 @@ const DateTimePicker: FC<DateTimePickerProps> = (props) => {
         is24Hour={is24Hour}
         format={format}
         label={label}
-        placeholder={placeholder || 'Chọn giờ'}
+        placeholder={placeholder || 'Select time'}
         disabled={disabled}
         modalTitle={modalTitle}
         confirmText={confirmText}
@@ -308,7 +308,7 @@ const DateTimePicker: FC<DateTimePickerProps> = (props) => {
               activeTab === 'date' && dateTimePickerStyles.tabButtonTextActive,
             ]}
           >
-            {`Ngày: ${dateStr}`}
+            {`Date: ${dateStr}`}
           </Text>
         </TouchableOpacity>
 
@@ -332,7 +332,7 @@ const DateTimePicker: FC<DateTimePickerProps> = (props) => {
               activeTab === 'time' && dateTimePickerStyles.tabButtonTextActive,
             ]}
           >
-            {`Giờ: ${timeStr}`}
+            {`Time: ${timeStr}`}
           </Text>
         </TouchableOpacity>
       </View>

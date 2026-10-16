@@ -50,8 +50,8 @@ interface ScreenConfig {
 }
 
 const SCREENS: Record<string, ScreenConfig> = {
-  home: { title: 'Luma UI - Trang chủ', component: HomeScreen },
-  color: { title: 'Bảng màu Luma UI', component: ColorScreen },
+  home: { title: 'Luma UI - Home', component: HomeScreen },
+  color: { title: 'Luma UI Color Scheme', component: ColorScreen },
   button: { title: 'Button & FAB', component: ButtonScreen },
   textField: { title: 'Text Field (Input)', component: TextFieldScreen },
   checkbox: { title: 'Checkbox', component: CheckboxScreen },
@@ -187,13 +187,13 @@ export default function App() {
             </View>
           }
         >
-          {/* Cài đặt giao diện */}
-          <Drawer.Section title="Giao diện (Theme)">
+          {/* Theme Settings */}
+          <Drawer.Section title="Theme">
             <Drawer.Item
               label={
                 isDarkMode
-                  ? 'Chế độ tối (Dark: Bật)'
-                  : 'Chế độ sáng (Light: Bật)'
+                  ? 'Dark Mode (Active)'
+                  : 'Light Mode (Active)'
               }
               icon={
                 <MaterialDesignIcons
@@ -206,16 +206,16 @@ export default function App() {
             />
           </Drawer.Section>
 
-          {/* Tổng quan */}
-          <Drawer.Section title="Tổng quan">
+          {/* Overview */}
+          <Drawer.Section title="Overview">
             <Drawer.Item
-              label="Trang chủ"
+              label="Home"
               icon={<MaterialDesignIcons name="home-outline" size={20} />}
               active={currentScreen === 'home'}
               onPress={() => navigateTo('home')}
             />
             <Drawer.Item
-              label="Bảng màu (Color Scheme Luma)"
+              label="Color Scheme (Luma)"
               icon={<MaterialDesignIcons name="palette-outline" size={20} />}
               active={currentScreen === 'color'}
               onPress={() => navigateTo('color')}
@@ -223,7 +223,7 @@ export default function App() {
           </Drawer.Section>
 
           {/* Actions & Buttons */}
-          <Drawer.Section title="Hành động & Điều khiển">
+          <Drawer.Section title="Actions & Controls">
             <Drawer.Item
               label="Button & FAB"
               icon={<MaterialDesignIcons name="gesture-tap-button" size={20} />}
@@ -245,7 +245,7 @@ export default function App() {
           </Drawer.Section>
 
           {/* Inputs & Selection */}
-          <Drawer.Section title="Nhập liệu & Lựa chọn">
+          <Drawer.Section title="Inputs & Selection">
             <Drawer.Item
               label="Text Field"
               icon={<MaterialDesignIcons name="form-textbox" size={20} />}
@@ -295,7 +295,7 @@ export default function App() {
           </Drawer.Section>
 
           {/* Navigation */}
-          <Drawer.Section title="Điều hướng (Navigation)">
+          <Drawer.Section title="Navigation">
             <Drawer.Item
               label="App Bar"
               icon={<MaterialDesignIcons name="page-layout-header" size={20} />}
@@ -323,7 +323,7 @@ export default function App() {
           </Drawer.Section>
 
           {/* Feedback & Alert */}
-          <Drawer.Section title="Thông báo & Phản hồi">
+          <Drawer.Section title="Feedback & Alerts">
             <Drawer.Item
               label="Snackbar"
               icon={<MaterialDesignIcons name="card-text-outline" size={20} />}
@@ -367,7 +367,7 @@ export default function App() {
           </Drawer.Section>
 
           {/* Display & Layout */}
-          <Drawer.Section title="Hiển thị & Bố cục">
+          <Drawer.Section title="Display & Layout">
             <Drawer.Item
               label="Card"
               icon={<MaterialDesignIcons name="card-outline" size={20} />}
@@ -421,7 +421,7 @@ export default function App() {
               onPress={() => navigateTo('watermark')}
             />
             <Drawer.Item
-              label="Layout & Tiện ích"
+              label="Layout & Utilities"
               icon={
                 <MaterialDesignIcons name="view-dashboard-outline" size={20} />
               }

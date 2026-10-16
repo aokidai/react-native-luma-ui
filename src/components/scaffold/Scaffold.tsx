@@ -14,8 +14,8 @@ export interface ScaffoldProps {
   statusBarColor?: string;
   barStyle?: AppStatusBarType;
   /**
-   * Option 1: `edgeToEdge = true`: Xử lý tràn edge-to-edge (status bar trong suốt, tràn viền màn hình).
-   * Option 2: `edgeToEdge = false` (mặc định): Giữ nguyên safe area tiêu chuẩn.
+   * Option 1: `edgeToEdge = true`: Edge-to-edge layout (transparent status bar, full screen bleed).
+   * Option 2: `edgeToEdge = false` (default): Standard safe area handling.
    */
   edgeToEdge?: boolean;
   translucentStatusBar?: boolean;
@@ -46,7 +46,7 @@ const Scaffold: FC<ScaffoldProps> = (props) => {
   const hasAppBar = Boolean(appBar);
   const isTranslucent = edgeToEdge || translucentStatusBar || hasAppBar;
 
-  // Tự động cấu hình AppBar tràn lên status bar khi nằm trong Scaffold
+  // Automatically configure AppBar to extend over status bar when inside Scaffold
   let renderedAppBar = appBar;
   if (React.isValidElement(appBar)) {
     renderedAppBar = React.cloneElement(appBar as React.ReactElement<any>, {
@@ -71,8 +71,8 @@ const Scaffold: FC<ScaffoldProps> = (props) => {
     );
   }
 
-  // Option 2: Non edge-to-edge mode (mặc định)
-  // Khi có appBar, safe area top do AppBar đảm nhiệm (nền tràn lên status bar).
+  // Option 2: Non edge-to-edge mode (default)
+  // When appBar is present, safe area top is handled by AppBar (background extends over status bar).
   const defaultEdges: readonly Edge[] = hasAppBar
     ? ['left', 'right', 'bottom']
     : ['top', 'left', 'right', 'bottom'];

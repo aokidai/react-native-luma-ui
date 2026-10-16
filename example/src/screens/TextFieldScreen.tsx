@@ -18,11 +18,11 @@ export const TextFieldScreen = () => {
       <Card title="Outlined TextField (Luma UI)">
         <View style={{ gap: 12, marginTop: 8 }}>
           <TextField
-            label="Họ và tên"
+            label="Full Name"
             value={name}
             onChangeText={setName}
-            placeholder="Nhập họ và tên..."
-            helperText="Nhập đầy đủ cả họ và tên đệm"
+            placeholder="Enter full name..."
+            helperText="Enter both first and last name"
             leadingIcon={
               <MaterialDesignIcons name="account" size={20} color="#757575" />
             }
@@ -39,13 +39,13 @@ export const TextFieldScreen = () => {
             error={email.length > 0 && !email.includes('@')}
             errorText={
               email.length > 0 && !email.includes('@')
-                ? 'Email không hợp lệ'
+                ? 'Invalid email address'
                 : undefined
             }
           />
 
           <TextField
-            label="Mật khẩu"
+            label="Password"
             value={password}
             onChangeText={setPassword}
             secureTextEntry={!showPassword}
@@ -69,7 +69,7 @@ export const TextFieldScreen = () => {
         <View style={{ gap: 12, marginTop: 8 }}>
           <TextField
             mode="filled"
-            label="Số điện thoại"
+            label="Phone Number"
             placeholder="0912 345 678"
             keyboardType="phone-pad"
             leadingIcon={
@@ -79,16 +79,16 @@ export const TextFieldScreen = () => {
 
           <TextField
             mode="filled"
-            label="Ghi chú"
-            placeholder="Nội dung ghi chú..."
+            label="Notes"
+            placeholder="Note content..."
             multiline
             numberOfLines={3}
           />
 
           <TextField
             mode="filled"
-            label="Vô hiệu hóa (Disabled)"
-            value="Không thể chỉnh sửa"
+            label="Disabled (Disabled)"
+            value="Cannot be edited"
             disabled
           />
         </View>

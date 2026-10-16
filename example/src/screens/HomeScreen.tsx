@@ -28,13 +28,12 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
         status="Luma UI"
         statusColor="#018786"
         title="Luma UI Component Showcase"
-        subContent="Bộ thư viện React Native UI tuân theo chuẩn Luma UI"
+        subContent="React Native UI library following Luma UI design standards"
         leftLine="#6200EE"
       >
         <Text theme="bodyMedium" style={{ marginTop: 8, lineHeight: 20 }}>
-          Khám phá toàn bộ hệ thống components chuẩn chỉnh của Luma UI. Chạm vào
-          nút bên dưới hoặc biểu tượng Menu ở góc trên bên trái để mở ngăn kéo
-          điều hướng đến từng component.
+          Explore the comprehensive design system of Luma UI. Tap the button
+          below or the Menu icon in the top left to open the navigation drawer.
         </Text>
         <View
           style={{
@@ -45,7 +44,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
           }}
         >
           <Button
-            label="Mở Menu Drawer"
+            label="Open Menu Drawer"
             mode="elevated"
             icon={(size, color) => (
               <MaterialDesignIcons name="menu" size={size} color={color} />
@@ -53,18 +52,18 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
             onPress={onOpenDrawer}
           />
           <Button
-            label="🎨 Bảng màu Luma"
+            label="🎨 Luma Palette"
             mode="outlined"
             onPress={() => onNavigate('color')}
           />
         </View>
       </Card>
 
-      {/* Danh mục component nổi bật */}
-      <Section title="Thành phần điều hướng & Tương tác">
+      {/* Featured Components */}
+      <Section title="Interactive & Input Components">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           <Chip
-            label="🎨 Bảng màu Luma"
+            label="🎨 Luma Palette"
             variant="filter"
             selected
             onPress={() => onNavigate('color')}
@@ -114,7 +113,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
 
       <Divider />
 
-      <Section title="Navigation & Khung nhìn">
+      <Section title="Navigation & Views">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           <Chip
             label="NavigationBar"
@@ -146,7 +145,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
 
       <Divider />
 
-      <Section title="Thông báo & Phản hồi">
+      <Section title="Feedback & Alerts">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           <Chip
             label="Snackbar"
@@ -183,7 +182,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
 
       <Divider />
 
-      <Section title="Hiển thị & Tiện ích">
+      <Section title="Display & Utilities">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           <Chip
             label="Image View"
@@ -196,7 +195,7 @@ export const HomeScreen: FC<Props> = ({ onNavigate, onOpenDrawer }) => {
             onPress={() => onNavigate('watermark')}
           />
           <Chip
-            label="Layout & Quyền"
+            label="Layout & Permissions"
             variant="suggestion"
             onPress={() => onNavigate('layout')}
           />

@@ -10,32 +10,31 @@ export const CardScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Basic Card */}
-      <Card title="Thẻ cơ bản (Basic Card)">
+      <Card title="Basic Card">
         <Text style={{ color: '#757575', marginTop: 4 }}>
-          Thẻ đơn giản bao bọc các phần tử con bên trong với độ bo góc và màu
-          nền theo hệ thống Design Tokens.
+          Simple card wrapping child elements with border radius and surface colors from Design Tokens.
         </Text>
       </Card>
 
-      {/* Rich Card với Accent Left Line */}
+      {/* Rich Card with Accent Left Line */}
       <Card
-        title="Dự án Alpha"
-        content="Hoàn thiện tài liệu kiến trúc hệ thống và tích hợp giao diện"
-        subContent="Hạn chót: 15/10/2026"
-        priority="Ưu tiên cao"
+        title="Project Alpha"
+        content="Finalize system architecture documentation and UI integration"
+        subContent="Deadline: 15/10/2026"
+        priority="High Priority"
         priorityColor="#B00020"
-        status="Đang thực hiện"
+        status="In Progress"
         statusColor="#C16C07"
         leftLine="#6200EE"
-        time="Hôm nay, 14:00"
-        footer={<Button label="Chi tiết" mode="text" onPress={() => {}} />}
+        time="Today, 14:00"
+        footer={<Button label="Details" mode="text" onPress={() => {}} />}
       />
 
       {/* Clickable Card */}
       <Card
-        title="Thẻ có thể tương tác (Clickable)"
-        subContent="Chạm vào thẻ này để kích hoạt sự kiện onPress"
-        onPress={() => Alert.alert('Thông báo', 'Đã bấm vào Card!')}
+        title="Interactive Card (Clickable)"
+        subContent="Tap this card to trigger the onPress event"
+        onPress={() => Alert.alert('Notification', 'Card tapped!')}
         borderColor="#6200EE"
       >
         <View
@@ -48,7 +47,7 @@ export const CardScreen = () => {
         >
           <MaterialDesignIcons name="gesture-tap" size={20} color="#6200EE" />
           <Text style={{ color: '#6200EE', fontWeight: '600' }}>
-            Chạm vào đây
+            Tap here
           </Text>
         </View>
       </Card>

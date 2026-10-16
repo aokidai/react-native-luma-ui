@@ -12,39 +12,39 @@ export const CheckboxScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Checkbox cơ bản">
+      <Card title="Basic Checkbox">
         <View style={{ gap: 8, marginTop: 8 }}>
           <Checkbox
-            label="Checkbox mặc định (Square)"
+            label="Default Checkbox (Square)"
             checked={checked1}
             onValueChange={setChecked1}
           />
           <Checkbox
-            label="Hình tròn (Circle shape)"
+            label="Circular Checkbox (Circle shape)"
             shape="circle"
             checked={checked2}
             onValueChange={setChecked2}
           />
           <Checkbox
-            label="Trạng thái phân vân (Indeterminate)"
+            label="Indeterminate State"
             indeterminate
             color="#03DAC6"
           />
-          <Checkbox label="Vô hiệu hóa đã chọn (Disabled)" checked disabled />
+          <Checkbox label="Selected (Disabled)" checked disabled />
         </View>
       </Card>
 
       <Card title="Checkbox.Item (Full width row)">
         <View style={{ gap: 4, marginTop: 8 }}>
           <Checkbox.Item
-            label="Tùy chọn A"
-            description="Mô tả phụ cho tùy chọn A"
+            label="Option A"
+            description="Sub-description for option A"
             position="trailing"
             checked={checked3}
             onValueChange={setChecked3}
           />
           <Checkbox.Item
-            label="Tùy chọn B (Icon dẫn đầu)"
+            label="Option B (Leading icon)"
             position="leading"
             checked={true}
           />

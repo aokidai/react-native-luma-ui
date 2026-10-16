@@ -116,11 +116,11 @@ const TimePicker: FC<TimePickerProps> = (props) => {
     onConfirm,
     is24Hour = true,
     label,
-    placeholder = 'Chọn giờ',
+    placeholder = 'Select time',
     disabled = false,
-    modalTitle = 'Chọn giờ',
-    confirmText = 'Xác nhận',
-    cancelText = 'Hủy',
+    modalTitle = 'Select Time',
+    confirmText = 'OK',
+    cancelText = 'Cancel',
     inline = false,
     visible: controlledVisible,
     onClose,
@@ -392,7 +392,7 @@ const TimePicker: FC<TimePickerProps> = (props) => {
               color: colorSystem.primary,
             }}
           >
-            Hiện tại
+            Now
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

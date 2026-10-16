@@ -11,9 +11,9 @@ export const SliderScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Slider tương tác cử chỉ (Drag/Pan)">
+      <Card title="Gesture Interactive Slider (Drag/Pan)">
         <Text style={{ marginTop: 4, color: '#757575' }}>
-          Giá trị hiện tại: <Text style={{ fontWeight: '700' }}>{val1}</Text> /
+          Current value: <Text style={{ fontWeight: '700' }}>{val1}</Text> /
           100
         </Text>
         <View style={{ marginTop: 12 }}>
@@ -27,9 +27,9 @@ export const SliderScreen = () => {
         </View>
       </Card>
 
-      <Card title="Slider với màu sắc tùy biến & Bước nhảy">
+      <Card title="Custom Color & Step Slider">
         <Text style={{ marginTop: 4, color: '#757575' }}>
-          Âm lượng (Bước 5): <Text style={{ fontWeight: '700' }}>{val2}%</Text>
+          Volume (Step 5): <Text style={{ fontWeight: '700' }}>{val2}%</Text>
         </Text>
         <View style={{ marginTop: 12 }}>
           <Slider
@@ -43,7 +43,7 @@ export const SliderScreen = () => {
         </View>
       </Card>
 
-      <Card title="Slider vô hiệu hóa (Disabled)">
+      <Card title="Disabled Slider">
         <View style={{ marginTop: 12 }}>
           <Slider value={30} disabled />
         </View>

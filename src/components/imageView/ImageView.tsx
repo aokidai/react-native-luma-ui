@@ -342,7 +342,7 @@ const ImageView: FC<ImageViewProps> = (props) => {
                 activeOpacity={0.7}
               >
                 <ImageViewShareIcon size={18} color="#ffffff" />
-                <Text style={imageViewStyles.actionButtonText}>Chia sẻ</Text>
+                <Text style={imageViewStyles.actionButtonText}>Share</Text>
               </TouchableOpacity>
             )}
             {onDownload && currentItem && (
@@ -352,7 +352,7 @@ const ImageView: FC<ImageViewProps> = (props) => {
                 activeOpacity={0.7}
               >
                 <ImageViewDownloadIcon size={18} color="#ffffff" />
-                <Text style={imageViewStyles.actionButtonText}>Tải về</Text>
+                <Text style={imageViewStyles.actionButtonText}>Download</Text>
               </TouchableOpacity>
             )}
           </View>

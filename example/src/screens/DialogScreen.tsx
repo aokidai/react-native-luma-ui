@@ -14,24 +14,22 @@ export const DialogScreen = () => {
       {/* Dialog */}
       <Card title="Luma UI Dialog Modal">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Hộp thoại pop-up ở giữa màn hình thông báo hoặc xác nhận thao tác quan
-          trọng.
+          Centered pop-up dialog for notification or critical action confirmation.
         </Text>
         <Button
-          label="Mở Hộp thoại (Dialog)"
+          label="Open Dialog"
           mode="elevated"
           onPress={() => setDialogVisible(true)}
         />
       </Card>
 
       {/* Bottom Alert / Sheet */}
-      <Card title="Bottom Alert (Modal trượt từ đáy)">
+      <Card title="Bottom Alert (Slide-up modal)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Hiển thị thông báo hoặc các tùy chọn dạng Bottom Sheet trượt từ đáy
-          màn hình lên.
+          Displays notifications or action options via bottom-up sliding sheet.
         </Text>
         <Button
-          label="Mở Bottom Alert"
+          label="Open Bottom Alert"
           mode="outlined"
           onPress={() => setBottomAlertVisible(true)}
         />
@@ -41,30 +39,30 @@ export const DialogScreen = () => {
       <Dialog
         visible={dialogVisible}
         onClose={() => setDialogVisible(false)}
-        title="Xác nhận xóa tài khoản?"
+        title="Confirm Account Deletion?"
         footer={
           <>
             <Button
-              label="Hủy bỏ"
+              label="Cancel"
               mode="text"
               onPress={() => setDialogVisible(false)}
             />
             <Button
-              label="Xác nhận"
+              label="Confirm"
               mode="elevated"
               labelColor="#ffffff"
               style={{ backgroundColor: '#B00020' }}
               onPress={() => {
                 setDialogVisible(false);
-                Alert.alert('Thông báo', 'Đã xác nhận!');
+                Alert.alert('Notification', 'Confirmed!');
               }}
             />
           </>
         }
       >
         <Text style={{ color: '#616161', lineHeight: 22 }}>
-          Hành động này không thể hoàn tác. Mọi thông tin và dữ liệu lịch sử
-          liên kết với tài khoản này sẽ bị xóa vĩnh viễn khỏi hệ thống.
+          This action cannot be undone. All information and historical data
+          associated with this account will be permanently deleted from the system.
         </Text>
       </Dialog>
 
@@ -74,17 +72,17 @@ export const DialogScreen = () => {
         onClose={() => setBottomAlertVisible(false)}
       >
         <View style={{ paddingVertical: 12, gap: 12 }}>
-          <Text theme="titleLarge">Tùy chọn tác vụ</Text>
+          <Text theme="titleLarge">Action Options</Text>
           <Text style={{ color: '#757575' }}>
-            Chọn một hành động bạn muốn thực hiện tiếp theo:
+            Choose an action to proceed:
           </Text>
           <Button
-            label="Chia sẻ tài liệu"
+            label="Share Document"
             mode="outlined"
             onPress={() => setBottomAlertVisible(false)}
           />
           <Button
-            label="Đóng thông báo"
+            label="Dismiss"
             mode="text"
             onPress={() => setBottomAlertVisible(false)}
           />

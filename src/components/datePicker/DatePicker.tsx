@@ -37,7 +37,22 @@ export interface DatePickerProps {
   renderCalendarIcon?: () => ReactNode;
 }
 
-const WEEK_DAYS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
+const WEEK_DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+const MONTH_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 const formatDate = (date?: Date, formatStr: string = 'DD/MM/YYYY'): string => {
   if (!date || !(date instanceof Date) || isNaN(date.getTime())) return '';
@@ -181,11 +196,11 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     maxDate,
     format = 'DD/MM/YYYY',
     label,
-    placeholder = 'Chọn ngày',
+    placeholder = 'Select date',
     disabled = false,
-    modalTitle = 'Chọn ngày',
-    confirmText = 'Xác nhận',
-    cancelText = 'Hủy',
+    modalTitle = 'Select Date',
+    confirmText = 'OK',
+    cancelText = 'Cancel',
     showTodayButton = true,
     inline = false,
     visible: controlledVisible,
@@ -307,7 +322,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     if (onChange) onChange(now);
   };
 
-  const monthTitle = `Tháng ${viewMonth + 1}, ${viewYear}`;
+  const monthTitle = `${MONTH_NAMES[viewMonth]} ${viewYear}`;
 
   const renderCalendarBody = () => (
     <View style={datePickerStyles.calendarContainer}>
@@ -398,7 +413,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                 color: colorSystem.primary,
               }}
             >
-              Hôm nay
+              Today
             </Text>
           </TouchableOpacity>
         )}

@@ -13,9 +13,9 @@ export const TabsScreen = () => {
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
       {/* Fixed Tabs */}
-      <Card title="Cố định (Fixed Tabs with Underline Indicator)">
+      <Card title="Fixed Tabs with Underline Indicator">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Thanh gạch chân đáy trượt mượt mà theo tab đang chọn:
+          Underline bar slides smoothly to active tab:
         </Text>
         <View
           style={{
@@ -27,15 +27,15 @@ export const TabsScreen = () => {
         >
           <Tabs selectedIndex={fixedTab} onSelect={setFixedTab}>
             <Tabs.Tab
-              label="Tổng quan"
+              label="Overview"
               icon={<MaterialDesignIcons name="view-dashboard" size={18} />}
             />
             <Tabs.Tab
-              label="Chi tiết"
+              label="Details"
               icon={<MaterialDesignIcons name="file-document" size={18} />}
             />
             <Tabs.Tab
-              label="Đánh giá"
+              label="Reviews"
               icon={<MaterialDesignIcons name="star" size={18} />}
             />
           </Tabs>
@@ -48,12 +48,12 @@ export const TabsScreen = () => {
             fontWeight: '600',
           }}
         >
-          Nội dung hiển thị của Tab {fixedTab + 1}
+          Content for Tab {fixedTab + 1}
         </Text>
       </Card>
 
       {/* Scrollable Tabs */}
-      <Card title="Thanh Tabs Cuộn ngang (Scrollable Tabs)">
+      <Card title="Scrollable Tabs">
         <View
           style={{
             borderRadius: 12,
@@ -63,12 +63,12 @@ export const TabsScreen = () => {
           }}
         >
           <Tabs scrollable selectedIndex={scrollTab} onSelect={setScrollTab}>
-            <Tabs.Tab label="Tất cả" />
-            <Tabs.Tab label="Phổ biến" />
-            <Tabs.Tab label="Công nghệ" />
-            <Tabs.Tab label="Thiết kế" />
+            <Tabs.Tab label="All" />
+            <Tabs.Tab label="Popular" />
+            <Tabs.Tab label="Tech" />
+            <Tabs.Tab label="Design" />
             <Tabs.Tab label="Kinh doanh" />
-            <Tabs.Tab label="Đời sống" />
+            <Tabs.Tab label="Lifestyle" />
           </Tabs>
         </View>
       </Card>

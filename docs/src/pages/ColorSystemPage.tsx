@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CodeBlock } from '../components/CodeBlock';
 
 interface ToneItem {
@@ -101,50 +102,41 @@ const LUMA_PALETTES: {
   },
   neutralVariant: {
     key: '#605D66',
-    label: 'Neutral variant',
+    label: 'Neutral Variant',
     tones: [
       { tone: 0, hex: '#000000' },
       { tone: 10, hex: '#1D1A22' },
-      { tone: 20, hex: '#322F38' },
-      { tone: 30, hex: '#49454F' },
+      { tone: 20, hex: '#322F37' },
+      { tone: 30, hex: '#49454E' },
       { tone: 40, hex: '#605D66' },
       { tone: 50, hex: '#79757F' },
       { tone: 60, hex: '#938F99' },
       { tone: 70, hex: '#AEA9B4' },
-      { tone: 80, hex: '#C9C4D0' },
+      { tone: 80, hex: '#CAC4D0' },
       { tone: 90, hex: '#E7E0EC' },
-      { tone: 95, hex: '#F5EFFB' },
-      { tone: 98, hex: '#FCF6FF' },
+      { tone: 95, hex: '#F5EEFA' },
+      { tone: 98, hex: '#FEF7FF' },
       { tone: 99, hex: '#FFFBFE' },
       { tone: 100, hex: '#FFFFFF' },
     ],
   },
 };
 
-const LIGHT_SURFACE_CONTAINERS = [
-  { name: 'surface-container-lowest', hex: '#FFFFFF', desc: 'Mức thấp nhất (Card phẳng)' },
-  { name: 'surface-container-low', hex: '#F7F2FA', desc: 'Nền phụ trợ, navigation rail' },
-  { name: 'surface-container', hex: '#F3EDF7', desc: 'Nền top app bar, default container' },
-  { name: 'surface-container-high', hex: '#ECE6F0', desc: 'Mức nổi 1, bottom sheet' },
-  { name: 'surface-container-highest', hex: '#E6E0E9', desc: 'Textfield nền, chips, switch track' },
-];
-
-const DARK_SURFACE_CONTAINERS = [
-  { name: 'surface-container-lowest', hex: '#0F0D13', desc: 'Mức thấp nhất (Card phẳng)' },
-  { name: 'surface-container-low', hex: '#1D1B20', desc: 'Nền phụ trợ, navigation rail' },
-  { name: 'surface-container', hex: '#211F26', desc: 'Nền top app bar, default container' },
-  { name: 'surface-container-high', hex: '#2B2930', desc: 'Mức nổi 1, bottom sheet' },
-  { name: 'surface-container-highest', hex: '#36343B', desc: 'Textfield nền, chips, switch track' },
-];
-
 interface ColorSystemPageProps {
   theme?: 'light' | 'dark';
 }
 
 export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light' }) => {
+  const { t } = useTranslation();
   const [copiedInfo, setCopiedInfo] = useState<string | null>(null);
 
-  const surfaceContainers = theme === 'dark' ? DARK_SURFACE_CONTAINERS : LIGHT_SURFACE_CONTAINERS;
+  const surfaceContainers = [
+    { name: 'surface-container-lowest', hex: theme === 'dark' ? '#0F0D13' : '#FFFFFF', descKey: 'colors.lowest' },
+    { name: 'surface-container-low', hex: theme === 'dark' ? '#1D1B20' : '#F7F2FA', descKey: 'colors.low' },
+    { name: 'surface-container', hex: theme === 'dark' ? '#211F26' : '#F3EDF7', descKey: 'colors.container' },
+    { name: 'surface-container-high', hex: theme === 'dark' ? '#2B2930' : '#ECE6F0', descKey: 'colors.high' },
+    { name: 'surface-container-highest', hex: theme === 'dark' ? '#36343B' : '#E6E0E9', descKey: 'colors.highest' },
+  ];
 
   const handleCopyColor = (label: string, toneOrHex: number | string, hexVal?: string) => {
     const textToCopy = hexVal || String(toneOrHex);
@@ -155,17 +147,12 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
 
   const renderTonalRow = (group: PaletteGroup) => (
     <div className="m3-palette-row" key={group.label}>
-      {/* Circle swatch avatar */}
       <div
         className="m3-palette-key-circle"
         style={{ backgroundColor: group.key }}
         title={`Key color: ${group.key}`}
       />
-
-      {/* Label */}
       <div className="m3-palette-label">{group.label}</div>
-
-      {/* Arrow */}
       <div className="m3-palette-arrow">
         <svg width="48" height="12" viewBox="0 0 48 12" fill="none" style={{ width: '100%' }}>
           <line x1="0" y1="6" x2="42" y2="6" stroke="currentColor" strokeWidth="1.5" />
@@ -173,7 +160,6 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
         </svg>
       </div>
 
-      {/* 14 continuous tone blocks */}
       <div className="m3-palette-bar">
         {group.tones.map((item) => {
           const isLight = item.tone > 50;
@@ -186,7 +172,7 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
                 color: isLight ? '#000000' : '#FFFFFF',
               }}
               onClick={() => handleCopyColor(group.label, item.tone, item.hex)}
-              title={`Nhấp để sao chép: ${group.label} Tone ${item.tone} (${item.hex})`}
+              title={`${group.label} Tone ${item.tone} (${item.hex})`}
             >
               {item.tone}
             </div>
@@ -199,11 +185,9 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
   return (
     <div>
       <div className="doc-header">
-        <span className="doc-tag">Foundations</span>
-        <h1 className="doc-title">Hệ thống màu Luma UI</h1>
-        <p className="doc-description">
-          Luma UI sử dụng dải sắc độ (Tonal Palettes) gồm 14 mức tone chuẩn từ 0 (đen tuyệt đối) đến 100 (trắng tuyệt đối) với màu tím chủ đạo Luma Purple (#6750A4).
-        </p>
+        <span className="doc-tag">{t('colors.tag')}</span>
+        <h1 className="doc-title">{t('colors.title')}</h1>
+        <p className="doc-description">{t('colors.description')}</p>
       </div>
 
       {copiedInfo && (
@@ -223,21 +207,21 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
             animation: 'fadeIn 0.2s ease',
           }}
         >
-          ✓ Đã sao chép mã màu: <code>{copiedInfo}</code>
+          {t('colors.copied')} <code>{copiedInfo}</code>
         </div>
       )}
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginTop: 28, marginBottom: 8 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700 }}>
-          Dải sắc độ (Tonal Palettes)
+          {t('colors.tonalTitle')}
         </h2>
         <span style={{ fontSize: 12, color: 'var(--md-sys-color-primary)', fontWeight: 500 }}>
-          👉 Vuốt ngang để xem đủ 14 nấc màu
+          {t('colors.tonalTip')}
         </span>
       </div>
 
       <p style={{ fontSize: 13.5, color: 'var(--md-sys-color-on-surface-variant)', marginBottom: 16 }}>
-        Nhấp trực tiếp vào bất kỳ ô số nào để sao chép mã HEX tương ứng:
+        {t('colors.tonalDesc')}
       </p>
 
       {/* SHOWCASE CARD FOR LUMA PURPLE */}
@@ -249,9 +233,9 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
         {renderTonalRow(LUMA_PALETTES.neutralVariant)}
       </div>
 
-      <h2 style={{ fontSize: 20, fontWeight: 700, margin: '36px 0 14px 0' }}>Surface Containers & Elevations</h2>
+      <h2 style={{ fontSize: 20, fontWeight: 700, margin: '36px 0 14px 0' }}>{t('colors.surfaceTitle')}</h2>
       <p style={{ fontSize: 13.5, color: 'var(--md-sys-color-on-surface-variant)', marginBottom: 16 }}>
-        Thay vì phụ thuộc vào bóng đổ, Luma UI sử dụng 5 cấp độ màu Surface Container ({theme === 'dark' ? 'Dark Theme' : 'Light Theme'}) để phân tầng chiều sâu:
+        {t('colors.surfaceDesc')}
       </p>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 36 }}>
@@ -274,12 +258,12 @@ export const ColorSystemPage: React.FC<ColorSystemPageProps> = ({ theme = 'light
           >
             <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 4 }}>{sc.name}</div>
             <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--md-sys-color-primary)' }}>{sc.hex}</div>
-            <div style={{ fontSize: 11.5, opacity: 0.7, marginTop: 8 }}>{sc.desc}</div>
+            <div style={{ fontSize: 11.5, opacity: 0.7, marginTop: 8 }}>{t(sc.descKey)}</div>
           </div>
         ))}
       </div>
 
-      <h2 style={{ fontSize: 20, fontWeight: 700, margin: '36px 0 14px 0' }}>Cách sử dụng trong code React Native</h2>
+      <h2 style={{ fontSize: 20, fontWeight: 700, margin: '36px 0 14px 0' }}>{t('colors.usageTitle')}</h2>
       <CodeBlock
         language="tsx"
         code={`import {

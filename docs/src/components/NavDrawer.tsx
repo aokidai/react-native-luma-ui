@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ComponentData } from '../types';
 import { LumaLogo } from './LumaLogo';
 
@@ -17,6 +18,7 @@ export const NavDrawer: React.FC<NavDrawerProps> = ({
   isOpen = false,
   onClose,
 }) => {
+  const { t } = useTranslation();
   // Group components by category
   const categories = Array.from(new Set(components.map((c) => c.category)));
 
@@ -41,7 +43,7 @@ export const NavDrawer: React.FC<NavDrawerProps> = ({
             type="button"
             className="icon-button"
             onClick={onClose}
-            aria-label="Đóng menu"
+            aria-label={t('nav.closeMenu')}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -51,7 +53,7 @@ export const NavDrawer: React.FC<NavDrawerProps> = ({
         </div>
 
         {/* Overview & Foundations */}
-        <div className="nav-section-title">Khám phá</div>
+        <div className="nav-section-title">{t('nav.explore')}</div>
         <button
           className={`nav-item ${activeId === 'getting-started' ? 'active' : ''}`}
           onClick={() => handleItemClick('getting-started')}
@@ -59,7 +61,7 @@ export const NavDrawer: React.FC<NavDrawerProps> = ({
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
           </svg>
-          Bắt đầu (Get Started)
+          {t('nav.gettingStarted')}
         </button>
 
         <button
@@ -70,12 +72,12 @@ export const NavDrawer: React.FC<NavDrawerProps> = ({
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M12 2a7 7 0 0 0 7 7c0 2-2 3-2 3s-1 1-1 2a2 2 0 0 0 4 0"></path>
           </svg>
-          Hệ màu Luma (Color System)
+          {t('nav.colorSystem')}
           <span className="nav-item-badge">Luma</span>
         </button>
 
         {/* Components Grouped by Category */}
-        <div className="nav-section-title" style={{ marginTop: 16 }}>Thành phần (Components)</div>
+        <div className="nav-section-title" style={{ marginTop: 16 }}>{t('nav.components')}</div>
         {categories.map((category) => {
           const catComponents = components.filter((c) => c.category === category);
           return (

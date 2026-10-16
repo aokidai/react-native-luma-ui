@@ -134,8 +134,8 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
   const [navIndex, setNavIndex] = useState(0);
 
   // AppBar State
-  const [appBarTitle, setAppBarTitle] = useState('Chi tiết đơn hàng');
-  const [appBarSubtitle, setAppBarSubtitle] = useState('Mã đơn: #LM-98214');
+  const [appBarTitle, setAppBarTitle] = useState('Order Details');
+  const [appBarSubtitle, setAppBarSubtitle] = useState('Order ID: #LM-98214');
   const [appBarShowBack, setAppBarShowBack] = useState(true);
   const [appBarCenterTitle, setAppBarCenterTitle] = useState(false);
   const [appBarElevated, setAppBarElevated] = useState(false);
@@ -164,13 +164,13 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       data-theme={previewTheme === 'auto' ? undefined : previewTheme}
     >
       <div className="playground-preview-header">
-        <span className="playground-title">Trình diễn tương tác (Interactive Preview)</span>
+        <span className="playground-title">Interactive Preview</span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <button
             type="button"
             className="m3-icon-button"
             style={{ width: 28, height: 28, fontSize: 13 }}
-            title={`Chế độ xem: ${previewTheme === 'auto' ? 'Theo hệ thống' : previewTheme === 'dark' ? 'Chế độ Tối' : 'Chế độ Sáng'}`}
+            title={`Chế độ xem: ${previewTheme === 'auto' ? 'System' : previewTheme === 'dark' ? 'Dark Mode' : 'Light Mode'}`}
             onClick={() => {
               setPreviewTheme((t) => (t === 'auto' ? 'light' : t === 'light' ? 'dark' : 'auto'));
             }}
@@ -178,7 +178,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
             {previewTheme === 'light' ? '☀️' : previewTheme === 'dark' ? '🌙' : '🌓'}
           </button>
           <span style={{ fontSize: 12, opacity: 0.7 }}>
-            {previewTheme === 'auto' ? 'Theo tài liệu' : previewTheme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+            {previewTheme === 'auto' ? 'Doc Theme' : previewTheme === 'dark' ? 'Dark Mode' : 'Light Mode'}
           </span>
         </div>
       </div>
@@ -229,15 +229,15 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               }}
             >
               {btnLoading ? (
-                <span>Đang tải...</span>
+                <span>Loading...</span>
               ) : (
                 <>
-                  <span>Nhấn tôi ({btnClicks})</span>
+                  <span>Click Me ({btnClicks})</span>
                 </>
               )}
             </button>
             <div style={{ marginTop: 12, fontSize: 12, color: 'var(--md-sys-color-on-surface-variant)' }}>
-              Đã bấm: {btnClicks} lần • Chế độ: <code>{btnMode}</code>
+              Clicked: {btnClicks} times • Mode: <code>{btnMode}</code>
             </div>
           </div>
         )}
@@ -297,7 +297,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 cursor: 'pointer',
               }}
             >
-              Mở BottomSheet Xem Thử
+              Open BottomSheet Preview
             </button>
 
             {sheetOpen && (
@@ -337,7 +337,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                     }}
                   />
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                    <h4 style={{ fontSize: 18, fontWeight: 700 }}>Tùy chọn thao tác</h4>
+                    <h4 style={{ fontSize: 18, fontWeight: 700 }}>Action Options</h4>
                     <button
                       onClick={() => setSheetOpen(false)}
                       style={{
@@ -349,11 +349,11 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                         fontWeight: 600,
                       }}
                     >
-                      Đóng
+                      Close
                     </button>
                   </div>
                   <p style={{ fontSize: 13.5, color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.5 }}>
-                    BottomSheet chuẩn Luma UI với góc bo tròn 28dp và scrim đè mờ toàn phần.
+                    Standard Luma UI BottomSheet featuring 28dp rounded corners and backdrop scrim.
                   </p>
                 </div>
               </div>
@@ -376,7 +376,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 cursor: 'pointer',
               }}
             >
-              Kích hoạt Snackbar
+              Trigger Snackbar
             </button>
 
             {snackOpen && (
@@ -398,7 +398,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   boxShadow: 'var(--md-sys-elevation-3)',
                 }}
               >
-                <span style={{ fontSize: 13.5 }}>Đã lưu tài liệu thành công.</span>
+                <span style={{ fontSize: 13.5 }}>Document saved successfully.</span>
                 <button
                   onClick={() => setSnackOpen(false)}
                   style={{
@@ -410,7 +410,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                     cursor: 'pointer',
                   }}
                 >
-                  HOÀN TÁC
+                  UNDO
                 </button>
               </div>
             )}
@@ -441,13 +441,13 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   display: 'block',
                 }}
               >
-                Họ và tên
+                Full Name
               </label>
               <input
                 type="text"
                 value={tfVal}
                 onChange={(e) => setTfVal(e.target.value)}
-                placeholder="Nhập tên của bạn..."
+                placeholder="Enter your name..."
                 style={{
                   width: '100%',
                   border: 'none',
@@ -461,11 +461,11 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
             </div>
             {tfError ? (
               <span style={{ fontSize: 11, color: 'var(--md-sys-color-error)', display: 'block', marginTop: 4 }}>
-                Trường này không được để trống
+                This field is required
               </span>
             ) : (
               <span style={{ fontSize: 11, color: 'var(--md-sys-color-on-surface-variant)', display: 'block', marginTop: 4 }}>
-                Nhập đầy đủ họ và tên theo CCCD
+                Enter your full name as shown on ID
               </span>
             )}
           </div>
@@ -507,9 +507,9 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               )}
             </div>
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: 14, fontWeight: 600 }}>Tùy chọn tự động sao lưu</div>
+              <div style={{ fontSize: 14, fontWeight: 600 }}>Automatic Backup Options</div>
               <div style={{ fontSize: 12, color: 'var(--md-sys-color-on-surface-variant)' }}>
-                {cbChecked ? 'Đang bật sao lưu định kỳ' : 'Chưa bật tính năng này'}
+                {cbChecked ? 'Periodic backup enabled' : 'Feature disabled'}
               </div>
             </div>
           </div>
@@ -531,9 +531,9 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
             }}
           >
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: 14, fontWeight: 600 }}>Chế độ tối ưu hóa hiệu năng</div>
+              <div style={{ fontSize: 14, fontWeight: 600 }}>Performance Optimization Mode</div>
               <div style={{ fontSize: 12, color: 'var(--md-sys-color-on-surface-variant)' }}>
-                {switchVal ? 'Đang kích hoạt' : 'Đã vô hiệu hóa'}
+                {switchVal ? 'Active' : 'Disabled'}
               </div>
             </div>
             <div
@@ -591,15 +591,15 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--md-sys-color-primary)', textTransform: 'uppercase' }}>
-                Thẻ Luma UI • {cardType}
+                Luma UI Card • {cardType}
               </span>
               <span style={{ fontSize: 11, background: '#E8DEF8', color: '#4A4458', padding: '2px 8px', borderRadius: 9999 }}>
-                Hoàn thành
+                Completed
               </span>
             </div>
-            <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>Báo cáo phân tích quý 3</h4>
+            <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>Q3 Analytics Report</h4>
             <p style={{ fontSize: 13, color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.5, marginBottom: 16 }}>
-              Giao diện tuân thủ tiêu chuẩn Luma UI đem lại trải nghiệm cao cấp cho người dùng React Native.
+              Luma UI compliant interface delivering a premium experience for React Native apps.
             </p>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
               <button
@@ -614,7 +614,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   cursor: 'pointer',
                 }}
               >
-                Khám phá
+                Explore
               </button>
             </div>
           </div>
@@ -641,7 +641,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               }}
             >
               {chip1 && <span>✓</span>}
-              <span>Bộ lọc: React Native</span>
+              <span>Filter: React Native</span>
             </button>
 
             <button
@@ -703,7 +703,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 cursor: 'pointer',
               }}
             >
-              Mở Hộp Thoại Dialog
+              Open Alert Dialog
             </button>
 
             {dialogOpen && (
@@ -733,9 +733,9 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12 }}>Xác nhận xóa tài khoản?</h4>
+                  <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12 }}>Confirm Account Deletion?</h4>
                   <p style={{ fontSize: 13.5, color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.5, marginBottom: 20 }}>
-                    Thao tác này sẽ xóa toàn bộ dữ liệu dự án của bạn và không thể phục hồi lại.
+                    This action will permanently delete your project data and cannot be undone.
                   </p>
                   <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12 }}>
                     <button
@@ -749,7 +749,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                         cursor: 'pointer',
                       }}
                     >
-                      Hủy bỏ
+                      Cancel
                     </button>
                     <button
                       onClick={() => setDialogOpen(false)}
@@ -764,7 +764,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                         cursor: 'pointer',
                       }}
                     >
-                      Xác nhận
+                      Confirm
                     </button>
                   </div>
                 </div>
@@ -837,7 +837,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   ) : null}
                 </div>
                 <span style={{ fontSize: 12, color: 'var(--md-sys-color-on-surface-variant)' }}>
-                  {badgeDot ? 'Dạng chấm (Dot)' : `Số lượng: ${badgeCount}`}
+                  {badgeDot ? 'Dot Style' : `Count: ${badgeCount}`}
                 </span>
               </div>
 
@@ -875,7 +875,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   />
                 </div>
                 <span style={{ fontSize: 12, color: 'var(--md-sys-color-on-surface-variant)' }}>
-                  Trạng thái (Online)
+                  Status (Online)
                 </span>
               </div>
             </div>
@@ -893,7 +893,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               }}
             >
               <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--md-sys-color-on-surface)' }}>
-                Tăng giảm số huy hiệu:
+                Adjust Badge Count:
               </span>
               <div style={{ display: 'flex', gap: 8 }}>
                 <button
@@ -960,9 +960,9 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
             }}
           >
             {[
-              { val: 'day', label: 'Ngày' },
-              { val: 'week', label: 'Tuần' },
-              { val: 'month', label: 'Tháng' },
+              { val: 'day', label: 'Day' },
+              { val: 'week', label: 'Week' },
+              { val: 'month', label: 'Month' },
             ].map((btn) => {
               const active = segVal === btn.val;
               return (
@@ -1014,7 +1014,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
             {[
               {
                 idx: 0,
-                label: 'Trang chủ',
+                label: 'Home',
                 icon: (act: boolean) => (
                   <MaterialHomeIcon
                     filled={act}
@@ -1025,7 +1025,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               },
               {
                 idx: 1,
-                label: 'Tìm kiếm',
+                label: 'Search',
                 icon: (act: boolean) => (
                   <MaterialSearchIcon
                     size={22}
@@ -1035,7 +1035,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               },
               {
                 idx: 2,
-                label: 'Thông báo',
+                label: 'Notifications',
                 badge: 3,
                 icon: (act: boolean) => (
                   <MaterialNotificationsIcon
@@ -1047,7 +1047,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               },
               {
                 idx: 3,
-                label: 'Cài đặt',
+                label: 'Settings',
                 icon: (act: boolean) => (
                   <MaterialSettingsIcon
                     size={22}
@@ -1162,7 +1162,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   {appBarShowBack && (
                     <button
                       type="button"
-                      onClick={() => setAppBarToast('Đã bấm: Quay lại (Back)')}
+                      onClick={() => setAppBarToast('Pressed: Back')}
                       style={{
                         width: 40,
                         height: 40,
@@ -1176,7 +1176,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                         cursor: 'pointer',
                         flexShrink: 0,
                       }}
-                      title="Quay lại"
+                      title="Back"
                     >
                       <MaterialArrowBackIcon size={22} color="var(--md-sys-color-on-surface)" />
                     </button>
@@ -1213,7 +1213,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
                   <button
                     type="button"
-                    onClick={() => setAppBarToast('Đã bấm: Tìm kiếm')}
+                    onClick={() => setAppBarToast('Pressed: Search')}
                     style={{
                       width: 40,
                       height: 40,
@@ -1232,7 +1232,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   </button>
                   <button
                     type="button"
-                    onClick={() => setAppBarToast('Đã bấm: Tùy chọn khác')}
+                    onClick={() => setAppBarToast('Pressed: More options')}
                     style={{
                       width: 40,
                       height: 40,
@@ -1245,7 +1245,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                       justifyContent: 'center',
                       cursor: 'pointer',
                     }}
-                    title="Tùy chọn"
+                    title="Options"
                   >
                     <MaterialMoreVertIcon size={20} color="var(--md-sys-color-on-surface-variant)" />
                   </button>
@@ -1267,7 +1267,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                     ⚡ {appBarToast}
                   </span>
                 ) : (
-                  <span>Nội dung màn hình cuộn bên dưới AppBar chuẩn Material 3.</span>
+                  <span>Scrollable content area beneath standard Luma UI AppBar.</span>
                 )}
               </div>
             </div>
@@ -1334,7 +1334,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   }}
                 >
                   <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--md-sys-color-on-surface)' }}>
-                    Trang chủ Luma
+                    Luma Home
                   </span>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <MaterialSearchIcon size={18} color="var(--md-sys-color-on-surface-variant)" />
@@ -1362,10 +1362,10 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   }}
                 >
                   <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--md-sys-color-primary)', marginBottom: 4 }}>
-                    Khung sườn ứng dụng
+                    Application Scaffold
                   </div>
                   <div style={{ fontSize: 11, color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.4 }}>
-                    Scaffold tự động kết nối AppBar, Status Bar, Bottom Bar và FAB slot.
+                    Scaffold coordinates AppBar, Status Bar, Bottom Bar, and FAB slot.
                   </div>
                 </div>
 
@@ -1378,10 +1378,10 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                   }}
                 >
                   <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--md-sys-color-on-surface)', marginBottom: 4 }}>
-                    Tràn viền màn hình
+                    Edge-to-Edge Screen
                   </div>
                   <div style={{ fontSize: 11, color: 'var(--md-sys-color-on-surface-variant)' }}>
-                    {scaffoldEdgeToEdge ? 'Bật Edge-to-Edge tràn viền mượt mà' : 'Đang dùng Safe Area chuẩn'}
+                    {scaffoldEdgeToEdge ? 'Edge-to-Edge enabled' : 'Standard Safe Area in use'}
                   </div>
                 </div>
               </div>
@@ -1425,15 +1425,15 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 >
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <MaterialHomeIcon filled size={18} color="var(--md-sys-color-primary)" />
-                    <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--md-sys-color-primary)' }}>Chính</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--md-sys-color-primary)' }}>Home</span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <MaterialSearchIcon size={18} color="var(--md-sys-color-on-surface-variant)" />
-                    <span style={{ fontSize: 10, color: 'var(--md-sys-color-on-surface-variant)' }}>Tìm</span>
+                    <span style={{ fontSize: 10, color: 'var(--md-sys-color-on-surface-variant)' }}>Search</span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <MaterialSettingsIcon size={18} color="var(--md-sys-color-on-surface-variant)" />
-                    <span style={{ fontSize: 10, color: 'var(--md-sys-color-on-surface-variant)' }}>Cài đặt</span>
+                    <span style={{ fontSize: 10, color: 'var(--md-sys-color-on-surface-variant)' }}>Settings</span>
                   </div>
                 </div>
               )}
@@ -1466,17 +1466,17 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 )}
                 <div>
                   <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--md-sys-color-primary)' }}>
-                    {pickerMode === 'date' ? 'Ngày được chọn' : pickerMode === 'time' ? 'Giờ được chọn' : 'Thời gian đã chọn'}
+                    {pickerMode === 'date' ? 'Selected Date' : pickerMode === 'time' ? 'Selected Time' : 'Selected Time'}
                   </div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--md-sys-color-on-surface)' }}>
-                    {pickerMode === 'date' && `Ngày ${selectedDay} Tháng 10, 2026`}
+                    {pickerMode === 'date' && `Ngày ${selectedDay} October 2026`}
                     {pickerMode === 'time' && `${String(selectedHour).padStart(2, '0')}:${String(selectedMinute).padStart(2, '0')} ${picker24Hour ? '(24h)' : selectedHour >= 12 ? 'PM' : 'AM'}`}
                     {pickerMode === 'datetime' && `Ngày ${selectedDay}/10/2026 • ${String(selectedHour).padStart(2, '0')}:${String(selectedMinute).padStart(2, '0')}`}
                   </div>
                 </div>
               </div>
               <span style={{ fontSize: 12, color: 'var(--md-sys-color-primary)', fontWeight: 600 }}>
-                {pickerExpanded ? 'Thu gọn ▲' : 'Mở lịch ▼'}
+                {pickerExpanded ? 'Collapse ▲' : 'Open Calendar ▼'}
               </span>
             </div>
 
@@ -1494,10 +1494,10 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 {/* Header with Quick Presets */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                   <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--md-sys-color-on-surface)' }}>
-                    Tháng 10, 2026
+                    October 2026
                   </span>
                   <div style={{ display: 'flex', gap: 6 }}>
-                    {['Hôm nay', 'Ngày mai'].map((label, i) => (
+                    {['Today', 'Tomorrow'].map((label, i) => (
                       <button
                         key={label}
                         type="button"
@@ -1571,7 +1571,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 {pickerMode !== 'date' && (
                   <div style={{ marginTop: pickerMode === 'datetime' ? 14 : 0, paddingTop: pickerMode === 'datetime' ? 12 : 0, borderTop: pickerMode === 'datetime' ? '1px solid var(--md-sys-color-outline-variant)' : 'none' }}>
                     <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--md-sys-color-on-surface-variant)', marginBottom: 8, textAlign: 'center' }}>
-                      Chọn thời gian ({picker24Hour ? '24h' : '12h'}):
+                      Select Time ({picker24Hour ? '24h' : '12h'}):
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
                       {/* Hour */}
@@ -1694,7 +1694,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
                 {componentId.replace('-', ' ').toUpperCase()}
               </h4>
               <p style={{ fontSize: 13, color: 'var(--md-sys-color-on-surface-variant)' }}>
-                Component đã sẵn sàng sử dụng trong ứng dụng React Native với đầy đủ props và Luma UI tokens.
+                Component is ready for use in React Native applications with comprehensive props and Luma UI design tokens.
               </p>
             </div>
           )}
@@ -1704,7 +1704,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       {componentId === 'button' && (
         <div className="playground-controls">
           <div className="control-chips-group">
-            <span className="control-label">Chế độ (Mode):</span>
+            <span className="control-label">Mode:</span>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {(['filled', 'elevated', 'tonal', 'outlined', 'text'] as const).map((m) => {
                 const active = btnMode === m;
@@ -1748,7 +1748,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       {componentId === 'card' && (
         <div className="playground-controls">
           <div className="control-chips-group">
-            <span className="control-label">Phong cách (Style):</span>
+            <span className="control-label">Style:</span>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {[
                 { id: 'elevated', label: 'Elevated' },
@@ -1776,11 +1776,11 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       {componentId === 'checkbox' && (
         <div className="playground-controls">
           <div className="control-chips-group">
-            <span className="control-label">Hình dạng (Shape):</span>
+            <span className="control-label">Shape:</span>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {[
-                { id: 'square', label: 'Vuông (Square 4dp)' },
-                { id: 'circle', label: 'Tròn (Circle)' },
+                { id: 'square', label: 'Square (4dp)' },
+                { id: 'circle', label: 'Circle' },
               ].map((item) => {
                 const active = cbShape === item.id;
                 return (
@@ -1805,7 +1805,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setCbChecked(!cbChecked)}
             >
               {cbChecked && <span className="chip-check">✓</span>}
-              <span>{cbChecked ? 'Đã chọn (Checked)' : 'Chưa chọn (Unchecked)'}</span>
+              <span>{cbChecked ? 'Checked' : 'Unchecked'}</span>
             </button>
           </div>
         </div>
@@ -1820,7 +1820,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setShowBubble(!showBubble)}
             >
               {showBubble && <span className="chip-check">✓</span>}
-              <span>Hiện bong bóng giá trị (Value Bubble)</span>
+              <span>Show Value Bubble</span>
             </button>
           </div>
         </div>
@@ -1835,7 +1835,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setTfError(!tfError)}
             >
               {tfError && <span className="chip-check">✓</span>}
-              <span>Giả lập báo lỗi (Error State)</span>
+              <span>Simulate Error State</span>
             </button>
           </div>
         </div>
@@ -1844,14 +1844,14 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       {componentId === 'badges' && (
         <div className="playground-controls">
           <div className="control-chips-group">
-            <span className="control-label">Kiểu hiển thị:</span>
+            <span className="control-label">Display Style:</span>
             <button
               type="button"
               className={`m3-filter-chip ${!badgeDot ? 'active' : ''}`}
               onClick={() => setBadgeDot(false)}
             >
               {!badgeDot && <span className="chip-check">✓</span>}
-              <span>Hiển thị số đếm (Count)</span>
+              <span>Show Count</span>
             </button>
             <button
               type="button"
@@ -1859,19 +1859,19 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setBadgeDot(true)}
             >
               {badgeDot && <span className="chip-check">✓</span>}
-              <span>Dấu chấm (Dot)</span>
+              <span>Small Dot</span>
             </button>
           </div>
 
           <div className="control-chips-group" style={{ marginTop: 4 }}>
-            <span className="control-label">Màu sắc:</span>
+            <span className="control-label">Color:</span>
             <button
               type="button"
               className={`m3-filter-chip ${badgeVariant === 'error' ? 'active' : ''}`}
               onClick={() => setBadgeVariant('error')}
             >
               {badgeVariant === 'error' && <span className="chip-check">✓</span>}
-              <span>Cảnh báo (Error Red)</span>
+              <span>Error (Red)</span>
             </button>
             <button
               type="button"
@@ -1879,7 +1879,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setBadgeVariant('primary')}
             >
               {badgeVariant === 'primary' && <span className="chip-check">✓</span>}
-              <span>Chủ đạo (Primary)</span>
+              <span>Primary</span>
             </button>
           </div>
         </div>
@@ -1888,12 +1888,12 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       {componentId === 'navigation-bar' && (
         <div className="playground-controls">
           <div className="control-chips-group">
-            <span className="control-label">Chuyển Tab nhanh:</span>
+            <span className="control-label">Quick Switch Tab:</span>
             {[
-              { id: 0, label: 'Trang chủ' },
-              { id: 1, label: 'Tìm kiếm' },
-              { id: 2, label: 'Thông báo' },
-              { id: 3, label: 'Cài đặt' },
+              { id: 0, label: 'Home' },
+              { id: 1, label: 'Search' },
+              { id: 2, label: 'Notifications' },
+              { id: 3, label: 'Settings' },
             ].map((t) => (
               <button
                 key={t.id}
@@ -1918,7 +1918,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setAppBarShowBack(!appBarShowBack)}
             >
               {appBarShowBack && <span className="chip-check">✓</span>}
-              <span>Nút quay lại (Back)</span>
+              <span>Back Button</span>
             </button>
             <button
               type="button"
@@ -1926,15 +1926,15 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setAppBarCenterTitle(!appBarCenterTitle)}
             >
               {appBarCenterTitle && <span className="chip-check">✓</span>}
-              <span>Căn giữa tiêu đề (Center Title)</span>
+              <span>Center Title</span>
             </button>
             <button
               type="button"
               className={`m3-filter-chip ${appBarSubtitle ? 'active' : ''}`}
-              onClick={() => setAppBarSubtitle(appBarSubtitle ? '' : 'Mã đơn: #LM-98214')}
+              onClick={() => setAppBarSubtitle(appBarSubtitle ? '' : 'Order ID: #LM-98214')}
             >
               {appBarSubtitle && <span className="chip-check">✓</span>}
-              <span>Phụ đề (Subtitle)</span>
+              <span>Subtitle</span>
             </button>
             <button
               type="button"
@@ -1942,7 +1942,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setAppBarElevated(!appBarElevated)}
             >
               {appBarElevated && <span className="chip-check">✓</span>}
-              <span>Bóng đổ (Elevated Level 2)</span>
+              <span>Elevation (Level 2)</span>
             </button>
           </div>
         </div>
@@ -1965,7 +1965,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setScaffoldShowFab(!scaffoldShowFab)}
             >
               {scaffoldShowFab && <span className="chip-check">✓</span>}
-              <span>Nút nổi (FAB)</span>
+              <span>Floating Action Button (FAB)</span>
             </button>
             <button
               type="button"
@@ -1973,7 +1973,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setScaffoldShowBottomNav(!scaffoldShowBottomNav)}
             >
               {scaffoldShowBottomNav && <span className="chip-check">✓</span>}
-              <span>Thanh đáy (BottomNav)</span>
+              <span>Bottom Navigation</span>
             </button>
             <button
               type="button"
@@ -1981,7 +1981,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setScaffoldEdgeToEdge(!scaffoldEdgeToEdge)}
             >
               {scaffoldEdgeToEdge && <span className="chip-check">✓</span>}
-              <span>Tràn viền (Edge-to-Edge)</span>
+              <span>Edge-to-Edge</span>
             </button>
           </div>
         </div>
@@ -1990,11 +1990,11 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
       {componentId === 'date-time-picker' && (
         <div className="playground-controls">
           <div className="control-chips-group">
-            <span className="control-label">Chế độ chọn:</span>
+            <span className="control-label">Selection Mode:</span>
             {[
-              { id: 'date', label: 'Chỉ Ngày' },
-              { id: 'time', label: 'Chỉ Giờ' },
-              { id: 'datetime', label: 'Cả Ngày & Giờ' },
+              { id: 'date', label: 'Date Only' },
+              { id: 'time', label: 'Time Only' },
+              { id: 'datetime', label: 'Date & Time' },
             ].map((m) => {
               const active = pickerMode === m.id;
               return (
@@ -2017,7 +2017,7 @@ export const InteractivePlayground: React.FC<InteractivePlaygroundProps> = ({ co
               onClick={() => setPicker24Hour(!picker24Hour)}
             >
               {picker24Hour && <span className="chip-check">✓</span>}
-              <span>Định dạng 24 Giờ</span>
+              <span>24-Hour Format</span>
             </button>
           </div>
         </div>

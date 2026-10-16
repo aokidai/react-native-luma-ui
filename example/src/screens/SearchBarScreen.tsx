@@ -11,13 +11,13 @@ export const SearchBarScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="SearchBar với Debounce tự động">
+      <Card title="SearchBar with Automatic Debounce">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Đã gõ: <Text style={{ fontWeight: '700' }}>"{query}"</Text> (Debounce
+          Typed: <Text style={{ fontWeight: '700' }}>"{query}"</Text> (Debounce
           200ms)
         </Text>
         <SearchBar
-          placeholder="Tìm kiếm tài liệu, nhân viên..."
+          placeholder="Search documents, employees..."
           onChangeText={setQuery}
           renderLeftIcon={() => (
             <MaterialDesignIcons name="magnify" size={20} color="#757575" />
@@ -26,17 +26,16 @@ export const SearchBarScreen = () => {
         />
       </Card>
 
-      <Card title="SearchBar dạng nút bấm (Trigger Mode)">
+      <Card title="Trigger Mode SearchBar">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Dùng làm thanh tìm kiếm ở màn hình chủ, khi bấm sẽ mở màn hình tìm
-          kiếm chuyên biệt:
+          Used as home search trigger, opens dedicated search screen on tap:
         </Text>
         <SearchBar
-          placeholder="Chạm để mở trang tìm kiếm"
+          placeholder="Tap to open search page"
           renderLeftIcon={() => (
             <MaterialDesignIcons name="magnify" size={20} color="#6200EE" />
           )}
-          onPress={() => Alert.alert('Thông báo', 'Đã mở trang tìm kiếm!')}
+          onPress={() => Alert.alert('Notification', 'Search page opened!')}
         />
       </Card>
     </ScrollView>

@@ -13,11 +13,10 @@ export const NavigationBarScreen = () => {
     >
       <Card title="Luma UI Navigation Bar (Bottom Tabs)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Thanh điều hướng dưới đáy màn hình với active pill indicator bo tròn
-          64x32px chuẩn Luma UI:
+          Bottom navigation bar featuring rounded 64x32px active pill indicator following Luma UI:
         </Text>
         <Text style={{ marginBottom: 12 }}>
-          Tab đang chọn:{' '}
+          Active tab:{' '}
           <Text style={{ fontWeight: '700' }}>Index {selectedTab}</Text>
         </Text>
 
@@ -31,28 +30,28 @@ export const NavigationBarScreen = () => {
         >
           <NavigationBar selectedIndex={selectedTab} onSelect={setSelectedTab}>
             <NavigationBar.Item
-              label="Trang chủ"
+              label="Home"
               icon={<MaterialDesignIcons name="home-outline" size={24} />}
               activeIcon={
                 <MaterialDesignIcons name="home" size={24} color="#6200EE" />
               }
             />
             <NavigationBar.Item
-              label="Tìm kiếm"
+              label="Search"
               icon={<MaterialDesignIcons name="magnify" size={24} />}
               activeIcon={
                 <MaterialDesignIcons name="magnify" size={24} color="#6200EE" />
               }
             />
             <NavigationBar.Item
-              label="Thông báo"
+              label="Notification"
               icon={<MaterialDesignIcons name="bell-outline" size={24} />}
               activeIcon={
                 <MaterialDesignIcons name="bell" size={24} color="#6200EE" />
               }
             />
             <NavigationBar.Item
-              label="Cá nhân"
+              label="Profile"
               icon={<MaterialDesignIcons name="account-outline" size={24} />}
               activeIcon={
                 <MaterialDesignIcons name="account" size={24} color="#6200EE" />

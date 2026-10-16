@@ -18,13 +18,12 @@ export const ImageViewScreen = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ padding: 16, gap: 16 }}
     >
-      <Card title="Trình xem ảnh toàn màn hình (Image Viewer)">
+      <Card title="Fullscreen Image Viewer">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Xem ảnh full screen với điều hướng ảnh tiếp theo/trước đó, số thứ tự,
-          nút Chia sẻ & Tải về:
+          View full screen photos with next/previous navigation, index counter, and Share & Download buttons:
         </Text>
         <Button
-          label="Mở Trình xem ảnh (3 ảnh)"
+          label="Open Image Viewer (3 images)"
           mode="elevated"
           onPress={() => setOpenViewer(true)}
         />
@@ -36,14 +35,14 @@ export const ImageViewScreen = () => {
         images={sampleImages}
         onShare={(img) =>
           Alert.alert(
-            'Chia sẻ',
-            `Chia sẻ ảnh: ${typeof img === 'string' ? img : img.uri}`
+            'Share',
+            `Share image: ${typeof img === 'string' ? img : img.uri}`
           )
         }
         onDownload={(img) =>
           Alert.alert(
-            'Tải về',
-            `Đang tải ảnh: ${typeof img === 'string' ? img : img.uri}`
+            'Download',
+            `Downloading image: ${typeof img === 'string' ? img : img.uri}`
           )
         }
       />

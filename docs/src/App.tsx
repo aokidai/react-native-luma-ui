@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import './theme/m3.css';
 import { TopAppBar } from './components/TopAppBar';
 import { NavDrawer } from './components/NavDrawer';
 import { GettingStarted } from './pages/GettingStarted';
 import { ColorSystemPage } from './pages/ColorSystemPage';
 import { ComponentDocPage } from './pages/ComponentDocPage';
-import { COMPONENTS_DATA } from './data/componentsData';
+import { getComponentsData } from './data/componentsData';
 
 export function App() {
+  const { i18n } = useTranslation();
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
       const saved = localStorage.getItem('luma-docs-theme');
@@ -19,6 +21,8 @@ export function App() {
   const [activeId, setActiveId] = useState<string>('getting-started');
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+
+  const components = useMemo(() => getComponentsData(i18n.language), [i18n.language]);
 
   // Sync theme with html data-theme & localStorage
   useEffect(() => {
@@ -48,13 +52,13 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const filteredComponents = COMPONENTS_DATA.filter((c) =>
+  const filteredComponents = components.filter((c) =>
     c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     c.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
     c.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const selectedComponent = COMPONENTS_DATA.find((c) => c.id === activeId);
+  const selectedComponent = components.find((c) => c.id === activeId);
 
   return (
     <div className="app-container">

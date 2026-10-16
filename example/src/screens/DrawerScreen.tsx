@@ -14,11 +14,10 @@ export const DrawerScreen = () => {
     >
       <Card title="Navigation Drawer (Luma UI)">
         <Text style={{ color: '#757575', marginBottom: 12 }}>
-          Ngăn kéo điều hướng với hiệu ứng trượt Slide & Backdrop Animation. Bấm
-          nút dưới để thử mở một Drawer demo độc lập:
+          Navigation drawer with Slide & Backdrop animations. Tap the button below to test a standalone demo Drawer:
         </Text>
         <Button
-          label="Mở Drawer Demo"
+          label="Open Demo Drawer"
           mode="elevated"
           onPress={() => setDemoOpen(true)}
         />
@@ -38,15 +37,15 @@ export const DrawerScreen = () => {
         }
         footer={
           <Button
-            label="Đăng xuất"
+            label="Log out"
             mode="text"
             onPress={() => setDemoOpen(false)}
           />
         }
       >
-        <Drawer.Section title="Hộp thư">
+        <Drawer.Section title="Mailbox">
           <Drawer.Item
-            label="Hộp thư đến"
+            label="Inbox"
             icon={<MaterialDesignIcons name="inbox" size={20} />}
             active={activeItem === 'inbox'}
             onPress={() => setActiveItem('inbox')}
@@ -55,13 +54,13 @@ export const DrawerScreen = () => {
             }
           />
           <Drawer.Item
-            label="Đã gửi"
+            label="Sent"
             icon={<MaterialDesignIcons name="send" size={20} />}
             active={activeItem === 'sent'}
             onPress={() => setActiveItem('sent')}
           />
           <Drawer.Item
-            label="Thùng rác"
+            label="Trash"
             icon={<MaterialDesignIcons name="delete" size={20} />}
             active={activeItem === 'trash'}
             onPress={() => setActiveItem('trash')}
